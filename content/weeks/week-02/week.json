@@ -1,0 +1,101 @@
+{
+  "id": "week-02",
+  "title": "How Computers, Data, and the Internet Work",
+  "overview": {
+    "learning_objectives": [
+      "Understand how computers handle information.",
+      "Learn what data is and why it matters.",
+      "Understand the basic flow of the internet.",
+      "Explain APIs in simple language."
+    ]
+  },
+  "lesson": {
+    "id": "lesson-02-01",
+    "week_id": "week-02",
+    "title": "Data, Browser, Server, and API Basics",
+    "estimated_minutes": 25,
+    "blocks": [
+      {
+        "type": "hero",
+        "title": "Week 2 Focus",
+        "content": "Students learn how information moves from user to browser, server, API, and back to the screen."
+      },
+      {
+        "type": "objective-list",
+        "title": "Learning Objectives",
+        "items": [
+          { "label": "Data", "description": "Understand structured and unstructured information." },
+          { "label": "Internet Flow", "description": "See how users, browsers, servers, and APIs connect." },
+          { "label": "APIs", "description": "Explain APIs as connectors between systems." }
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Core Concepts",
+        "items": [
+          { "label": "Browser", "description": "The app that lets a user access websites or web systems." },
+          { "label": "Server", "description": "A system that receives requests and sends back results." },
+          { "label": "API", "description": "A connector used to exchange information between systems." },
+          { "label": "Database", "description": "The place where structured data is stored and retrieved." }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Teaching Tip",
+        "content": "Use a weather app example so students can visualize request, server processing, and returned data."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-02-roleplay",
+    "week_id": "week-02",
+    "type": "role-play-sequence",
+    "title": "Internet Role-Play",
+    "instructions": "Arrange the roles in the correct order for a simple web request.",
+    "items": [
+      { "label": "User" },
+      { "label": "Browser" },
+      { "label": "Server" },
+      { "label": "API" },
+      { "label": "Database" }
+    ],
+    "success_criteria": "Place the roles in a logical request-and-response order."
+  },
+  "quiz": {
+    "id": "quiz-week-02",
+    "week_id": "week-02",
+    "title": "Week 2 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w2-q1",
+        "prompt": "Which part of a web system usually stores information for later use?",
+        "options": ["Browser", "Database", "Keyboard", "Monitor"],
+        "answer_index": 1,
+        "explanation": "A database stores structured information so apps can retrieve it later."
+      },
+      {
+        "id": "w2-q2",
+        "prompt": "What is the best simple description of an API?",
+        "options": ["A type of monitor", "A folder system", "A connector that lets systems exchange data", "A battery saver tool"],
+        "answer_index": 2,
+        "explanation": "An API helps one system request or send information to another system."
+      },
+      {
+        "id": "w2-q3",
+        "prompt": "Which item is the best example of structured data?",
+        "options": ["A spreadsheet of student names", "A voice note", "A photo", "A video clip"],
+        "answer_index": 0,
+        "explanation": "Spreadsheets with rows and columns are a common example of structured data."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Describe what happens when a learner opens a weather app and checks today’s temperature. Mention browser or app, server, and data.",
+    "placeholder": "The user opens the app, the app sends a request to a server or API, the server returns data, and the app displays the temperature."
+  },
+  "teacher_notes": [
+    "Act out the user, browser, server, API, and database roles physically if teaching in a classroom.",
+    "Use a real JSON response to reduce abstraction."
+  ]
+}

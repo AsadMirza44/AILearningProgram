@@ -1,0 +1,84 @@
+{
+  "id": "week-03",
+  "title": "Thinking Like a Programmer Without Fear",
+  "overview": { "learning_objectives": ["Build logical thinking for technical problem-solving."] },
+  "lesson": {
+    "id": "lesson-03-01",
+    "week_id": "week-03",
+    "title": "Sequence, Conditions, and Flowcharts",
+    "estimated_minutes": 25,
+    "blocks": [
+      { "type": "hero", "title": "Week 3 Focus", "content": "Programming is introduced as giving precise instructions." },
+      {
+        "type": "objective-list",
+        "title": "Learning Objectives",
+        "items": [
+          { "label": "Sequence", "description": "Understand ordered steps in a process." },
+          { "label": "Conditions", "description": "Recognize if/then style decisions." },
+          { "label": "Flowcharts", "description": "Represent logic visually for beginners." }
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Logic Building Blocks",
+        "items": [
+          { "label": "Variable", "description": "A named place to store a value or piece of information." },
+          { "label": "Condition", "description": "A check that decides what happens next." },
+          { "label": "Loop", "description": "Repeating steps until a rule changes." },
+          { "label": "Pseudocode", "description": "Plain-language instructions describing logic." }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Key Message",
+        "content": "The goal is not to turn students into programmers in one week. The goal is to make logic feel familiar."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-03-logic",
+    "week_id": "week-03",
+    "type": "step-ordering",
+    "title": "Fix the Broken Logic",
+    "instructions": "Arrange the steps into a correct logical order.",
+    "items": [{ "label": "Start" }, { "label": "Check condition" }, { "label": "Take action" }, { "label": "Finish" }],
+    "success_criteria": "Create a flow with no missing step."
+  },
+  "quiz": {
+    "id": "quiz-week-03",
+    "week_id": "week-03",
+    "title": "Week 3 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w3-q1",
+        "prompt": "What is the main purpose of a flowchart?",
+        "options": ["To store files", "To show the steps and decisions in a process", "To browse the internet", "To install software"],
+        "answer_index": 1,
+        "explanation": "Flowcharts visualize steps and decisions clearly."
+      },
+      {
+        "id": "w3-q2",
+        "prompt": "Which idea is closest to a condition in logic?",
+        "options": ["Repeat forever", "If this is true, do the next step", "Store a file in a folder", "Use a bigger screen"],
+        "answer_index": 1,
+        "explanation": "A condition checks whether something is true before an action happens."
+      },
+      {
+        "id": "w3-q3",
+        "prompt": "What is pseudocode?",
+        "options": ["A fully working app", "A password system", "Step-by-step logic written in simple language", "A kind of database"],
+        "answer_index": 2,
+        "explanation": "Pseudocode helps people describe logic without needing strict programming syntax."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Write a short set of instructions for a routine task in your own field. Then name one place where unclear logic could cause confusion.",
+    "placeholder": "Task: registering a student. Confusion can happen if we do not clearly say when to check missing documents."
+  },
+  "teacher_notes": [
+    "Use an everyday process like making tea or sending an email as the first logic exercise.",
+    "Ask students to spot missing steps rather than writing perfect logic immediately."
+  ]
+}

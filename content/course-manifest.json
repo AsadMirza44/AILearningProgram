@@ -1,0 +1,72 @@
+{
+  "program_title": "AI-Enabled Student Program",
+  "subtitle": "A 6-week practical program to help students understand, use, evaluate, and build with AI.",
+  "weeks": [
+    {
+      "id": "week-01",
+      "sequence": 1,
+      "title": "AI Foundations and AI Literacy",
+      "short_title": "AI Foundations",
+      "theme_color": "sky",
+      "estimated_minutes": 120,
+      "focus": "Understand what AI is, where it is used, what it can and cannot do, and how to think critically about AI output.",
+      "signature_activity": "Spot the hallucination studio",
+      "status": "available"
+    },
+    {
+      "id": "week-02",
+      "sequence": 2,
+      "title": "Prompt Engineering and AI for Learning",
+      "short_title": "Prompt Engineering",
+      "theme_color": "pink",
+      "estimated_minutes": 120,
+      "focus": "Use better prompts, structure, constraints, iteration, and verification to turn AI into a stronger study partner.",
+      "signature_activity": "Bad prompt vs good prompt challenge",
+      "status": "available"
+    },
+    {
+      "id": "week-03",
+      "sequence": 3,
+      "title": "Data Thinking and Machine Learning Basics",
+      "short_title": "Data and ML",
+      "theme_color": "teal",
+      "estimated_minutes": 120,
+      "focus": "Understand datasets, features, labels, prediction, recommendation, and why biased data creates weak AI systems.",
+      "signature_activity": "Manual classification game",
+      "status": "available"
+    },
+    {
+      "id": "week-04",
+      "sequence": 4,
+      "title": "Python, Automation, and Computational Thinking",
+      "short_title": "Python and Automation",
+      "theme_color": "green",
+      "estimated_minutes": 120,
+      "focus": "Learn Python basics, logic, and simple automation patterns to understand how AI apps and workflows are built.",
+      "signature_activity": "Build a rule-based chatbot",
+      "status": "available"
+    },
+    {
+      "id": "week-05",
+      "sequence": 5,
+      "title": "RAG, MCP, and AI-Powered Systems",
+      "short_title": "RAG and MCP",
+      "theme_color": "violet",
+      "estimated_minutes": 120,
+      "focus": "Understand retrieval, semantic search, knowledge grounding, MCP, tools, resources, prompts, and agent-style systems.",
+      "signature_activity": "Paper-based RAG simulation",
+      "status": "available"
+    },
+    {
+      "id": "week-06",
+      "sequence": 6,
+      "title": "Capstone Development and AI Showcase",
+      "short_title": "Capstone Showcase",
+      "theme_color": "rose",
+      "estimated_minutes": 140,
+      "focus": "Apply AI concepts, prompting, data thinking, RAG, MCP, workflows, and ethics in a final AI-enabled project.",
+      "signature_activity": "Capstone planning workshop",
+      "status": "available"
+    }
+  ]
+}

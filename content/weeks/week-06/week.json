@@ -1,0 +1,84 @@
+{
+  "id": "week-06",
+  "title": "LLMs and Generative AI in the Real World",
+  "overview": { "learning_objectives": ["Understand what LLMs do and where they can fail."] },
+  "lesson": {
+    "id": "lesson-06-01",
+    "week_id": "week-06",
+    "title": "LLM Use Cases and Failure Modes",
+    "estimated_minutes": 25,
+    "blocks": [
+      { "type": "hero", "title": "Week 6 Focus", "content": "Students compare AI outputs and learn to verify generated content." },
+      {
+        "type": "objective-list",
+        "title": "Learning Objectives",
+        "items": [
+          { "label": "LLM Tasks", "description": "Use summarization, drafting, extraction, and classification examples." },
+          { "label": "Verification", "description": "Check outputs instead of trusting them automatically." },
+          { "label": "Hallucination", "description": "Recognize false but plausible responses." }
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Common LLM Uses",
+        "items": [
+          { "label": "Summarize", "description": "Condense large text into a shorter explanation." },
+          { "label": "Draft", "description": "Create a first version of an email or report." },
+          { "label": "Extract", "description": "Pull dates, names, or themes from content." },
+          { "label": "Classify", "description": "Sort text into labels such as positive or negative." }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Responsible AI Reminder",
+        "content": "Generated text can look polished while still containing factual mistakes."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-06-output-lab",
+    "week_id": "week-06",
+    "type": "reflection-box",
+    "title": "Output Comparison Lab",
+    "instructions": "Compare two AI answers and explain which one is more trustworthy.",
+    "items": [],
+    "success_criteria": "Explain one strength and one risk in the selected answer."
+  },
+  "quiz": {
+    "id": "quiz-week-06",
+    "week_id": "week-06",
+    "title": "Week 6 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w6-q1",
+        "prompt": "Which task is a common use case for an LLM?",
+        "options": ["Charge a phone battery", "Summarize a paragraph", "Increase RAM physically", "Repair a keyboard"],
+        "answer_index": 1,
+        "explanation": "Summarization is a typical text task for large language models."
+      },
+      {
+        "id": "w6-q2",
+        "prompt": "What is hallucination in generative AI?",
+        "options": ["A correct answer with sources", "A confident but false or unsupported answer", "A better battery life mode", "A way to save files"],
+        "answer_index": 1,
+        "explanation": "Hallucination describes generated content that sounds plausible but is wrong or unsupported."
+      },
+      {
+        "id": "w6-q3",
+        "prompt": "What is a good habit after getting an AI answer?",
+        "options": ["Always trust it immediately", "Verify important facts", "Delete your notes", "Avoid asking follow-up questions"],
+        "answer_index": 1,
+        "explanation": "Important claims should be checked against trusted sources or human review."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Describe one useful way to use an LLM and one reason the answer still needs human review.",
+    "placeholder": "LLMs can summarize a long article, but I should still verify facts because the summary may miss or invent details."
+  },
+  "teacher_notes": [
+    "Run the same prompt in more than one AI tool to show differences in style and reliability.",
+    "Always fact-check at least one answer live in class."
+  ]
+}

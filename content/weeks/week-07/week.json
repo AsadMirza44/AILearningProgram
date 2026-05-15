@@ -1,0 +1,84 @@
+{
+  "id": "week-07",
+  "title": "Prompt Engineering for Better AI Results",
+  "overview": { "learning_objectives": ["Learn how to improve prompts through structure and iteration."] },
+  "lesson": {
+    "id": "lesson-07-01",
+    "week_id": "week-07",
+    "title": "Prompt Structure and Iteration",
+    "estimated_minutes": 25,
+    "blocks": [
+      { "type": "hero", "title": "Week 7 Focus", "content": "Students turn vague prompts into useful instructions with audience, context, and format." },
+      {
+        "type": "objective-list",
+        "title": "Prompt Design Goals",
+        "items": [
+          { "label": "Context", "description": "Explain the situation or task clearly." },
+          { "label": "Audience", "description": "Tell the model who the output is for." },
+          { "label": "Format", "description": "Specify the structure you want back." }
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Prompt Upgrade Checklist",
+        "items": [
+          { "label": "Role", "description": "Optionally set the role or perspective for the model." },
+          { "label": "Task", "description": "Describe the exact action you want." },
+          { "label": "Constraints", "description": "Limit length, tone, scope, or content." },
+          { "label": "Output Format", "description": "Ask for bullets, tables, quiz questions, or summaries." }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Key Habit",
+        "content": "Students should expect to refine prompts instead of waiting for one perfect first answer."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-07-prompt-makeover",
+    "week_id": "week-07",
+    "type": "prompt-editor",
+    "title": "Prompt Makeover Challenge",
+    "instructions": "Rewrite a weak prompt to include context, audience, and output format.",
+    "items": [{ "label": "Write something about marketing" }],
+    "success_criteria": "Produce a clearer prompt with at least three improvements."
+  },
+  "quiz": {
+    "id": "quiz-week-07",
+    "week_id": "week-07",
+    "title": "Week 7 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w7-q1",
+        "prompt": "What usually makes a prompt more useful?",
+        "options": ["Keeping it vague", "Adding audience, context, and output format", "Removing all details", "Using only one word"],
+        "answer_index": 1,
+        "explanation": "Specific context and output expectations usually improve the result."
+      },
+      {
+        "id": "w7-q2",
+        "prompt": "Which prompt is stronger?",
+        "options": ["Help me study", "Create a 5-question beginner quiz on machine learning with answers", "Write something", "Do it better"],
+        "answer_index": 1,
+        "explanation": "The stronger prompt gives a clear task, audience level, and output format."
+      },
+      {
+        "id": "w7-q3",
+        "prompt": "Why is iteration important in prompting?",
+        "options": ["Because the first answer is always perfect", "Because prompts often improve through revision", "Because AI dislikes examples", "Because shorter prompts are always best"],
+        "answer_index": 1,
+        "explanation": "Prompting is often an iterative process of clarifying and improving the instruction."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Take a weak prompt from your own work or study and explain how you would improve it.",
+    "placeholder": "I would add the audience, the exact task, tone, and output format so the AI knows what good looks like."
+  },
+  "teacher_notes": [
+    "Start with a weak prompt and improve it publicly in steps.",
+    "Make students justify why each extra detail improves the result."
+  ]
+}

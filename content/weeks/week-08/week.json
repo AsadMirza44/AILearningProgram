@@ -1,0 +1,84 @@
+{
+  "id": "week-08",
+  "title": "AI Productivity Workflows for Study and Work",
+  "overview": { "learning_objectives": ["Design simple repeatable AI-assisted workflows."] },
+  "lesson": {
+    "id": "lesson-08-01",
+    "week_id": "week-08",
+    "title": "Workflow Design for Practical Tasks",
+    "estimated_minutes": 25,
+    "blocks": [
+      { "type": "hero", "title": "Week 8 Focus", "content": "Students redesign manual tasks into guided AI-supported workflows." },
+      {
+        "type": "objective-list",
+        "title": "Workflow Goals",
+        "items": [
+          { "label": "Repeatability", "description": "Design a process that can be used more than once." },
+          { "label": "Productivity", "description": "Save time while keeping quality." },
+          { "label": "Review", "description": "Add a human checkpoint before final use." }
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Workflow Parts",
+        "items": [
+          { "label": "Input", "description": "The notes, text, or request that starts the process." },
+          { "label": "AI Step", "description": "The model action such as summarize or draft." },
+          { "label": "Review", "description": "The human check before using the output." },
+          { "label": "Output", "description": "The final document, list, or recommendation." }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Design Rule",
+        "content": "A simple workflow with a clear review step is better than a flashy workflow no one can trust."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-08-workflow",
+    "week_id": "week-08",
+    "type": "flow-builder",
+    "title": "Workflow Redesign Studio",
+    "instructions": "Break a common task into input, AI step, review step, and output.",
+    "items": [{ "label": "Inputs" }, { "label": "AI step" }, { "label": "Human review" }, { "label": "Output" }],
+    "success_criteria": "Produce a complete workflow with a clear review point."
+  },
+  "quiz": {
+    "id": "quiz-week-08",
+    "week_id": "week-08",
+    "title": "Week 8 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w8-q1",
+        "prompt": "What is a workflow in this course context?",
+        "options": ["A random set of tools", "A repeatable sequence of steps for completing a task", "A device storage method", "A browser extension only"],
+        "answer_index": 1,
+        "explanation": "A workflow is a repeatable process with clear steps and outputs."
+      },
+      {
+        "id": "w8-q2",
+        "prompt": "Which element should be included in an AI-assisted workflow?",
+        "options": ["No review step ever", "A clear input, AI step, and output", "Only a final answer", "Only one vague instruction"],
+        "answer_index": 1,
+        "explanation": "Useful workflows define inputs, processing steps, outputs, and usually a review step."
+      },
+      {
+        "id": "w8-q3",
+        "prompt": "Why add human review to a workflow?",
+        "options": ["To slow it down with no benefit", "To check quality, accuracy, and safety", "To remove the need for any tools", "To avoid documenting steps"],
+        "answer_index": 1,
+        "explanation": "Human review helps catch mistakes and keeps the workflow accountable."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Describe one study or work task you could turn into an AI-assisted workflow, and name the review point.",
+    "placeholder": "I could turn meeting notes into action items, then a human reviews the final list before sharing it."
+  },
+  "teacher_notes": [
+    "Use realistic academic or office tasks instead of abstract examples.",
+    "Ask students where the workflow can fail and where review is required."
+  ]
+}

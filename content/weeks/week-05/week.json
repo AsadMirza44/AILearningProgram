@@ -1,0 +1,84 @@
+{
+  "id": "week-05",
+  "title": "Machine Learning Workflow and Deep Learning Overview",
+  "overview": { "learning_objectives": ["Understand the ML workflow from data to output."] },
+  "lesson": {
+    "id": "lesson-05-01",
+    "week_id": "week-05",
+    "title": "Data Quality and ML Workflow",
+    "estimated_minutes": 25,
+    "blocks": [
+      { "type": "hero", "title": "Week 5 Focus", "content": "Students see why poor data leads to poor AI results." },
+      {
+        "type": "objective-list",
+        "title": "Workflow Goals",
+        "items": [
+          { "label": "Data Quality", "description": "Identify missing, inconsistent, or incorrect values." },
+          { "label": "ML Workflow", "description": "Understand collect, clean, train, test, and use." },
+          { "label": "Deep Learning", "description": "Recognize it as a layered learning method." }
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Workflow Stages",
+        "items": [
+          { "label": "Collect", "description": "Gather relevant and useful examples." },
+          { "label": "Clean", "description": "Fix errors, gaps, and formatting problems." },
+          { "label": "Train", "description": "Let the model learn from examples." },
+          { "label": "Evaluate", "description": "Check whether the result is useful and reliable." }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Key Message",
+        "content": "Poor input quality is one of the fastest ways to damage AI output quality."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-05-data-quality",
+    "week_id": "week-05",
+    "type": "scenario-choice",
+    "title": "Data Quality Inspection",
+    "instructions": "Review a messy dataset and identify the biggest risks.",
+    "items": [{ "label": "Missing names" }, { "label": "Inconsistent dates" }, { "label": "Spelling errors" }],
+    "success_criteria": "Identify at least two major quality issues."
+  },
+  "quiz": {
+    "id": "quiz-week-05",
+    "week_id": "week-05",
+    "title": "Week 5 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w5-q1",
+        "prompt": "Why does messy data create problems for AI systems?",
+        "options": ["Because it improves accuracy too much", "Because poor input can lead to poor output", "Because it always makes the app faster", "Because it removes human review"],
+        "answer_index": 1,
+        "explanation": "Poor-quality data often leads to poor-quality predictions or outputs."
+      },
+      {
+        "id": "w5-q2",
+        "prompt": "Which step comes early in a typical machine learning workflow?",
+        "options": ["Ignore the data", "Collect and clean data", "Deploy first and test later", "Skip evaluation"],
+        "answer_index": 1,
+        "explanation": "Collecting and cleaning data is an early foundation step."
+      },
+      {
+        "id": "w5-q3",
+        "prompt": "What is a useful high-level description of deep learning?",
+        "options": ["A type of folder structure", "A method using layered neural networks", "A keyboard shortcut", "A browser tab feature"],
+        "answer_index": 1,
+        "explanation": "Deep learning typically uses multiple layers to learn more complex patterns."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Name one data quality problem that could affect an AI result and explain why it matters.",
+    "placeholder": "Missing values can make the system learn the wrong pattern or miss important context."
+  },
+  "teacher_notes": [
+    "Show a messy spreadsheet directly so students see the problem instead of only hearing about it.",
+    "Use the phrase 'garbage in, garbage out' carefully and explain it in plain language."
+  ]
+}

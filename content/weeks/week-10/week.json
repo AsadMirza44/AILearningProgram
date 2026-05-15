@@ -1,0 +1,84 @@
+{
+  "id": "week-10",
+  "title": "Beginner Agentic Workflow Design and Capstone Showcase",
+  "overview": { "learning_objectives": ["Combine all previous weeks into a practical capstone."] },
+  "lesson": {
+    "id": "lesson-10-01",
+    "week_id": "week-10",
+    "title": "Capstone Structure and Evaluation",
+    "estimated_minutes": 25,
+    "blocks": [
+      { "type": "hero", "title": "Week 10 Focus", "content": "Students define the problem, workflow, tools, prompts, risks, and review points for a final showcase." },
+      {
+        "type": "objective-list",
+        "title": "Capstone Objectives",
+        "items": [
+          { "label": "Problem Framing", "description": "State the user, pain point, and goal clearly." },
+          { "label": "Workflow Quality", "description": "Show a logical, connected sequence of steps." },
+          { "label": "Risk Control", "description": "Explain what can go wrong and how review helps." }
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Capstone Structure",
+        "items": [
+          { "label": "Problem", "description": "The real-world issue being addressed." },
+          { "label": "Workflow", "description": "The sequence of inputs, AI steps, outputs, and review." },
+          { "label": "Prompts and Tools", "description": "The systems and instructions used." },
+          { "label": "Risks and Controls", "description": "Limitations, privacy concerns, and human oversight." }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Final Standard",
+        "content": "A strong capstone is practical, understandable, and honest about where human review is needed."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-10-capstone",
+    "week_id": "week-10",
+    "type": "submission-board",
+    "title": "Capstone Showcase",
+    "instructions": "Prepare a beginner-friendly AI workflow with user, problem, tools, prompts, risks, and human review.",
+    "items": [{ "label": "Problem" }, { "label": "User" }, { "label": "Workflow" }, { "label": "Tools" }, { "label": "Risks" }, { "label": "Review" }],
+    "success_criteria": "Submit a coherent workflow with clear value and safety considerations."
+  },
+  "quiz": {
+    "id": "quiz-week-10",
+    "week_id": "week-10",
+    "title": "Week 10 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w10-q1",
+        "prompt": "What should a strong capstone begin with?",
+        "options": ["A random tool", "A clear problem and user", "A long code base", "A logo design"],
+        "answer_index": 1,
+        "explanation": "A strong capstone starts with a clear problem, user, and purpose."
+      },
+      {
+        "id": "w10-q2",
+        "prompt": "Why include risks and controls in a capstone?",
+        "options": ["To make it longer only", "To show responsible design and human oversight", "To hide workflow steps", "To avoid tool choices"],
+        "answer_index": 1,
+        "explanation": "Risks and controls show that the solution is realistic and responsible."
+      },
+      {
+        "id": "w10-q3",
+        "prompt": "Which item belongs in a capstone presentation?",
+        "options": ["Workflow diagram", "Battery percentage", "Desktop wallpaper", "Keyboard brand"],
+        "answer_index": 0,
+        "explanation": "A workflow diagram helps explain the logic and flow of the proposed solution."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Summarize your capstone idea in 4 to 6 lines. Include the user, the problem, the AI role, and the human review point.",
+    "placeholder": "My capstone helps students turn notes into study checklists. AI summarizes the notes and extracts key terms, then the student reviews the checklist before using it."
+  },
+  "teacher_notes": [
+    "Evaluate whether the project solves a real problem before focusing on polish.",
+    "Push students to name risks precisely, not just say 'AI can be wrong'."
+  ]
+}

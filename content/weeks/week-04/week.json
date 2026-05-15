@@ -1,0 +1,84 @@
+{
+  "id": "week-04",
+  "title": "AI Fundamentals, Machine Learning, and Learning from Data",
+  "overview": { "learning_objectives": ["Understand how AI differs from traditional software."] },
+  "lesson": {
+    "id": "lesson-04-01",
+    "week_id": "week-04",
+    "title": "AI, ML, and Pattern Learning",
+    "estimated_minutes": 25,
+    "blocks": [
+      { "type": "hero", "title": "Week 4 Focus", "content": "Students compare rules-based software with learning-based systems." },
+      {
+        "type": "objective-list",
+        "title": "Learning Objectives",
+        "items": [
+          { "label": "AI", "description": "Describe AI as a broad field." },
+          { "label": "Machine Learning", "description": "Explain pattern learning from data." },
+          { "label": "Prediction", "description": "Understand that ML systems predict or classify based on examples." }
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Concept Comparison",
+        "items": [
+          { "label": "Traditional Software", "description": "Uses direct rules created by a programmer." },
+          { "label": "Machine Learning", "description": "Learns from examples instead of only fixed rules." },
+          { "label": "Training Data", "description": "The examples the system uses to learn patterns." },
+          { "label": "Prediction", "description": "The output created after learning from data." }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Responsible Framing",
+        "content": "Students should leave knowing AI is neither magic nor automatically trustworthy."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-04-classifier",
+    "week_id": "week-04",
+    "type": "match-pairs",
+    "title": "AI Concept Classifier",
+    "instructions": "Match each concept to its description.",
+    "items": [{ "label": "AI" }, { "label": "Machine Learning" }, { "label": "Training Data" }],
+    "success_criteria": "Match all core concepts correctly."
+  },
+  "quiz": {
+    "id": "quiz-week-04",
+    "week_id": "week-04",
+    "title": "Week 4 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w4-q1",
+        "prompt": "What makes machine learning different from fixed-rule software?",
+        "options": ["It never uses data", "It learns patterns from examples", "It only works offline", "It cannot make predictions"],
+        "answer_index": 1,
+        "explanation": "Machine learning models use examples to detect patterns and make predictions."
+      },
+      {
+        "id": "w4-q2",
+        "prompt": "Which example best fits machine learning?",
+        "options": ["A hand-coded calculator", "A spam filter that improves from examples", "A folder rename action", "A keyboard backlight"],
+        "answer_index": 1,
+        "explanation": "Spam filtering often depends on learned patterns from many examples."
+      },
+      {
+        "id": "w4-q3",
+        "prompt": "Why is training data important?",
+        "options": ["It powers the laptop battery", "It gives the system examples to learn from", "It creates folders automatically", "It changes screen brightness"],
+        "answer_index": 1,
+        "explanation": "Training data is the raw material the model learns from."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Explain in simple words the difference between traditional software and machine learning.",
+    "placeholder": "Traditional software follows direct rules. Machine learning learns patterns from examples and then makes predictions."
+  },
+  "teacher_notes": [
+    "Contrast a calculator with a recommendation system to keep the explanation grounded.",
+    "Avoid mathematics here; use examples, stories, and comparisons."
+  ]
+}

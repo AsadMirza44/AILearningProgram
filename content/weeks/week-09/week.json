@@ -1,0 +1,84 @@
+{
+  "id": "week-09",
+  "title": "AI Agents, Tools, and Automation Concepts",
+  "overview": { "learning_objectives": ["Understand what an AI agent is and how workflows use tools and decisions."] },
+  "lesson": {
+    "id": "lesson-09-01",
+    "week_id": "week-09",
+    "title": "Agentic Thinking and Workflow Breakdown",
+    "estimated_minutes": 25,
+    "blocks": [
+      { "type": "hero", "title": "Week 9 Focus", "content": "Students separate trigger, inputs, tools, decisions, outputs, and review points." },
+      {
+        "type": "objective-list",
+        "title": "Learning Objectives",
+        "items": [
+          { "label": "Agent vs Chatbot", "description": "Understand how multi-step behavior differs from simple chat response." },
+          { "label": "Workflow Breakdown", "description": "Identify trigger, tools, steps, and outputs." },
+          { "label": "Human Oversight", "description": "Preserve review and accountability in automation." }
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Workflow Building Blocks",
+        "items": [
+          { "label": "Trigger", "description": "The event that starts the workflow." },
+          { "label": "Tool", "description": "A system or service the workflow uses." },
+          { "label": "Decision", "description": "A branch that changes what happens next." },
+          { "label": "Review", "description": "A human checkpoint before the final result is used." }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Practical Framing",
+        "content": "Students do not need to code an advanced agent. They need to design a credible beginner workflow."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-09-agent-board",
+    "week_id": "week-09",
+    "type": "flow-builder",
+    "title": "Agent Workflow Design Board",
+    "instructions": "Design a beginner-friendly assistant workflow for a real use case.",
+    "items": [{ "label": "Trigger" }, { "label": "Input" }, { "label": "Tool" }, { "label": "Decision" }, { "label": "Output" }, { "label": "Review" }],
+    "success_criteria": "Include at least one decision point and one human review point."
+  },
+  "quiz": {
+    "id": "quiz-week-09",
+    "week_id": "week-09",
+    "title": "Week 9 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w9-q1",
+        "prompt": "What makes an AI agent different from a simple chatbot?",
+        "options": ["It only answers in one sentence", "It can handle multi-step tasks with tools or decisions", "It cannot use prompts", "It is always a robot"],
+        "answer_index": 1,
+        "explanation": "Agent-like systems usually coordinate multi-step work, tools, or decisions."
+      },
+      {
+        "id": "w9-q2",
+        "prompt": "Which item is an important part of an agentic workflow breakdown?",
+        "options": ["Trigger", "Wallpaper", "Battery color", "Folder icon"],
+        "answer_index": 0,
+        "explanation": "Trigger is a key part of understanding when and how a workflow begins."
+      },
+      {
+        "id": "w9-q3",
+        "prompt": "Why should an agent workflow still include human review?",
+        "options": ["Because humans are part of hardware", "Because automation can still make mistakes or unsafe decisions", "Because review removes all AI value", "Because databases need rest"],
+        "answer_index": 1,
+        "explanation": "Human review is still important for safety, accuracy, and accountability."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Describe a simple assistant workflow for your field. Include trigger, tool use, output, and one review point.",
+    "placeholder": "A student FAQ assistant starts when a question is submitted, checks a knowledge source, drafts an answer, and a staff member reviews it."
+  },
+  "teacher_notes": [
+    "Keep the examples practical such as student FAQ workflows or appointment helpers.",
+    "Push students to identify review points, not just automated steps."
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "id": "week-01",
+  "title": "Digital Foundations, Computers, and AI in Everyday Life",
+  "overview": {
+    "learning_objectives": [
+      "Understand what a computer is and how it helps users complete tasks.",
+      "Distinguish hardware, software, operating systems, files, folders, and apps.",
+      "Explain AI in plain language without confusing it with general software.",
+      "Recognize common places where AI already appears in everyday life.",
+      "Build confidence using simple technical vocabulary."
+    ],
+    "expected_outcomes": [
+      "Students can explain core digital concepts using beginner-friendly language.",
+      "Students can describe the difference between a normal software program and an AI-enabled system.",
+      "Students can identify at least five daily-life examples of AI use."
+    ]
+  },
+  "lesson": {
+    "id": "lesson-01-01",
+    "week_id": "week-01",
+    "title": "What Is a Computer and Where Is AI Around Us?",
+    "estimated_minutes": 25,
+    "blocks": [
+      {
+        "type": "hero",
+        "title": "Week 1 Start",
+        "content": "This week builds digital confidence first. Students learn how devices, apps, files, and AI-enabled experiences fit together."
+      },
+      {
+        "type": "objective-list",
+        "title": "Learning Objectives",
+        "items": [
+          "Understand what a computer does using input, process, and output.",
+          "Separate hardware from software using practical examples.",
+          "Recognize that not every smart-looking app is AI.",
+          "Use plain language to explain AI in daily life."
+        ]
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Core Concepts",
+        "items": [
+          {
+            "label": "Computer",
+            "description": "An electronic machine that receives input, processes instructions, stores information, and produces output."
+          },
+          {
+            "label": "Hardware",
+            "description": "Physical parts such as screen, keyboard, or microphone."
+          },
+          {
+            "label": "Software",
+            "description": "Instructions and apps that tell hardware what to do."
+          },
+          {
+            "label": "AI",
+            "description": "Systems that handle tasks involving pattern recognition, language, or judgment-like behavior."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Traditional Software vs AI-Enabled Software",
+        "items": [
+          {
+            "feature": "Behavior",
+            "traditional": "Follows programmed rules",
+            "ai": "Uses learned patterns or probabilistic output"
+          },
+          {
+            "feature": "Predictability",
+            "traditional": "Usually exact and repeatable",
+            "ai": "Can vary by context and phrasing"
+          },
+          {
+            "feature": "Example",
+            "traditional": "Calculator",
+            "ai": "Chat assistant"
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Responsible AI Reminder",
+        "content": "An AI response can be useful and still be wrong. Students should learn verification from the first week."
+      }
+    ]
+  },
+  "activity": {
+    "id": "activity-01-ai-sort",
+    "week_id": "week-01",
+    "type": "card-sort",
+    "title": "AI or Not AI?",
+    "instructions": "Sort each example into AI or Not AI based on whether it uses learned patterns or human-like decision support.",
+    "items": [
+      { "label": "Calculator App", "category": "not_ai" },
+      { "label": "Netflix Recommendations", "category": "ai" },
+      { "label": "Phone Face Unlock", "category": "ai" },
+      { "label": "Flashlight App", "category": "not_ai" },
+      { "label": "Email Spam Filter", "category": "ai" }
+    ],
+    "success_criteria": "Correctly classify at least 4 of 5 examples."
+  },
+  "quiz": {
+    "id": "quiz-week-01",
+    "week_id": "week-01",
+    "title": "Week 1 Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "w1-q1",
+        "prompt": "Which option is the best example of hardware?",
+        "options": ["Browser", "Keyboard", "Spreadsheet app", "Operating system"],
+        "answer_index": 1,
+        "explanation": "Hardware refers to the physical parts of a device."
+      },
+      {
+        "id": "w1-q2",
+        "prompt": "Which example is most likely using AI?",
+        "options": ["Flashlight app", "Calculator", "Spam filter", "Simple folder rename"],
+        "answer_index": 2,
+        "explanation": "Spam filters commonly rely on pattern recognition and classification."
+      },
+      {
+        "id": "w1-q3",
+        "prompt": "What does input-process-output describe?",
+        "options": [
+          "How a device receives, works on, and returns information",
+          "How an internet bill is paid",
+          "How a folder is renamed",
+          "How a battery is charged"
+        ],
+        "answer_index": 0,
+        "explanation": "Input-process-output is a basic model for understanding how computing systems handle tasks."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "Write 3 to 5 lines about where you already see AI in your daily life and one place where you should be careful before trusting the result.",
+    "placeholder": "Example: I see AI in maps, recommendations, and spam filtering. I should still verify important information because AI can sound confident and still be wrong."
+  },
+  "teacher_notes": [
+    "Start by opening an app, typing a note, saving it, closing it, and reopening it.",
+    "Use side-by-side examples to separate hardware, software, and AI behavior.",
+    "Keep reminding students that AI can be impressive and still make mistakes."
+  ]
+}
