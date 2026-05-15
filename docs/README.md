@@ -207,3 +207,22 @@ If continuing in a new Codex session:
 1. Read `docs/IMPLEMENTATION-CHECKLIST.md`
 2. Read `docs/AI-Training-Interactive-App-Architecture.md`
 3. Continue from the next unchecked item
+
+## Vercel Deployment
+
+This repo is now prepared for Vercel FastAPI deployment.
+
+Deployment-specific files at the repo root:
+- `api/index.py`: Vercel-compatible FastAPI entrypoint
+- `requirements.txt`: root dependency file forwarding to `backend/requirements.txt`
+- `pyproject.toml`: declares the FastAPI app entrypoint and frontend build command for Vercel
+
+Recommended Vercel settings:
+- Framework Preset: `FastAPI`
+- Root Directory: repository root
+- No separate output directory is required
+
+Notes:
+- Vercel should now discover the app through `api/index.py` and `project.scripts.app`
+- The frontend build is triggered by `[tool.vercel.scripts] build` in `pyproject.toml`
+- The built frontend is still served by FastAPI from `frontend/dist`

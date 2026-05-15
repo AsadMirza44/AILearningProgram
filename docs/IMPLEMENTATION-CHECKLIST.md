@@ -163,3 +163,8 @@ If a new Codex session starts, tell it to:
 - Preserve content-driven design.
 - Week 1 should remain the first complete vertical slice.
 - Do not reintroduce Weeks 7 to 10 into the active manifest unless the curriculum changes again.
+## Deployment Notes
+
+- Vercel deployment prep is complete.
+- Root files added: `api/index.py`, `requirements.txt`, and `pyproject.toml`.
+- Frontend build on Vercel is defined in `[tool.vercel.scripts] build`.
