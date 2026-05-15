@@ -9,13 +9,14 @@ from app.api.routes.course import router as course_router
 from app.api.routes.health import router as health_router
 from app.api.routes.progress import router as progress_router
 from app.api.routes.submissions import router as submissions_router
-from app.core.config import FRONTEND_DIST_DIR
+from app.core.config import FRONTEND_DIST_DIR, IS_VERCEL
 from app.core.db import Base, engine
 from app.models.progress import ProgressRecord  # noqa: F401
 from app.models.submission import SubmissionRecord  # noqa: F401
 
 
-Base.metadata.create_all(bind=engine)
+if not IS_VERCEL and engine is not None:
+    Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="AI Training Interactive App API", version="0.1.0")
 

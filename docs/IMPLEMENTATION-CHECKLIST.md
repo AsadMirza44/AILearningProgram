@@ -168,3 +168,5 @@ If a new Codex session starts, tell it to:
 - Vercel deployment prep is complete.
 - Root files added: `api/index.py`, `requirements.txt`, and `pyproject.toml`.
 - Frontend build on Vercel is defined in `[tool.vercel.scripts] build`.
+- SQLite writes are disabled on Vercel.
+- Vercel deployments run in no-persistence mode for progress and submissions.

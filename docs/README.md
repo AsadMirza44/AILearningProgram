@@ -226,3 +226,5 @@ Notes:
 - Vercel should now discover the app through `api/index.py` and `project.scripts.app`
 - The frontend build is triggered by `[tool.vercel.scripts] build` in `pyproject.toml`
 - The built frontend is still served by FastAPI from `frontend/dist`
+- On Vercel, SQLite writes are disabled intentionally to avoid serverless filesystem crashes
+- Progress and submission endpoints return non-persistent fallback responses on Vercel deployments

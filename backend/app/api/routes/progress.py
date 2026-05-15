@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from app.core.config import IS_VERCEL
 from app.core.db import get_db
 from app.models.progress import ProgressRecord
 from app.schemas.progress import ProgressResponse, ProgressUpsert
@@ -11,6 +12,9 @@ router = APIRouter(prefix="/progress", tags=["progress"])
 
 @router.get("/{learner_id}", response_model=list[ProgressResponse])
 def get_progress(learner_id: str, db: Session = Depends(get_db)):
+    if IS_VERCEL or db is None:
+        return []
+
     rows = (
         db.query(ProgressRecord)
         .filter(ProgressRecord.learner_id == learner_id)
@@ -34,6 +38,9 @@ def get_progress(learner_id: str, db: Session = Depends(get_db)):
 
 @router.post("", response_model=ProgressResponse)
 def upsert_progress(payload: ProgressUpsert, db: Session = Depends(get_db)):
+    if IS_VERCEL or db is None:
+        return ProgressResponse(**payload.model_dump())
+
     row = (
         db.query(ProgressRecord)
         .filter(
@@ -67,4 +74,3 @@ def upsert_progress(payload: ProgressUpsert, db: Session = Depends(get_db)):
         reflection_submitted=bool(row.reflection_submitted),
         notes=row.notes,
     )
-

@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 
@@ -10,3 +11,4 @@ FRONTEND_DIST_DIR = FRONTEND_DIR / "dist"
 RAW_WEEK_PATTERN = "week-*.md"
 DATABASE_PATH = DATA_DIR / "app.db"
 DATABASE_URL = f"sqlite:///{DATABASE_PATH.as_posix()}"
+IS_VERCEL = os.environ.get("VERCEL") == "1"
