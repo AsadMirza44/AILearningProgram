@@ -215,7 +215,7 @@ This repo is now prepared for Vercel FastAPI deployment.
 Deployment-specific files at the repo root:
 - `api/index.py`: Vercel-compatible FastAPI entrypoint
 - `requirements.txt`: root dependency file forwarding to `backend/requirements.txt`
-- `pyproject.toml`: declares the FastAPI app entrypoint and frontend build command for Vercel
+- `pyproject.toml`: declares the FastAPI app entrypoint, Python dependencies, and frontend build command for Vercel
 
 Recommended Vercel settings:
 - Framework Preset: `FastAPI`
