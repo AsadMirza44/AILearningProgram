@@ -11,11 +11,12 @@ type Props = {
 
 export default function WeekCard({ week, progress }: Props) {
   const status = progress?.status ?? "not_started";
+  const sequenceLabel = week.sequence_label ?? `${week.delivery_label ?? "Week"} ${week.sequence}`;
 
   return (
     <Link className={`week-card week-${week.theme_color}`} to={`/weeks/${week.id}`}>
       <div className="week-card__header">
-        <span className="week-card__number">Week {week.sequence}</span>
+        <span className="week-card__number">{sequenceLabel}</span>
         <span className={`pill pill-${status}`}>{status.replace("_", " ")}</span>
       </div>
       <h3>{week.short_title}</h3>
@@ -24,6 +25,7 @@ export default function WeekCard({ week, progress }: Props) {
         <span>{week.estimated_minutes} min</span>
         <span>{week.signature_activity}</span>
       </div>
+      {week.audience ? <p className="muted">{week.audience}</p> : null}
       <div className="week-card__footer">
         <span className="week-card__cta">Open Tutor Workspace</span>
       </div>

@@ -1,27 +1,29 @@
-# AI-Enabled Student Program Implementation Checklist
+# AI Training Studio Implementation Checklist
 
 ## Current Status
 
-**Project:** Interactive 6-Week AI-Enabled Student Program  
+**Project:** Interactive AI Training Studio  
 **Architecture Source:** `docs/AI-Training-Interactive-App-Architecture.md`  
 **Database Policy:** Embedded `SQLite` only, stored inside project at `backend/data/app.db`  
-**Implementation Mode:** Core implementation complete, curriculum refresh active
+**Implementation Mode:** Core implementation complete, student + teacher content refinement active
 
 ## Curriculum Refresh Note
 
-- The runtime curriculum now uses the 6-lecture `AI-Enabled Student Program`.
+- The runtime curriculum now uses the 6-week student program plus the teacher workshop track.
 - The UI shell, routing, styling, navigation, and embedded database remain unchanged.
-- The active lecture sequence is:
+- The active student sequence is:
   - `week-01`: AI Foundations and AI Literacy
   - `week-02`: Prompt Engineering and AI for Learning
   - `week-03`: Data Thinking and Machine Learning Basics
   - `week-04`: Python, Automation, and Computational Thinking
   - `week-05`: RAG, MCP, and AI-Powered Systems
   - `week-06`: Capstone Development and AI Showcase
+- The active teacher track is:
+  - `teacher-workshop-01`: AI for Teachers: Practical Classroom Planning Workshop
 
 ## Locked Decisions
 
-- [x] Single application for the active lecture sequence
+- [x] Single application for student and teacher tracks
 - [x] Tutor-centric interface
 - [x] Embedded database only
 - [x] Frontend stack: React + TypeScript + Vite
@@ -46,11 +48,14 @@
 | Progress tracking | Done | API + SQLite persistence wired for weekly progress and submissions |
 | Capstone module | Done | Week 6 structured content, checkpoint, reflection, and submission support added |
 | Unified app launch | Done | FastAPI serves the built frontend at `/` and `backend/main.py` launches the interactive app |
-| Curriculum refresh | Done | Runtime content now serves the 6-lecture AI-Enabled Student Program with concept-wise detail |
+| Curriculum refresh | Done | Runtime content now serves the student program plus the teacher workshop with concept-wise detail |
 | Advanced concept expansion | Done | Added neural networks, regression, context windows, next-token generation, RAG vs fine-tuning, agents vs chatbots, Ollama, frontier/open-source model tradeoffs, MoE, parameters, and AI cost across the active 6-week plan |
 | Practical systems expansion | Done | Added chunking, reranking, citations, knowledge freshness, multimodal AI, OCR/document AI, and clearer week-level visual gallery support |
 | UI cleanup and image placeholders | Done | Removed review hub and note-heavy panels from the live UI, added image/GIF placeholder sections, launch-activity hooks, and click-to-reveal quiz answers |
 | Premium UI direction | Done | Sidebar, dashboard, week hero, concept accordions, and class activity studio redesigned with modern product styling |
+| Teacher workshop integration | Done | Added teacher workshop track, teacher-specific concept explorer, prompt library, practical guidance, and track-aware navigation |
+| Teacher live demo studio | Done | Replaced multiple teacher demos with one prefilled live `Photosynthesis` workflow plus presenter guide |
+| Teacher quiz removal | Done | Teacher track now skips the quiz panel in the live page flow |
 | Automated test suite | Removed | Test files, test-only scripts, and test dependencies were removed from the repo by request |
 
 ## Implementation Phases
@@ -99,6 +104,9 @@
 - [x] Add practical RAG and multimodal AI concepts in the active 6-week curriculum
 - [x] Hide legacy Weeks 7 to 10 from the active manifest
 - [x] Add Week 6 capstone hub baseline
+- [x] Add teacher workshop runtime content
+- [x] Expand teacher concept explorer into a stronger workshop sequence
+- [x] Add one presenter-friendly live teacher demo
 
 ### Phase 7: Verification
 - [x] Confirm project file structure
@@ -119,11 +127,14 @@
 - `progress_records` table is created automatically
 - `submissions` table is created automatically
 - Embedded SQLite DB is stamped to Alembic revision `0001_initial_schema`
-- Course manifest returns 6 active weeks
-- Runtime course manifest now follows the AI-Enabled Student Program sequence
-- All 6 active weeks include structured lesson blocks, quiz content, reflection prompts, assignments, and concept-level media placeholders
+- Course manifest returns 6 active student weeks plus 1 teacher workshop
+- Course manifest now returns 7 active tracks/items: 6 student weeks and 1 teacher workshop
+- Runtime course manifest now follows the AI Training Studio sequence
+- All 6 active student weeks include structured lesson blocks, quiz content, reflection prompts, assignments, and concept-level media placeholders
+- The teacher workshop includes an expanded concept explorer, teacher prompt library, practical guidance, and one live demo workflow
 - Advanced week content now includes neural networks, regression, token behavior, inference controls, local-model concepts, filesystem RAG design, chunking/reranking/citations, multimodal AI, and model-cost tradeoffs
 - Tutor interface shows concept explorer, core ideas, images, class activities, assignments, and reflections
+- Teacher interface now shows the live presenter demo instead of a checkpoint quiz
 - Unified app route `/` serves the interactive frontend
 
 ## Remaining Work
@@ -163,6 +174,7 @@ If a new Codex session starts, tell it to:
 - Preserve content-driven design.
 - Week 1 should remain the first complete vertical slice.
 - Do not reintroduce Weeks 7 to 10 into the active manifest unless the curriculum changes again.
+- Keep the teacher workshop practical and demo-first rather than schedule-heavy.
 ## Deployment Notes
 
 - Vercel deployment prep is complete.

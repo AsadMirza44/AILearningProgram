@@ -1,0 +1,152 @@
+{
+  "id": "teacher-workshop-01",
+  "title": "AI for Teachers: Practical Classroom Planning Workshop",
+  "overview": {
+    "learning_objectives": [
+      "Explain common AI terms in plain teacher-friendly language.",
+      "Use AI practically for lesson planning, assessment, differentiation, feedback, classroom activities, student support, and teacher productivity.",
+      "Show live classroom-ready demos with reusable prompt patterns and clear expected outputs.",
+      "Apply responsible AI habits including verification, privacy protection, hallucination awareness, bias checks, and human review."
+    ],
+    "expected_outcomes": [
+      "Teachers can explain commonly used AI terms without technical jargon.",
+      "Teachers leave with practical prompts, demo flows, and classroom-ready examples they can adapt immediately.",
+      "Teachers can identify when AI output should be edited, checked, or rejected before classroom use."
+    ]
+  },
+  "lesson": {
+    "id": "teacher-workshop-lesson-01",
+    "week_id": "teacher-workshop-01",
+    "title": "AI for Teachers: Practical Classroom Planning Workshop",
+    "estimated_minutes": 360,
+    "blocks": [
+      {
+        "type": "hero",
+        "title": "Workshop Goal",
+        "content": "This section shows teachers practical ways to use AI in everyday teaching work, with live demos, reusable prompts, and strong human review habits."
+      },
+      {
+        "type": "concept-card-grid",
+        "title": "Common Teacher AI Terms",
+        "items": [
+          { "label": "AI", "description": "Tools that can recognize patterns, assist decisions, or generate useful drafts." },
+          { "label": "Generative AI", "description": "AI that creates new text, summaries, worksheets, activities, or feedback drafts." },
+          { "label": "LLM", "description": "A large language model that predicts and generates text from the prompt you give it." },
+          { "label": "Prompt", "description": "The instruction you give the AI to shape the response." },
+          { "label": "Hallucination", "description": "An answer that sounds strong but is wrong, incomplete, or unsupported." },
+          { "label": "Workflow", "description": "A repeatable chain such as topic to lesson to activity to quiz to review." }
+        ]
+      },
+      {
+        "type": "objective-list",
+        "title": "Practical Focus",
+        "items": [
+          { "label": "Teacher-first use", "description": "Use AI to save time on planning, assessment drafting, differentiation, student support, and classroom preparation." },
+          { "label": "Demo-led learning", "description": "Open each demo to see what will be done, what output to expect, and what teachers can reuse." },
+          { "label": "Human review", "description": "Check accuracy, tone, fairness, alignment, and privacy before classroom use." },
+          { "label": "Routine productivity", "description": "Use AI for repetitive work such as summaries, messages, question banks, and first drafts." }
+        ]
+      },
+      {
+        "type": "table",
+        "title": "What Teachers Can Use AI For",
+        "items": [
+          {
+            "Task": "Lesson planning",
+            "What AI Helps With": "Draft objectives, structure lessons, suggest starters and exit tickets",
+            "Teacher Review": "Check accuracy, pacing, and curriculum fit"
+          },
+          {
+            "Task": "Assessment",
+            "What AI Helps With": "Generate MCQs, short questions, answer keys, and rubrics",
+            "Teacher Review": "Verify correctness and fairness"
+          },
+          {
+            "Task": "Differentiation",
+            "What AI Helps With": "Rewrite for support, core, and extension levels",
+            "Teacher Review": "Keep the same learning goal"
+          },
+          {
+            "Task": "Classroom activities",
+            "What AI Helps With": "Turn a lecture topic into discussion, group work, debate, card sort, or station activity",
+            "Teacher Review": "Check feasibility and concept alignment"
+          },
+          {
+            "Task": "Student support",
+            "What AI Helps With": "Re-explain concepts, simplify language, generate examples, and create revision materials",
+            "Teacher Review": "Check clarity, correctness, and age appropriateness"
+          },
+          {
+            "Task": "Feedback and admin",
+            "What AI Helps With": "Draft comments, summarize notes, and prepare communication",
+            "Teacher Review": "Check tone, privacy, and specific evidence"
+          },
+          {
+            "Task": "Responsible AI use",
+            "What AI Helps With": "Remind teachers to verify claims and protect privacy",
+            "Teacher Review": "Never skip human judgment on sensitive outputs"
+          }
+        ]
+      }
+    ]
+  },
+  "activity": {
+    "id": "teacher-workshop-activity-01",
+    "week_id": "teacher-workshop-01",
+    "type": "workflow-builder",
+    "title": "Teacher Demo Studio",
+    "instructions": "Run one live prefilled teaching demo and narrate each stage from AI draft to teacher-approved classroom output.",
+    "items": [
+      { "label": "Photosynthesis Live Demo" }
+    ],
+    "success_criteria": "Teachers can follow one complete live demo, understand each stage, and see clearly where teacher review improves the result."
+  },
+  "quiz": {
+    "id": "teacher-workshop-quiz-01",
+    "week_id": "teacher-workshop-01",
+    "title": "Teacher Workshop Checkpoint",
+    "passing_score": 70,
+    "questions": [
+      {
+        "id": "tw1-q1",
+        "prompt": "What is the healthiest way for teachers to think about AI in this section?",
+        "options": [
+          "As a replacement for teacher judgment",
+          "As a drafting and workflow assistant that still needs review",
+          "As a tool that is always factually correct",
+          "As a system that should receive all student data"
+        ],
+        "answer_index": 1,
+        "explanation": "The teacher section treats AI as a practical assistant while teachers remain responsible for quality and safety."
+      },
+      {
+        "id": "tw1-q2",
+        "prompt": "What should a teacher check before using AI-generated quiz questions?",
+        "options": [
+          "Nothing if the output looks polished",
+          "Answer keys, wording, and alignment to the objective",
+          "Only whether the quiz is long enough",
+          "Whether the AI can explain the questions"
+        ],
+        "answer_index": 1,
+        "explanation": "Assessment items must be reviewed for correctness and quality."
+      },
+      {
+        "id": "tw1-q3",
+        "prompt": "Why should sensitive student information be handled carefully with AI tools?",
+        "options": [
+          "Because privacy and policy risks still apply",
+          "Because AI tools cannot read text",
+          "Because AI only works with images",
+          "Because short prompts are better"
+        ],
+        "answer_index": 0,
+        "explanation": "Education work often involves confidential information, so privacy rules remain important."
+      }
+    ]
+  },
+  "reflection": {
+    "prompt": "What is one teaching task where AI could save you time, and what review steps would you keep before using the result?",
+    "placeholder": "AI could help me draft a lesson plan, but I would still check accuracy, class fit, student level, and whether the questions match the objective."
+  }
+}

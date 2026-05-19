@@ -12,6 +12,10 @@ class WeekSummary(BaseModel):
     estimated_minutes: int
     focus: str
     signature_activity: str
+    track: str | None = "student"
+    delivery_label: str | None = "Week"
+    sequence_label: str | None = None
+    audience: str | None = None
     status: str | None = "locked"
 
 
@@ -91,6 +95,14 @@ class ActivityPlan(BaseModel):
     instructions: list[str] | str | None = None
     expected_outcome: str | list[str] | None = None
     estimated_time: str | list[str] | None = None
+    what_we_will_do: str | list[str] | None = None
+    what_you_will_see: str | list[str] | None = None
+    what_teachers_can_do: str | list[str] | None = None
+    live_demo_flow: str | list[str] | None = None
+    sample_prompt: str | list[str] | None = None
+    sample_output: str | list[str] | None = None
+    review_points: str | list[str] | None = None
+    demo_config: dict[str, Any] | None = None
 
 
 class CurriculumDetail(BaseModel):

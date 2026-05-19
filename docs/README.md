@@ -1,12 +1,15 @@
-# AI-Enabled Student Program
+# AI Training Studio
 
-This repository contains the implementation for an interactive 6-week AI enablement application focused on helping students understand, use, evaluate, and build with AI.
+This repository contains the implementation for an interactive AI enablement application with two tracks:
+
+- a 6-week student program focused on helping students understand, use, evaluate, and build with AI
+- a 1-day teacher workshop focused on practical classroom use, responsible AI habits, and AI-assisted teaching workflows
 
 ## Project Structure
 
 - `frontend/`: React + TypeScript application
 - `backend/`: FastAPI application with embedded SQLite
-- `content/`: course manifest and active 6-lecture structured content
+- `content/`: course manifest plus mirrored structured content for student weeks and the teacher workshop
 - `docs/IMPLEMENTATION-CHECKLIST.md`: persistent handoff and progress tracker
 - `docs/AI-Training-Interactive-App-Architecture.md`: architecture reference
 
@@ -45,7 +48,7 @@ What this does:
 - uses the embedded SQLite DB at `backend/data/app.db`
 - opens the app at `http://127.0.0.1:8000/`
 - opens a tutor-centric interface with concept-wise curriculum sections, image placeholders, and visible class activities
-- uses the `AI-Enabled Student Program` 6-week sequence from AI foundations through capstone
+- uses the student AI program plus a dedicated teacher workshop section in the same app
 
 Primary app URL:
 
@@ -94,29 +97,57 @@ In the browser:
 
 - open `http://127.0.0.1:8000/` for the unified app
 - or open `http://127.0.0.1:5173` if you are running the Vite dev server separately
-- use the sidebar to open any week
+- use the sidebar to open any student week or the teacher workshop
 
-## Demo Behavior
+## Current Experience
 
 - The current app uses a demo learner ID: `student-demo`
 - Progress is saved into SQLite for that learner
 - Reflections are saved into SQLite
 - There is no separate student mode toggle now
-- Each active lecture exposes concept-wise content, aligned core ideas, image/GIF placeholders, class activities, assignments, quizzes, and reflections
+- Each active learning track exposes concept-wise content, aligned core ideas, image/GIF placeholders, class activities, assignments, quizzes, and reflections
+- Student tracks still include quizzes and reflections
+- The teacher track intentionally skips the quiz panel and focuses on concept exploration, practical guidance, prompts, and a single live demo experience
 - The curriculum now also covers advanced practical topics such as neural networks, regression, tokens, context windows, inference, next-token generation, multimodal AI, OCR and document AI, embeddings, vector databases, chunking, reranking, citations, RAG vs fine-tuning, agents vs chatbots, open-source models, Ollama, frontier models, MoE, LLM parameters, and AI cost
-- The active sequence is:
+- The student sequence is:
   - `week-01`: AI Foundations and AI Literacy
   - `week-02`: Prompt Engineering and AI for Learning
   - `week-03`: Data Thinking and Machine Learning Basics
   - `week-04`: Python, Automation, and Computational Thinking
   - `week-05`: RAG, MCP, and AI-Powered Systems
   - `week-06`: Capstone Development and AI Showcase
+- The teacher track includes:
+  - `teacher-workshop-01`: AI for Teachers: Practical Classroom Planning Workshop
+- The teacher workshop now includes:
+  - a stronger concept sequence in the existing Concept Explorer
+  - practical teacher topics such as lesson planning, assessment, differentiation, student support, classroom activity design, productivity, privacy, and responsible AI
+  - one prefilled live demo scenario: `Photosynthesis`
+  - a presenter-oriented walkthrough with stage-by-stage narration for what is happening, what is shown, and what comes next
 - Legacy Weeks 7 to 10 are not part of the active manifest
 - New class activities include designing a RAG for the class file system and discussing how to run open-source models locally with Ollama
 - Quiz answers and explanations are hidden by default and revealed on demand
 - Quiz submission now expects all questions to be answered before grading, and users can retry after submission
-- Each activity card now includes a `Launch Activity` hook for future in-app interactive modules
+- Student activity cards still include the future `Launch Activity` hook pattern
+- The teacher activity studio now uses a single live in-app demo instead of multiple static demos
 - Concept Explorer image slots are concept-specific, while the week sidebar now acts as a separate week-level visual gallery
+- The dashboard and sidebar now separate the student program from the teacher workshop for easier navigation
+
+## Teacher Workshop Notes
+
+- The teacher section is practical rather than lecture-heavy
+- The current live demo is prefilled for `Science`, `Grade 7`, and `Photosynthesis`
+- The live demo includes:
+  - a prompt stage
+  - a first AI draft
+  - a teacher improvement prompt
+  - expanded activity and assessment output
+  - a differentiation/support version
+  - final teacher review and approval
+- The live demo presenter guide explains:
+  - what is happening
+  - what is shown
+  - what comes next
+- Teacher concepts are delivered in a workshop sequence from AI basics through prompting, classroom use, safeguards, and human review
 
 ## Launch Order
 

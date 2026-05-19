@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import TeacherDemoPlayer from "./TeacherDemoPlayer";
 import type { WeekDetail } from "../types";
 
 
@@ -31,16 +32,23 @@ function labelize(key: string) {
   return key.split("_").join(" ");
 }
 
+function hasValue(value?: string | string[]) {
+  return Array.isArray(value) ? value.length > 0 : Boolean(value);
+}
+
 
 export default function ActivityStudio({ week }: Props) {
   const [activeLaunchId, setActiveLaunchId] = useState<string | null>(null);
+  const isTeacherTrack = week.track === "teacher";
 
   return (
     <div className="stack">
       <section className="panel panel-lux panel-activity">
-        <h3>Class Activity Studio</h3>
+        <h3>{isTeacherTrack ? "Practical Demos and Class Use Cases" : "Class Activity Studio"}</h3>
         <p className="muted">
-          Tutor-ready hands-on activities from the weekly lesson plan with room for future media and facilitation assets.
+          {isTeacherTrack
+            ? "Open each demo to see exactly what will be shown live, what teachers can achieve with it, and how the result can be reused in real classroom work."
+            : "Tutor-ready hands-on activities from the weekly lesson plan with room for future media and facilitation assets."}
         </p>
         <div className="stack">
           {week.curriculum.activities.map((activity, index) => (
@@ -51,22 +59,48 @@ export default function ActivityStudio({ week }: Props) {
                   <strong>Objective</strong>
                   {renderValue(activity.objective)}
                 </div>
-                <div className="mini-card">
-                  <strong>Instructions</strong>
-                  {renderValue(activity.instructions)}
-                </div>
-                <div className="mini-card">
-                  <strong>Expected Outcome</strong>
-                  {renderValue(activity.expected_outcome)}
-                </div>
-                <div className="mini-card">
-                  <strong>Estimated Time</strong>
-                  {renderValue(activity.estimated_time)}
-                </div>
-                <div className="mini-card">
-                  <strong>Activity Module</strong>
+                {hasValue(activity.instructions) ? (
+                  <div className="mini-card">
+                    <strong>{isTeacherTrack ? "How We Will Run It" : "Instructions"}</strong>
+                    {renderValue(activity.instructions)}
+                  </div>
+                ) : null}
+                {hasValue(activity.expected_outcome) ? (
+                  <div className="mini-card">
+                    <strong>{isTeacherTrack ? "What We Can Achieve" : "Expected Outcome"}</strong>
+                    {renderValue(activity.expected_outcome)}
+                  </div>
+                ) : null}
+                {hasValue(activity.estimated_time) && !isTeacherTrack ? (
+                  <div className="mini-card">
+                    <strong>Estimated Time</strong>
+                    {renderValue(activity.estimated_time)}
+                  </div>
+                ) : null}
+                {hasValue(activity.what_we_will_do) ? (
+                  <div className="mini-card">
+                    <strong>What We Will Do</strong>
+                    {renderValue(activity.what_we_will_do)}
+                  </div>
+                ) : null}
+                {hasValue(activity.what_you_will_see) ? (
+                  <div className="mini-card">
+                    <strong>What You Will See</strong>
+                    {renderValue(activity.what_you_will_see)}
+                  </div>
+                ) : null}
+                {hasValue(activity.what_teachers_can_do) ? (
+                  <div className="mini-card">
+                    <strong>What Teachers Can Do</strong>
+                    {renderValue(activity.what_teachers_can_do)}
+                  </div>
+                ) : null}
+                <div className="mini-card mini-card-media">
+                  <strong>{isTeacherTrack ? "Open Demo Walkthrough" : "Activity Module"}</strong>
                   <p className="muted">
-                    This hook reserves the same placement for a future in-app activity module.
+                    {isTeacherTrack
+                      ? "Use this live in class or in the workshop to show the demo flow, sample prompt shape, likely output, and the review points teachers should keep."
+                      : "This hook reserves the same placement for a future in-app activity module."}
                   </p>
                   <button
                     onClick={() =>
@@ -74,17 +108,53 @@ export default function ActivityStudio({ week }: Props) {
                     }
                     type="button"
                   >
-                    {activeLaunchId === activity.title ? "Hide Activity Launcher" : "Launch Activity"}
+                    {activeLaunchId === activity.title
+                      ? (isTeacherTrack ? "Hide Demo Walkthrough" : "Hide Activity Launcher")
+                      : (isTeacherTrack ? "Open Demo Walkthrough" : "Launch Activity")}
                   </button>
                   {activeLaunchId === activity.title ? (
-                    <div className="future-media-box">
-                      Interactive activity placeholder for <strong>{activity.title}</strong>. Future drag/drop,
-                      simulation, or collaborative classroom modules can connect here.
+                    <div className="demo-walkthrough-grid">
+                      {hasValue(activity.live_demo_flow) ? (
+                        <div className="future-media-box">
+                          <strong>Live Demo Flow</strong>
+                          {renderValue(activity.live_demo_flow)}
+                        </div>
+                      ) : null}
+                      {hasValue(activity.sample_prompt) ? (
+                        <div className="future-media-box">
+                          <strong>Sample Prompt</strong>
+                          {renderValue(activity.sample_prompt)}
+                        </div>
+                      ) : null}
+                      {hasValue(activity.sample_output) ? (
+                        <div className="future-media-box">
+                          <strong>Sample Output</strong>
+                          {renderValue(activity.sample_output)}
+                        </div>
+                      ) : null}
+                      {hasValue(activity.review_points) ? (
+                        <div className="future-media-box">
+                          <strong>Review Points</strong>
+                          {renderValue(activity.review_points)}
+                        </div>
+                      ) : null}
+                      {isTeacherTrack && activity.demo_config ? (
+                        <div className="future-media-box live-demo-box">
+                          <strong>Live Demo Workspace</strong>
+                          <p className="muted">
+                            Adjust the topic, subject, and grade live while presenting. The output updates in-app so the demo feels active rather than static.
+                          </p>
+                          <TeacherDemoPlayer activity={activity} />
+                        </div>
+                      ) : null}
+                      {!isTeacherTrack ? (
+                        <div className="future-media-box">
+                          Interactive activity placeholder for <strong>{activity.title}</strong>. Future drag/drop,
+                          simulation, or collaborative classroom modules can connect here.
+                        </div>
+                      ) : null}
                     </div>
                   ) : null}
-                </div>
-                <div className="future-media-box">
-                  Future interactive media slot for: {activity.title}
                 </div>
               </div>
             </details>
@@ -93,7 +163,7 @@ export default function ActivityStudio({ week }: Props) {
       </section>
 
       <section className="panel panel-lux">
-        <h3>Assignments and Follow-Up</h3>
+        <h3>{isTeacherTrack ? "Teacher Prompt Library and Practical Guidance" : "Assignments and Follow-Up"}</h3>
         <div className="stack">
           {week.curriculum.assignments.map((assignment) => (
             <details className="details-card" key={assignment.title}>

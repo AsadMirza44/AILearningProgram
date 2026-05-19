@@ -58,6 +58,9 @@ export default function App() {
     });
   };
 
+  const studentWeeks = weeks.filter((week) => (week.track ?? "student") === "student");
+  const teacherWorkshops = weeks.filter((week) => week.track === "teacher");
+
   return (
     <div className="app-shell">
       <header className="topbar">
@@ -72,12 +75,26 @@ export default function App() {
           <NavLink className="nav-item" to="/">
             Dashboard
           </NavLink>
-          {weeks.map((week) => (
-            <NavLink className="nav-item" key={week.id} to={`/weeks/${week.id}`}>
-              <span>Week {week.sequence}</span>
-              <small>{week.short_title}</small>
-            </NavLink>
-          ))}
+          <div className="sidebar-group">
+            <span className="sidebar-group__label">Student Program</span>
+            {studentWeeks.map((week) => (
+              <NavLink className="nav-item" key={week.id} to={`/weeks/${week.id}`}>
+                <span>{week.sequence_label ?? `${week.delivery_label ?? "Week"} ${week.sequence}`}</span>
+                <small>{week.short_title}</small>
+              </NavLink>
+            ))}
+          </div>
+          {teacherWorkshops.length ? (
+            <div className="sidebar-group">
+              <span className="sidebar-group__label">Teacher Workshop</span>
+              {teacherWorkshops.map((week) => (
+                <NavLink className="nav-item" key={week.id} to={`/weeks/${week.id}`}>
+                  <span>{week.sequence_label ?? week.short_title}</span>
+                  <small>{week.short_title}</small>
+                </NavLink>
+              ))}
+            </div>
+          ) : null}
         </nav>
 
         <div className="main-column">

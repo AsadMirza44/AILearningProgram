@@ -48,6 +48,9 @@ export default function WeekPage({
     (item) => item.week_id === weekId && item.submission_type === "reflection"
   );
   const progressRecord = progressRecords.find((item) => item.week_id === weekId);
+  const deliveryLabel = week?.delivery_label ?? "Week";
+  const sequenceLabel = week?.sequence_label ?? (week?.sequence ? `${deliveryLabel} ${week.sequence}` : deliveryLabel);
+  const isTeacherTrack = week?.track === "teacher";
 
   const markLessonComplete = async (quizScore?: number) => {
     if (!week) {
@@ -119,11 +122,12 @@ export default function WeekPage({
 
       <section className={`week-banner week-banner-${week.id}`}>
         <div>
-          <span className="eyebrow">Week {week.id.split("-")[1]} Tutor Delivery</span>
+          <span className="eyebrow">{sequenceLabel} Tutor Delivery</span>
           <h1>{week.title}</h1>
           <p>{week.overview.learning_objectives[0]}</p>
         </div>
         <div className="week-hero-meta">
+          {week.audience ? <span className="pill">{week.audience}</span> : null}
           <span className="pill">Concept-wise</span>
           <span className="pill">Activity-led</span>
           <span className="pill">AI-focused</span>
@@ -133,7 +137,7 @@ export default function WeekPage({
       <div className="content-layout">
         <main className="stack">
           <section className="panel panel-lux">
-            <h3>Week Objectives</h3>
+            <h3>{deliveryLabel} Objectives</h3>
             <ul>
               {week.overview.learning_objectives.map((objective) => (
                 <li key={objective}>{objective}</li>
@@ -145,7 +149,9 @@ export default function WeekPage({
           <LessonRenderer blocks={week.lesson.blocks} />
           <ActivityStudio week={week} />
           <ActivityPanel activity={week.activity} />
-          <QuizPanel onComplete={(score) => void markLessonComplete(score)} quiz={week.quiz} />
+          {!isTeacherTrack ? (
+            <QuizPanel onComplete={(score) => void markLessonComplete(score)} quiz={week.quiz} />
+          ) : null}
           <ReflectionPanel
             learnerId={learnerId}
             onSubmit={saveReflection}

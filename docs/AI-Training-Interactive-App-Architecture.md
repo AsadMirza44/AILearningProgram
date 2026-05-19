@@ -1,9 +1,12 @@
-# AI-Enabled Student Program Architecture Reference
+# AI Training Studio Architecture Reference
 
 ## 1. Project Overview
 
 ### Purpose
-Build and run a single interactive application for a 6-week AI enablement program that helps students understand, use, evaluate, and build with AI.
+Build and run a single interactive application that serves both:
+
+- a 6-week student AI enablement program
+- a practical teacher workshop focused on classroom use of AI
 
 ### Active Runtime Curriculum
 
@@ -13,12 +16,13 @@ Build and run a single interactive application for a 6-week AI enablement progra
 - Week 4: Python, Automation, and Computational Thinking
 - Week 5: RAG, MCP, and AI-Powered Systems
 - Week 6: Capstone Development and AI Showcase
+- Teacher Workshop: AI for Teachers: Practical Classroom Planning Workshop
 
 ### Product Positioning
 
 - one tutor-centric interactive workspace
 - concept-wise learning structure
-- visible class activities, quizzes, reflections, assignments, and image placeholders
+- visible class activities, reflections, assignments, image placeholders, and teacher demo walkthroughs
 - future-ready placeholders for diagrams, images, GIFs, and simulations
 
 ### Technical Constraint
@@ -59,14 +63,14 @@ flowchart TD
 
 - FastAPI serves the built frontend at `/`
 - API endpoints stay under `/api/...`
-- the curriculum is delivered as 6 active weeks
-- UI layout, routing, styling, and navigation are shared across all weeks
+- the curriculum is delivered as 6 active student weeks plus 1 teacher workshop entry
+- UI layout, routing, styling, and navigation are shared across the student and teacher tracks
 
 ---
 
 ## 4. Curriculum Content Model
 
-Each active week uses the same structure:
+Each active runtime item uses the same base structure:
 
 - overview
 - lesson
@@ -74,6 +78,10 @@ Each active week uses the same structure:
 - activity
 - quiz
 - reflection
+
+Teacher track note:
+
+- the teacher workshop still carries a quiz object in content for compatibility, but the live page flow intentionally skips rendering the quiz panel
 
 ### `curriculum` Shape
 
@@ -102,6 +110,18 @@ Each concept is organized concept-wise for future visuals:
 ---
 
 ## 5. Active 6-Week Curriculum Breakdown
+
+## Teacher Workshop Track
+
+### Focus
+Help non-technical teachers use AI practically for lesson planning, assessment, differentiation, classroom activity design, student support, productivity, and responsible AI review.
+
+### Current Experience
+- stronger concept explorer sequence for teachers
+- one live prefilled teaching demo based on `Photosynthesis`
+- presenter guide for what is happening, what is shown, and what comes next
+- prompt library and practical guidance panels
+- no teacher quiz panel in the live UI
 
 ## Week 1: AI Foundations and AI Literacy
 
@@ -246,6 +266,7 @@ Apply the full program in an AI-enabled capstone project with prompts, workflows
 
 - dashboard
 - week pages
+- teacher workshop page
 
 ### Week Page Sections
 
@@ -256,6 +277,13 @@ Apply the full program in an AI-enabled capstone project with prompts, workflows
 - assignments
 - checkpoint quiz
 - reflection
+
+Teacher page behavior:
+
+- uses the same core layout and routing pattern
+- skips the quiz panel
+- uses the activity studio as the main live workshop demonstration surface
+- currently exposes one presenter-friendly live demo instead of multiple teacher demos
 
 ### UX Direction Already Implemented
 
@@ -268,6 +296,8 @@ Apply the full program in an AI-enabled capstone project with prompts, workflows
 - launch-activity placeholder pattern
 - quiz completion validation, retry flow, and click-to-reveal quiz answers
 - unified app launch
+- teacher sidebar and dashboard grouping
+- single live teacher demo player with presenter guide
 
 ---
 
@@ -285,6 +315,7 @@ docs/
 - `backend/main.py`: unified launcher
 - `backend/app/services/content_loader.py`: content loading
 - `backend/app/services/curriculum_transformers.py`: active 6-week curriculum source
+- `frontend/src/components/TeacherDemoPlayer.tsx`: teacher live demo presenter module
 - `backend/data/app.db`: embedded SQLite database
 - `content/course-manifest.json`: active week manifest
 - `docs/IMPLEMENTATION-CHECKLIST.md`: handoff status
@@ -296,7 +327,7 @@ docs/
 ### Verified
 
 - frontend build passes
-- active manifest returns 6 weeks
+- active manifest returns 6 student weeks plus 1 teacher workshop
 - unified launch serves the frontend from FastAPI
 
 ### Handoff Rule

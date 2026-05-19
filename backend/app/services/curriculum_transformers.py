@@ -72,6 +72,21 @@ CURRICULUM_MAP = {
         "signature_activity": "Capstone planning workshop",
         "status": "available",
     },
+    "teacher-workshop-01": {
+        "id": "teacher-workshop-01",
+        "sequence": 7,
+        "title": "AI for Teachers: Practical Classroom Planning Workshop",
+        "short_title": "Teacher Workshop",
+        "theme_color": "amber",
+        "estimated_minutes": 360,
+        "focus": "Help non-technical teachers use AI for lesson planning, classroom activities, assessment, feedback, differentiation, and productivity with clear review habits.",
+        "signature_activity": "Topic to lesson workflow studio",
+        "track": "teacher",
+        "delivery_label": "Workshop",
+        "sequence_label": "Teacher Workshop",
+        "audience": "Non-technical teachers",
+        "status": "available",
+    },
 }
 
 
@@ -177,6 +192,38 @@ def _sync_core_ideas_with_concepts(content):
         block for block in content["lesson"]["blocks"]
         if not (block.get("type") == "callout" and block.get("title") == "Tutor Message")
     ]
+
+
+def _reorder_teacher_concepts(content):
+    desired_order = [
+        "AI",
+        "Generative AI",
+        "LLM",
+        "Machine Learning",
+        "Prompt and Prompt Template",
+        "Tokens, Context Window, and Inference",
+        "Lesson Planning with AI",
+        "Assessment, Feedback, and Rubrics",
+        "Differentiation",
+        "Student Support and Re-Explanation",
+        "Teacher Productivity and Communication",
+        "Multimodal AI and Document AI",
+        "RAG and Knowledge Grounding",
+        "Agents, Tools, and Workflows",
+        "Model Choice, Privacy, and Cost",
+        "Hallucination",
+        "Human-in-the-Loop and Workflow",
+    ]
+
+    concepts_by_title = {
+        concept["title"]: concept for concept in content["curriculum"]["concepts"]
+    }
+    ordered = [concepts_by_title[title] for title in desired_order if title in concepts_by_title]
+    remaining = [
+        concept for concept in content["curriculum"]["concepts"]
+        if concept["title"] not in desired_order
+    ]
+    content["curriculum"]["concepts"] = ordered + remaining
 
 
 def _prune_runtime_content(content, week_id):
@@ -970,6 +1017,495 @@ WEEK_CONTENT = {
             "Encourage practical AI enablement over ambitious but unclear system ideas.",
             "Ask students to justify every major design choice in plain language."
         ]
+    },
+    "teacher-workshop-01": {
+        "overview": {
+            "learning_objectives": [
+                "Explain common AI terms in plain teacher-friendly language.",
+                "Use AI practically for lesson planning, assessment, differentiation, feedback, classroom activities, student support, and teacher productivity.",
+                "Show live classroom-ready demos with reusable prompt patterns and clear expected outputs.",
+                "Apply responsible AI habits including verification, privacy protection, hallucination awareness, bias checks, and human review."
+            ],
+            "expected_outcomes": [
+                "Teachers can explain commonly used AI terms without technical jargon.",
+                "Teachers leave with practical prompts, demo flows, and classroom-ready examples they can adapt immediately.",
+                "Teachers can identify when AI output should be edited, checked, or rejected before classroom use."
+            ]
+        },
+        "lesson": {
+            "id": "teacher-workshop-lesson-01",
+            "week_id": "teacher-workshop-01",
+            "title": "AI for Teachers: Practical Classroom Planning Workshop",
+            "estimated_minutes": 360,
+            "blocks": [
+                {
+                    "type": "hero",
+                    "title": "Workshop Goal",
+                    "content": "This section shows teachers practical ways to use AI in everyday teaching work, with live demos, reusable prompts, and strong human review habits."
+                },
+                {
+                    "type": "concept-card-grid",
+                    "title": "Common Teacher AI Terms",
+                    "items": [
+                        {"label": "AI", "description": "Tools that can recognize patterns, assist decisions, or generate useful drafts."},
+                        {"label": "Generative AI", "description": "AI that creates new text, summaries, worksheets, activities, or feedback drafts."},
+                        {"label": "LLM", "description": "A large language model that predicts and generates text from the prompt you give it."},
+                        {"label": "Prompt", "description": "The instruction you give the AI to shape the response."}
+                    ]
+                },
+                {
+                    "type": "objective-list",
+                    "title": "Practical Focus",
+                    "items": [
+                        {"label": "Teacher-first use", "description": "Use AI to save time on planning, assessment drafting, differentiation, student support, and classroom preparation."},
+                        {"label": "Demo-led learning", "description": "Open each demo to see what will be done, what output to expect, and what teachers can reuse."},
+                        {"label": "Human review", "description": "Check accuracy, tone, fairness, alignment, and privacy before classroom use."},
+                        {"label": "Routine productivity", "description": "Use AI for repetitive work such as summaries, messages, question banks, and first drafts."}
+                    ]
+                },
+                {
+                    "type": "table",
+                    "title": "What Teachers Can Use AI For",
+                    "items": [
+                        {"Task": "Lesson planning", "What AI Helps With": "Draft objectives, structure lessons, suggest starters and exit tickets", "Teacher Review": "Check accuracy, pacing, and curriculum fit"},
+                        {"Task": "Assessment", "What AI Helps With": "Generate MCQs, short questions, answer keys, and rubrics", "Teacher Review": "Verify correctness and fairness"},
+                        {"Task": "Differentiation", "What AI Helps With": "Rewrite for support, core, and extension levels", "Teacher Review": "Keep the same learning goal"},
+                        {"Task": "Classroom activities", "What AI Helps With": "Turn a lecture topic into discussion, group work, debate, card sort, or station activity", "Teacher Review": "Check feasibility and concept alignment"},
+                        {"Task": "Student support", "What AI Helps With": "Re-explain concepts, simplify language, generate examples, and create revision materials", "Teacher Review": "Check clarity, correctness, and age appropriateness"},
+                        {"Task": "Feedback and admin", "What AI Helps With": "Draft comments, summarize notes, and prepare communication", "Teacher Review": "Check tone, privacy, and specific evidence"},
+                        {"Task": "Responsible AI use", "What AI Helps With": "Remind teachers to verify claims and protect privacy", "Teacher Review": "Never skip human judgment on sensitive outputs"}
+                    ]
+                },
+                {
+                    "type": "callout",
+                    "title": "Tutor Message",
+                    "content": "Keep the teacher section grounded in routine work: planning, quizzes, worksheets, differentiation, feedback, and admin productivity."
+                }
+            ]
+        },
+        "curriculum": {
+            "overview": {
+                "program_title": "AI for Teachers Workshop",
+                "subtitle": "A practical teacher enablement section focused on real classroom use of AI.",
+                "workshop_title": "AI for Teachers: Practical Classroom Planning Workshop",
+                "target_audience": [
+                    "School teachers with non-technical backgrounds",
+                    "Teachers who want practical classroom uses instead of technical AI theory",
+                    "Teachers who need responsible, review-driven AI habits"
+                ],
+                "workshop_goals": [
+                    "Demystify common AI terms in plain language.",
+                    "Show classroom use cases that save time without lowering teaching quality.",
+                    "Give teachers reusable prompts and visible demo flows for real tasks.",
+                    "Build strong habits around privacy, verification, bias checks, and human review."
+                ],
+                "expected_outcomes": [
+                    "Teachers can use AI to draft and adapt classroom materials faster.",
+                    "Teachers can identify risks and know where review is required.",
+                    "Teachers can reuse the demo patterns inside their own teaching routine."
+                ]
+            },
+            "concepts": [
+                _concept(
+                    "AI",
+                    "AI is software that helps with tasks such as pattern recognition, prediction, summarization, and content generation.",
+                    "Teachers hear the term often, but they need a practical definition instead of a technical one.",
+                    "A teacher uses AI to draft a lesson plan, summarize notes, or suggest questions for class discussion.",
+                    ["Planning support", "Question generation", "Summaries", "Draft feedback"],
+                    ["Thinking AI understands the class context automatically", "Treating AI output as final truth"],
+                    ["Use AI for drafting and idea generation", "Always adapt the result to your students"]
+                ),
+                _concept(
+                    "Generative AI",
+                    "Generative AI creates new content such as explanations, worksheets, quiz questions, rubrics, feedback drafts, and classroom activities.",
+                    "This is the kind of AI most teachers will use directly in their routine work.",
+                    "A teacher asks for a worksheet, an exit ticket, or a simplified explanation of a topic.",
+                    ["Lesson plan drafts", "Quiz generation", "Worksheet rewriting", "Parent message drafts"],
+                    ["Assuming generated content is automatically correct", "Using generic output without editing"],
+                    ["Treat outputs as first drafts", "Check whether the content matches the actual objective"]
+                ),
+                _concept(
+                    "LLM",
+                    "LLM stands for large language model. It is the system behind many AI chat tools that predicts and generates text from the prompt you provide.",
+                    "Teachers do not need the technical internals, but they should know why wording and context matter.",
+                    "A teacher gives an LLM a subject, grade level, and objective, and the model generates a structured teaching draft.",
+                    ["Chat-based lesson drafting", "Text rewriting", "Rubric generation"],
+                    ["Using vague prompts", "Expecting the LLM to know hidden classroom context"],
+                    ["Provide role, topic, grade level, and output format", "Iterate when the first output is weak"]
+                ),
+                _concept(
+                    "Lesson Planning with AI",
+                    "AI can help teachers draft learning objectives, starter tasks, explanations, guided practice, class activities, and exit tickets from one teaching topic.",
+                    "Lesson planning is one of the fastest practical wins for teachers because it saves time without removing professional judgment.",
+                    "A teacher starts with a topic and asks AI to propose a lesson structure, then edits the draft for pacing and classroom reality.",
+                    ["Lesson outline drafting", "Starter tasks", "Exit tickets", "Alternative class versions"],
+                    ["Using the first draft without checking fit", "Letting the tool choose the pedagogy without teacher review"],
+                    ["Use AI for first drafts", "Always align the lesson back to your real objective and class needs"]
+                ),
+                _concept(
+                    "Machine Learning",
+                    "Machine learning is a branch of AI where systems learn patterns from data instead of being manually programmed for every rule.",
+                    "Teachers hear this term often, and it helps them understand why AI tools reflect the data they were trained on.",
+                    "A recommendation system or auto-grading support tool works by learning patterns from previous examples.",
+                    ["Recommendation systems", "Pattern detection", "Prediction support"],
+                    ["Thinking machine learning means human understanding", "Ignoring the role of training data"],
+                    ["Explain it as pattern learning from examples", "Connect tool behavior back to its data source"]
+                ),
+                _concept(
+                    "Prompt and Prompt Template",
+                    "A prompt is the instruction you give to AI. A prompt template is a reusable pattern you can use again with a new topic, grade, or task.",
+                    "Prompt quality strongly affects whether the output is useful or generic.",
+                    "A teacher keeps one prompt template for lesson plans and another for rubrics or differentiated worksheets.",
+                    ["Role-based prompts", "Structured output prompts", "Reusable teacher templates"],
+                    ["Asking with too little context", "Not specifying grade level or output structure"],
+                    ["Use templates for repeat tasks", "Ask for bullets, tables, levels, or checklists when needed"]
+                ),
+                _concept(
+                    "Assessment, Feedback, and Rubrics",
+                    "AI can generate quiz questions, short answers, answer keys, rubric drafts, and first-pass feedback comments.",
+                    "Assessment work is highly practical for teachers, but it also has to be reviewed carefully because mistakes here directly affect learning and fairness.",
+                    "A teacher drafts a quick formative quiz and a rubric with AI, then checks each answer key and rewrites the feedback comments into a more human tone.",
+                    ["MCQs", "Short questions", "Rubrics", "Feedback comment banks"],
+                    ["Trusting auto-generated answer keys", "Using generic feedback that does not match student evidence"],
+                    ["Verify every key", "Use AI to draft feedback, then personalize it with real evidence"]
+                ),
+                _concept(
+                    "Tokens, Context Window, and Inference",
+                    "Tokens are small units of text the model reads and generates. The context window is how much information the model can consider at one time. Inference is the act of generating the answer.",
+                    "These ideas help teachers understand why long prompts, pasted notes, and long chats sometimes degrade output quality.",
+                    "A teacher pastes a long worksheet, rubric, and lesson history into one prompt and notices the tool misses earlier details because the context becomes crowded.",
+                    ["Long lesson prompts", "Summarizing large notes", "Multi-step classroom planning"],
+                    ["Assuming the model remembers everything in a long thread", "Pasting too much context without structure"],
+                    ["Keep prompts focused", "Summarize long material before asking for the next step"]
+                ),
+                _concept(
+                    "Hallucination",
+                    "A hallucination happens when AI gives an answer that sounds correct but is false, unsupported, incomplete, or made up.",
+                    "Teachers need this term because polished wording can hide serious mistakes.",
+                    "An AI tool invents an answer key, a reference, or a scientific fact that looks believable.",
+                    ["Wrong answer keys", "Invented examples", "Misleading summaries"],
+                    ["Trusting fluent wording", "Skipping fact checks because the output looks professional"],
+                    ["Verify important claims", "Check answer keys and examples before using them with students"]
+                ),
+                _concept(
+                    "Differentiation",
+                    "Differentiation means adapting the same learning goal for students who need support, core practice, or extension challenge.",
+                    "AI is useful here because it can quickly create multiple versions of the same material.",
+                    "A teacher asks for the same explanation at three levels: simplified, on-level, and extension.",
+                    ["Tiered worksheets", "Reading-level rewrites", "Support and challenge versions"],
+                    ["Lowering rigor too much", "Creating versions that no longer align to the original objective"],
+                    ["Compare all versions side by side", "Keep the same core learning target"]
+                ),
+                _concept(
+                    "Student Support and Re-Explanation",
+                    "AI can help teachers rewrite difficult explanations, generate additional examples, simplify instructions, and create revision support for students who need another path into the same concept.",
+                    "Teachers often need multiple ways to explain the same thing, especially in mixed-ability classrooms.",
+                    "A teacher asks AI to explain the same topic in simpler language, with a real-life example and two revision questions for students who are still confused.",
+                    ["Simplified explanations", "Extra examples", "Revision questions", "Support handouts"],
+                    ["Oversimplifying the content too much", "Giving students AI-generated explanations without checking the wording"],
+                    ["Keep the same core concept", "Check that support material is clear without becoming inaccurate"]
+                ),
+                _concept(
+                    "Multimodal AI and Document AI",
+                    "Multimodal AI can work with more than plain text, such as images, PDFs, screenshots, worksheets, and scanned documents. Document AI includes OCR and layout understanding.",
+                    "Teachers increasingly work with handouts, slides, photos of student work, and scanned resources, not just typed prompts.",
+                    "A teacher uploads a worksheet or notice and asks AI to extract questions, summarize instructions, or rewrite the content for a lower reading level.",
+                    ["Worksheet extraction", "Slide summarization", "OCR from scanned class materials"],
+                    ["Assuming document extraction is always perfect", "Trusting OCR text without checking errors"],
+                    ["Use multimodal tools when the source is visual", "Always check extracted text before reusing it"]
+                ),
+                _concept(
+                    "Teacher Productivity and Communication",
+                    "AI can summarize meeting notes, draft parent communication, organize action points, and produce first drafts for repetitive admin work.",
+                    "This matters because teachers spend large amounts of time on routine writing that still needs professional tone and privacy care.",
+                    "A teacher summarizes anonymized student feedback, drafts a calm parent message, or turns meeting notes into next-step actions.",
+                    ["Meeting summaries", "Parent message drafts", "Action lists", "Note cleanup"],
+                    ["Pasting sensitive information into general tools", "Sending AI-written messages without checking tone and facts"],
+                    ["Use placeholders for sensitive details", "Review every outward-facing message before sending"]
+                ),
+                _concept(
+                    "RAG and Knowledge Grounding",
+                    "RAG, or retrieval-augmented generation, means the AI first pulls relevant information from trusted material and then generates its answer using that material.",
+                    "Teachers should know this because grounded AI is safer for school policies, syllabi, lesson notes, and curriculum-aligned answers.",
+                    "A school assistant answers questions using the school handbook or curriculum documents instead of guessing from general internet-style knowledge.",
+                    ["School policy Q&A", "Curriculum-grounded assistant", "Lesson-note-based support"],
+                    ["Thinking RAG removes the need for review", "Using weak or outdated source documents"],
+                    ["Use trusted source material", "Check whether the answer actually matches the retrieved source"]
+                ),
+                _concept(
+                    "Agents, Tools, and Workflows",
+                    "A chatbot mainly answers a prompt. An AI workflow links multiple steps together. An agent can use tools, resources, or actions to complete a broader goal.",
+                    "Teachers do not need heavy technical detail, but they should understand why a tool that chains planning, quiz generation, and review feels more useful than a single prompt.",
+                    "A teacher workflow goes from topic to lesson plan to activity to quiz to review checklist instead of treating each step separately.",
+                    ["Planning chains", "Teacher workflows", "Multi-step classroom preparation"],
+                    ["Calling every chatbot an agent", "Skipping review just because the workflow feels automated"],
+                    ["Use workflows for repeat tasks", "Keep human approval at the end of every important chain"]
+                ),
+                _concept(
+                    "Model Choice, Privacy, and Cost",
+                    "Different AI tools and models vary in quality, speed, privacy, cost, and control. Some are strong cloud tools, while others are smaller or more private.",
+                    "Teachers need this concept to choose practical tools instead of assuming every AI system is equally safe or equally capable.",
+                    "A teacher may use a powerful cloud tool for lesson drafting but avoid putting sensitive student data into it because privacy matters more than convenience.",
+                    ["Cloud AI tools", "Private-use constraints", "Capability vs privacy tradeoffs"],
+                    ["Choosing tools only by speed or polish", "Ignoring privacy and school policy"],
+                    ["Choose tools by task, privacy, and review needs", "Avoid sharing sensitive student information unless policy clearly allows it"]
+                ),
+                _concept(
+                    "Human-in-the-Loop and Workflow",
+                    "Human-in-the-loop means the teacher stays in control by reviewing, editing, and approving AI output before use. A workflow is the repeatable sequence of steps that links planning, activities, assessment, and review.",
+                    "This is how teachers use AI effectively without becoming overdependent on it.",
+                    "A teacher uses one repeatable flow: topic to lesson plan to activity to quiz to final review.",
+                    ["Review checkpoints", "Planning workflow", "Draft then approve pattern"],
+                    ["Skipping review because AI saves time", "Using one-off prompts without a repeatable process"],
+                    ["Build reusable workflows", "Insert clear review points before anything reaches students"]
+                )
+            ],
+            "diagrams": [
+                {"title": "Teacher AI Workflow", "fields": {"summary": "Future visual should show topic to lesson plan to activity to quiz to review checklist with teacher approval gates."}},
+                {"title": "Responsible Review Loop", "fields": {"summary": "Future visual should show AI draft to teacher verification to classroom adaptation to final use."}}
+            ],
+            "activities": [
+                {
+                    "title": "Live Demo: Photosynthesis Teaching Workflow",
+                    "objective": "Show one complete AI-assisted teaching workflow from topic to lesson plan to activity to assessment to review.",
+                    "instructions": [
+                        "Use the prefilled topic, Photosynthesis, to run the full demo live.",
+                        "Show how the AI produces a first draft, then improve it with teacher guidance.",
+                        "Explain each stage: what is happening now, what the audience is seeing, and what comes next."
+                    ],
+                    "expected_outcome": "Teachers experience one lively end-to-end demo that clearly shows AI drafting, teacher review, and classroom-ready output.",
+                    "what_we_will_do": [
+                        "Start with one topic and generate a lesson plan draft.",
+                        "Turn the same topic into a classroom activity and a short assessment.",
+                        "Add a support version for struggling learners.",
+                        "Review and polish the full workflow before classroom use."
+                    ],
+                    "what_you_will_see": [
+                        "How a single prompt can create a first draft quickly.",
+                        "How teacher intervention improves clarity, structure, and practicality.",
+                        "How one workflow can support planning, activity design, assessment, and differentiation together."
+                    ],
+                    "what_teachers_can_do": [
+                        "Reuse the same workflow for future topics.",
+                        "Turn one topic into multiple classroom assets in minutes.",
+                        "Keep control by reviewing every important stage before use."
+                    ],
+                    "live_demo_flow": [
+                        "Topic and classroom context",
+                        "AI first draft",
+                        "Teacher improvement prompt",
+                        "Activity and assessment expansion",
+                        "Differentiation support version",
+                        "Teacher review and final approval"
+                    ],
+                    "sample_prompt": "Act as an experienced Grade 7 science teacher. Create a lesson plan on photosynthesis. Include learning objective, starter, explanation, one interactive classroom activity, 4 quick assessment questions, one support version for struggling learners, and a final teacher review checklist.",
+                    "sample_output": [
+                        "A first-pass teaching workflow with planning, activity, assessment, and support materials.",
+                        "A draft that becomes stronger after teacher review, refinement, and approval."
+                    ],
+                    "review_points": [
+                        "Check subject accuracy.",
+                        "Check whether the activity is realistic for your class size and time.",
+                        "Check that the assessment matches the objective.",
+                        "Check that the support version still teaches the same core concept."
+                    ],
+                    "demo_config": {
+                        "demo_kind": "workflow",
+                        "subject_options": ["Science"],
+                        "grade_options": ["Grade 7"],
+                        "topic_examples": ["Photosynthesis"],
+                        "teacher_goal": "Show one lively classroom-ready AI workflow from start to finish"
+                    }
+                }
+            ],
+            "assignments": [
+                {
+                    "title": "Common AI Terms for Teachers",
+                    "fields": {
+                        "plain_language_meanings": [
+                            "AI: software that helps with tasks like drafting, predicting, recognizing patterns, or organizing information.",
+                            "Generative AI: AI that creates new text, worksheets, activities, summaries, or feedback drafts.",
+                            "LLM: the language model behind many AI chat tools.",
+                            "Prompt: the instruction you give the AI.",
+                            "Prompt template: a reusable prompt pattern for repeat tasks.",
+                            "Hallucination: an answer that sounds strong but is wrong or unsupported.",
+                            "Human-in-the-loop: the teacher checks and approves the result before use.",
+                            "Workflow: a repeatable sequence such as topic to lesson to activity to quiz to review."
+                        ]
+                    }
+                },
+                {
+                    "title": "Prompt Templates for Teachers",
+                    "fields": {
+                        "lesson_planning": [
+                            "Act as an experienced [subject] teacher. Create a lesson plan for [grade level] on [topic]. Include learning objective, starter, explanation, guided practice, class activity, formative check, and homework.",
+                            "Rewrite this lesson plan for a class with mixed ability levels. Add support scaffolds and one extension challenge."
+                        ],
+                        "assessment": [
+                            "Create 5 MCQs and 3 short-answer questions for [topic] at [grade level]. Include answer key, difficulty note, and one common misconception each question checks.",
+                            "Generate an exit ticket with 3 questions that checks whether students met this objective: [objective]."
+                        ],
+                        "rubrics_and_feedback": [
+                            "Create a rubric for [assignment] with 4 criteria and 4 performance levels. Use teacher-friendly language and keep criteria observable.",
+                            "Draft feedback comments for a student who shows [strength] but needs to improve [area]. Keep the tone constructive and specific."
+                        ],
+                        "differentiation": [
+                            "Explain [topic] at three levels: support, on-level, and extension. Keep the same core learning goal.",
+                            "Rewrite this worksheet for students who need simpler vocabulary and shorter instructions: [paste content]."
+                        ],
+                        "productivity": [
+                            "Summarize these anonymized student comments into key themes, strengths, concerns, and suggested next steps: [paste comments].",
+                            "Draft a professional parent message about [issue] in a calm and respectful tone. Leave placeholders where I should add verified details."
+                        ]
+                    }
+                },
+                {
+                    "title": "Responsible AI Guidance",
+                    "fields": {
+                        "core_rules": [
+                            "Do not paste sensitive student data unless school policy clearly allows it.",
+                            "Use anonymized examples whenever possible.",
+                            "Treat AI output as a draft, not as a final professional decision.",
+                            "Check factual claims, answer keys, dates, references, and curriculum alignment before classroom use.",
+                            "Review tone, fairness, and inclusivity in any student-facing or parent-facing text."
+                        ],
+                        "academic_integrity": [
+                            "Explain to students when AI support is allowed and when independent work is expected.",
+                            "Use AI to support learning design, not to outsource teacher judgment or student thinking."
+                        ]
+                    }
+                },
+                {
+                    "title": "Risks and Limitations",
+                    "fields": {
+                        "hallucinations": [
+                            "AI may invent facts, references, quotations, examples, or answer keys.",
+                            "Confident wording does not guarantee educational accuracy."
+                        ],
+                        "bias_and_fairness": [
+                            "AI can produce stereotypes or one-sided assumptions.",
+                            "Examples, names, and cultural references may not always be inclusive or appropriate."
+                        ],
+                        "privacy": [
+                            "Many AI tools should not receive personally identifiable student information.",
+                            "Even summaries and feedback prompts can expose sensitive information if copied carelessly."
+                        ],
+                        "pedagogical_limits": [
+                            "AI may suggest activities that are unrealistic for your timetable or class context.",
+                            "Generated content may be too generic, too easy, or misaligned with your curriculum."
+                        ]
+                    }
+                },
+                {
+                    "title": "Human Review Checkpoints",
+                    "fields": {
+                        "before_using_a_lesson": [
+                            "Check subject accuracy and age appropriateness.",
+                            "Confirm classroom feasibility.",
+                            "Make sure the lesson actually matches your objective."
+                        ],
+                        "before_using_assessment": [
+                            "Verify every answer key and distractor.",
+                            "Check that the wording is fair and unambiguous.",
+                            "Remove any items that reward guessing over understanding."
+                        ],
+                        "before_sharing_feedback_or_messages": [
+                            "Review tone, sensitivity, and school policy alignment.",
+                            "Replace generic language with specific evidence you can stand behind.",
+                            "Confirm no private or unverified claims are included."
+                        ]
+                    }
+                }
+            ],
+            "instructor_notes": [
+                {
+                    "title": "Facilitation Notes",
+                    "fields": {
+                        "notes": [
+                            "Use teacher examples from multiple subjects so the workshop feels widely applicable.",
+                            "Avoid drifting into technical AI explanations unless they support a classroom decision.",
+                            "Pause after every demo to ask: what would you keep, what would you edit, what would you reject?",
+                            "Model privacy-safe prompting and anonymization throughout the day."
+                        ]
+                    }
+                }
+            ]
+        },
+        "activity": {
+            "id": "teacher-workshop-activity-01",
+            "week_id": "teacher-workshop-01",
+            "type": "workflow-builder",
+            "title": "Teacher Demo Studio",
+            "instructions": "Run one live prefilled teaching demo and narrate each stage from AI draft to teacher-approved classroom output.",
+            "items": [
+                {"label": "Photosynthesis Live Demo"}
+            ],
+            "success_criteria": "Teachers can follow one complete live demo, understand each stage, and see clearly where teacher review improves the result."
+        },
+        "quiz": {
+            "id": "teacher-workshop-quiz-01",
+            "week_id": "teacher-workshop-01",
+            "title": "Teacher Workshop Checkpoint",
+            "passing_score": 70,
+            "questions": [
+                {
+                    "id": "tw1-q1",
+                    "prompt": "What is the healthiest way for teachers to think about AI in this workshop?",
+                    "options": [
+                        "As a replacement for teacher judgment",
+                        "As a drafting and workflow assistant that still needs review",
+                        "As a tool that is always factually correct",
+                        "As a system that should receive all student data"
+                    ],
+                    "answer_index": 1,
+                    "explanation": "The workshop treats AI as a practical assistant, while teachers remain responsible for quality, safety, and final decisions."
+                },
+                {
+                    "id": "tw1-q2",
+                    "prompt": "Which action is most important before using AI-generated quiz questions with students?",
+                    "options": [
+                        "Share them immediately to save time",
+                        "Verify answer keys, wording, and alignment to the learning objective",
+                        "Translate them into another language first",
+                        "Ask the AI to confirm its own accuracy"
+                    ],
+                    "answer_index": 1,
+                    "explanation": "Teachers should review assessment quality and correctness before classroom use."
+                },
+                {
+                    "id": "tw1-q3",
+                    "prompt": "Why should teachers avoid pasting sensitive student information into general AI tools?",
+                    "options": [
+                        "Because AI tools cannot read text",
+                        "Because privacy, policy, and confidentiality risks still apply",
+                        "Because AI only works with images",
+                        "Because it makes prompts shorter"
+                    ],
+                    "answer_index": 1,
+                    "explanation": "Education work often includes sensitive information, so privacy and policy rules must guide tool use."
+                },
+                {
+                    "id": "tw1-q4",
+                    "prompt": "Which example best shows a teacher workflow rather than a one-off prompt?",
+                    "options": [
+                        "Ask for one definition only",
+                        "Topic to lesson plan to activity to quiz to review checklist",
+                        "Copy the first AI answer into class slides",
+                        "Use AI only to write a title"
+                    ],
+                    "answer_index": 1,
+                    "explanation": "A workflow connects multiple useful steps and makes review points explicit."
+                }
+            ]
+        },
+        "reflection": {
+            "prompt": "What is one teaching task where AI could save you time, and what review steps would you keep before using the result?",
+            "placeholder": "AI could help me draft a lesson plan for my next topic, but I would still check accuracy, classroom timing, student level, and whether the activity fits my class."
+        },
+        "teacher_notes": [
+            "Keep every demo teacher-centered and practical.",
+            "Repeat that fast drafting is useful only when paired with careful review."
+        ]
     }
 }
 
@@ -984,9 +1520,21 @@ def transform_week(week_id: str):
 
     meta = deepcopy(CURRICULUM_MAP[week_id])
     content = deepcopy(WEEK_CONTENT[week_id])
+    if meta.get("track") == "teacher":
+        _reorder_teacher_concepts(content)
     content["curriculum"]["concepts"] = _attach_media_slots(content["curriculum"]["concepts"])
     _sync_core_ideas_with_concepts(content)
     _prune_runtime_content(content, week_id)
     content["id"] = week_id
     content["title"] = meta["title"]
+    content["sequence"] = meta["sequence"]
+    content["short_title"] = meta["short_title"]
+    content["theme_color"] = meta["theme_color"]
+    content["estimated_minutes"] = meta["estimated_minutes"]
+    content["focus"] = meta["focus"]
+    content["signature_activity"] = meta["signature_activity"]
+    content["track"] = meta.get("track", "student")
+    content["delivery_label"] = meta.get("delivery_label", "Week")
+    content["sequence_label"] = meta.get("sequence_label")
+    content["audience"] = meta.get("audience")
     return content

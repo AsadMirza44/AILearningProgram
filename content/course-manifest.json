@@ -1,6 +1,6 @@
 {
-  "program_title": "AI-Enabled Student Program",
-  "subtitle": "A 6-week practical program to help students understand, use, evaluate, and build with AI.",
+  "program_title": "AI Training Studio",
+  "subtitle": "A practical AI learning app with a student program and a teacher-focused workshop track.",
   "weeks": [
     {
       "id": "week-01",
@@ -66,6 +66,21 @@
       "estimated_minutes": 140,
       "focus": "Apply AI concepts, prompting, data thinking, RAG, MCP, workflows, and ethics in a final AI-enabled project.",
       "signature_activity": "Capstone planning workshop",
+      "status": "available"
+    },
+    {
+      "id": "teacher-workshop-01",
+      "sequence": 7,
+      "title": "AI for Teachers: Practical Classroom Planning Workshop",
+      "short_title": "Teacher Workshop",
+      "theme_color": "amber",
+      "estimated_minutes": 360,
+      "focus": "Help non-technical teachers use AI for lesson planning, classroom activities, assessment, feedback, differentiation, and productivity with clear review habits.",
+      "signature_activity": "Topic to lesson workflow studio",
+      "track": "teacher",
+      "delivery_label": "Workshop",
+      "sequence_label": "Teacher Workshop",
+      "audience": "Non-technical teachers",
       "status": "available"
     }
   ]

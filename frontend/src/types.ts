@@ -7,6 +7,10 @@ export type WeekSummary = {
   estimated_minutes: number;
   focus: string;
   signature_activity: string;
+  track?: string;
+  delivery_label?: string;
+  sequence_label?: string;
+  audience?: string;
   status: string;
 };
 
@@ -91,11 +95,44 @@ export type CurriculumActivity = {
   instructions?: string | string[];
   expected_outcome?: string | string[];
   estimated_time?: string | string[];
+  what_we_will_do?: string | string[];
+  what_you_will_see?: string | string[];
+  what_teachers_can_do?: string | string[];
+  live_demo_flow?: string | string[];
+  sample_prompt?: string | string[];
+  sample_output?: string | string[];
+  review_points?: string | string[];
+  demo_config?: DemoConfig;
+};
+
+export type DemoConfig = {
+  demo_kind:
+    | "lesson_plan"
+    | "quiz"
+    | "activity"
+    | "rubric"
+    | "differentiate"
+    | "summary"
+    | "workflow";
+  subject_options?: string[];
+  grade_options?: string[];
+  topic_examples?: string[];
+  teacher_goal?: string;
 };
 
 export type WeekDetail = {
   id: string;
   title: string;
+  sequence?: number;
+  short_title?: string;
+  theme_color?: string;
+  estimated_minutes?: number;
+  focus?: string;
+  signature_activity?: string;
+  track?: string;
+  delivery_label?: string;
+  sequence_label?: string;
+  audience?: string;
   overview: {
     learning_objectives: string[];
     expected_outcomes?: string[];
