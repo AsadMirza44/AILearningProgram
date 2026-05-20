@@ -2,7 +2,7 @@
 
 This repository contains the implementation for an interactive AI enablement application with two tracks:
 
-- a 6-week student program focused on helping students understand, use, evaluate, and build with AI
+- a 7-week student program focused on helping students understand, use, evaluate, and build with AI
 - a 1-day teacher workshop focused on practical classroom use, responsible AI habits, and AI-assisted teaching workflows
 
 ## Project Structure
@@ -115,7 +115,8 @@ In the browser:
   - `week-03`: Data Thinking and Machine Learning Basics
   - `week-04`: Python, Automation, and Computational Thinking
   - `week-05`: RAG, MCP, and AI-Powered Systems
-  - `week-06`: Capstone Development and AI Showcase
+  - `week-06`: Plugins, Rules, Skills, Subagents, Tools, and Hooks
+  - `week-07`: Capstone Development and AI Showcase
 - The teacher track includes:
   - `teacher-workshop-01`: AI for Teachers: Practical Classroom Planning Workshop
 - The teacher workshop now includes:

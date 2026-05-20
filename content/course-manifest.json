@@ -60,17 +60,28 @@
     {
       "id": "week-06",
       "sequence": 6,
+      "title": "Plugins, Rules, Skills, Subagents, Tools, and Hooks",
+      "short_title": "Agent Building Blocks",
+      "theme_color": "indigo",
+      "estimated_minutes": 120,
+      "focus": "Compare plugins, rules, skills, subagents, tools, and hooks so students know how modern AI coding agents are extended, guided, and automated.",
+      "signature_activity": "Agent building blocks comparison lab",
+      "status": "available"
+    },
+    {
+      "id": "week-07",
+      "sequence": 7,
       "title": "Capstone Development and AI Showcase",
       "short_title": "Capstone Showcase",
       "theme_color": "rose",
-      "estimated_minutes": 140,
-      "focus": "Apply AI concepts, prompting, data thinking, RAG, MCP, workflows, and ethics in a final AI-enabled project.",
-      "signature_activity": "Capstone planning workshop",
+      "estimated_minutes": 160,
+      "focus": "Apply prompting, RAG, MCP, plugins, rules, skills, subagents, tools, hooks, model choice, and ethics in a final AI-enabled capstone project.",
+      "signature_activity": "Capstone planning workshop with agent building blocks",
       "status": "available"
     },
     {
       "id": "teacher-workshop-01",
-      "sequence": 7,
+      "sequence": 8,
       "title": "AI for Teachers: Practical Classroom Planning Workshop",
       "short_title": "Teacher Workshop",
       "theme_color": "amber",

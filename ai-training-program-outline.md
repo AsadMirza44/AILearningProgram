@@ -2,12 +2,12 @@
 
 ## Program Summary
 
-**Format:** 6-week interactive AI enablement program  
+**Format:** 7-week interactive AI enablement program  
 **Audience:** students and beginner AI learners  
 **Delivery Style:** concept-first, activity-led, beginner-friendly, tutor-guided  
 **Current App Structure:** dashboard, week pages, concept explorer, class activity studio, image placeholders, checkpoint quiz, reflection
 
-This project now delivers a focused 6-week AI learning journey inside one interactive application. The experience is built around expandable concepts, collaborative class activities, image/GIF placeholders for future media, reusable quiz interactions, and activity launch hooks for future in-app simulations.
+This project now delivers a focused 7-week AI learning journey inside one interactive application. The experience is built around expandable concepts, collaborative class activities, image/GIF placeholders for future media, reusable quiz interactions, and activity launch hooks for future in-app simulations.
 
 ## Program Outcomes
 
@@ -118,21 +118,37 @@ Interactive direction:
 - compare grounded vs ungrounded answers
 - design a tool-enabled school assistant
 
-## Week 6: Capstone Development and AI Showcase
+## Week 6: Plugins, Rules, Skills, Subagents, Tools, and Hooks
 
 Focus:
-- problem statement
-- workflow design
-- prompts, tools, and knowledge use
-- model choice
-- frontier vs open-source tradeoffs
-- inference cost and deployment decisions
-- safety, testing, and presentation
+- plugins
+- rules
+- skills
+- subagents
+- tools (general agent tools; MCP covered in Week 5)
+- hooks
+- comparison table of key differences
 
 Interactive direction:
-- map the capstone workflow
+- sort scenarios into the correct building block
+- design tool permission boundaries
+- map hook lifecycle events
+- split work across subagents
+
+## Week 7: Capstone Development and AI Showcase
+
+Focus:
+- problem statement and workflow design
+- Week 6 agent building blocks applied to the capstone (plugins, rules, skills, subagents, tools, hooks)
+- comparison table justification for each layer used
+- RAG and MCP from Week 5
+- model choice, cost, deployment, safety, testing, and presentation
+
+Interactive direction:
+- map capstone workflow with agent layers
+- split subagent work and design tool/hook guardrails
 - justify model and system choices
-- present a practical AI-enabled solution
+- present a practical AI-enabled project
 
 ## UI and Content Principles
 
@@ -154,10 +170,9 @@ Active weekly curriculum files:
 - `week-04.md`
 - `week-05.md`
 - `week-06.md`
+- `week-07.md`
 
 Removed legacy weekly files:
-
-- `week-07.md`
 - `week-08.md`
 - `week-09.md`
 - `week-10.md`
