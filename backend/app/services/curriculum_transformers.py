@@ -2,7 +2,7 @@ from copy import deepcopy
 
 
 PROGRAM_TITLE = "AI-Enabled Student Program"
-PROGRAM_SUBTITLE = "A 6-week practical program to help students understand, use, evaluate, and build with AI."
+PROGRAM_SUBTITLE = "A 7-week practical program to help students understand, use, evaluate, and build with AI."
 
 
 CURRICULUM_MAP = {
@@ -64,17 +64,28 @@ CURRICULUM_MAP = {
     "week-06": {
         "id": "week-06",
         "sequence": 6,
+        "title": "Plugins, Rules, Skills, Subagents, Tools, and Hooks",
+        "short_title": "Agent Building Blocks",
+        "theme_color": "indigo",
+        "estimated_minutes": 120,
+        "focus": "Compare plugins, rules, skills, subagents, tools, and hooks so students know how modern AI coding agents are extended, guided, and automated.",
+        "signature_activity": "Agent building blocks comparison lab",
+        "status": "available",
+    },
+    "week-07": {
+        "id": "week-07",
+        "sequence": 7,
         "title": "Capstone Development and AI Showcase",
         "short_title": "Capstone Showcase",
         "theme_color": "rose",
-        "estimated_minutes": 140,
-        "focus": "Apply AI concepts, prompting, data thinking, RAG, MCP, workflows, and ethics in a final AI-enabled project.",
-        "signature_activity": "Capstone planning workshop",
+        "estimated_minutes": 160,
+        "focus": "Apply prompting, RAG, MCP, plugins, rules, skills, subagents, tools, hooks, model choice, and ethics in a final AI-enabled capstone project.",
+        "signature_activity": "Capstone planning workshop with agent building blocks",
         "status": "available",
     },
     "teacher-workshop-01": {
         "id": "teacher-workshop-01",
-        "sequence": 7,
+        "sequence": 8,
         "title": "AI for Teachers: Practical Classroom Planning Workshop",
         "short_title": "Teacher Workshop",
         "theme_color": "amber",
@@ -873,36 +884,168 @@ WEEK_CONTENT = {
     "week-06": {
         "overview": {
             "learning_objectives": [
-                "Combine prompting, data thinking, Python logic, RAG, MCP, and responsible AI into one practical solution.",
-                "Design and present an AI-enabled project with clear user value and safety thinking.",
-                "Reflect on what students can now build and evaluate with AI.",
-                "Choose models and workflows with awareness of cost, parameters, openness, and tool use."
+                "Explain plugins, rules, skills, subagents, tools, and hooks in plain language.",
+                "Compare when each building block is used in modern AI coding agents.",
+                "Distinguish passive guidance from active tools and event-driven automation.",
+                "Connect Week 5 MCP learning to general tool use without repeating the protocol lesson."
             ],
             "expected_outcomes": [
-                "Students produce a clear capstone workflow or prototype.",
-                "Students justify design choices and safety considerations.",
-                "Students can explain why one model or architecture choice fits their capstone better than another."
+                "Students can place each building block in the right layer of an agent setup.",
+                "Students can read a comparison table and justify design choices.",
+                "Students can describe what should be a rule, skill, tool, hook, plugin, or subagent."
             ]
         },
         "lesson": {
             "id": "lecture-6",
             "week_id": "week-06",
-            "title": "Capstone Development and AI Showcase",
-            "estimated_minutes": 140,
+            "title": "Plugins, Rules, Skills, Subagents, Tools, and Hooks",
+            "estimated_minutes": 120,
             "blocks": [
-                {"type": "hero", "title": "Lecture Goal", "content": "Students should apply everything they learned by designing and presenting an AI-enabled solution."},
+                {"type": "hero", "title": "Lecture Goal", "content": "Students should understand how AI coding agents are extended, guided, delegated, and automated beyond a single chat prompt."},
+                {"type": "objective-list", "title": "Building Blocks", "items": [
+                    {"label": "Plugins", "description": "Installable extension packages that add bundled capabilities."},
+                    {"label": "Rules, Skills, Subagents", "description": "Guidance, specialized workflows, and delegated focused workers."},
+                    {"label": "Tools", "description": "Callable actions the agent can run during a task."},
+                    {"label": "Hooks", "description": "Event-driven scripts around agent lifecycle moments."}
+                ]},
+                {"type": "table", "title": "Key Differences Between Agent Building Blocks", "items": [
+                    {"Building Block": "Plugins", "What It Is": "Installable extension packages for the AI environment", "Primary Job": "Add bundled capabilities such as integrations or packaged features", "When To Use": "When you want shareable, installable capability packs", "Key Difference": "Product-level extension bundles, not single prompts"},
+                    {"Building Block": "Rules", "What It Is": "Persistent written instructions for the agent", "Primary Job": "Shape default behavior, standards, and project conventions", "When To Use": "For always-on guidance such as coding style or safety habits", "Key Difference": "Passive guidance that steers behavior; it does not execute actions"},
+                    {"Building Block": "Skills", "What It Is": "Specialized workflow or domain instruction files", "Primary Job": "Teach repeatable procedures the agent can follow", "When To Use": "For task-specific know-how such as deployment or review workflows", "Key Difference": "On-demand expertise packs, not permanent environment changes"},
+                    {"Building Block": "Subagents", "What It Is": "Separate delegated agents for focused work", "Primary Job": "Handle parallel or specialized subtasks with their own scope", "When To Use": "When a large task should be split across focused workers", "Key Difference": "Independent workers with separate context and goals"},
+                    {"Building Block": "Tools", "What It Is": "Callable functions or integrations the model can invoke", "Primary Job": "Let the agent read, write, search, run commands, or call APIs", "When To Use": "When the agent must act on files, systems, or external services", "Key Difference": "Active capabilities used during a turn; Week 5 MCP taught one standardized tool protocol"},
+                    {"Building Block": "Hooks", "What It Is": "Event-triggered scripts around agent lifecycle moments", "Primary Job": "Automate checks or actions before or after events", "When To Use": "For guardrails such as format checks, logging, or post-edit validation", "Key Difference": "Reactive automation tied to events, not conversational reasoning"}
+                ]},
+                {"type": "concept-card-grid", "title": "Core Ideas", "items": []},
+                {"type": "callout", "title": "Tutor Message", "content": "MCP was covered in Week 5. This week focuses on the other ways agents are extended, guided, delegated, and automated."}
+            ]
+        },
+        "curriculum": {
+            "overview": {
+                "program_title": PROGRAM_TITLE,
+                "learning_objectives": [
+                    "Explain plugins, rules, skills, subagents, tools, and hooks clearly.",
+                    "Use the comparison table to justify which building block fits a scenario.",
+                    "Design a simple agent setup for a school assistant without confusing the layers."
+                ],
+                "expected_outcomes": [
+                    "Students can distinguish guidance, action, delegation, packaging, and automation.",
+                    "Students can explain why MCP is related to tools but not the same topic as rules or hooks."
+                ]
+            },
+            "concepts": [
+                _concept("Plugins", "Plugins are installable extension packages that add bundled capabilities to an AI coding environment, such as integrations, packaged workflows, or product features.", "Students need to see that agents are not limited to plain chat; environments can be extended with installable capability packs.", "A class project installs a documentation plugin so the agent can browse API references while coding.", ["Integration packs", "Packaged feature bundles", "Shared team extensions"], ["Installing every plugin without a clear need", "Assuming a plugin replaces good rules or review"], ["Install only what the project needs", "Check permissions and trust before enabling plugins"]),
+                _concept("Rules", "Rules are persistent instructions that guide how an agent should behave across a project or workspace, such as coding standards, review habits, or safety boundaries.", "Rules turn repeated teacher or team expectations into always-on guidance.", "A class repository includes rules that require explanations in simple language, citation of sources, and human review before sharing AI output.", ["Project standards", "Safety boundaries", "Style conventions"], ["Writing vague rules that never change behavior", "Using rules as a substitute for testing"], ["Keep rules specific and actionable", "Review rules when the project changes"]),
+                _concept("Skills", "Skills are specialized instruction files that teach an agent how to perform a repeatable workflow or apply domain know-how when relevant.", "Skills make complex procedures reusable without rewriting the same prompt every time.", "A deployment skill tells the agent the exact review and release steps for a class web app.", ["Code review workflow", "Testing checklist skill", "Lesson-plan formatting skill"], ["Creating skills that are too broad to be useful", "Duplicating the same content in rules and skills"], ["Use skills for repeatable procedures", "Keep each skill focused on one job"]),
+                _concept("Subagents", "Subagents are separate delegated agents that handle focused or parallel parts of a larger task with their own context and goal.", "Subagents help students understand delegation without pretending one chat must do everything.", "A capstone team sends one subagent to research sources, another to draft UI text, and a lead agent to combine the results.", ["Research subagent", "Test-runner subagent", "Documentation subagent"], ["Creating too many subagents for a tiny task", "Giving subagents unclear handoff boundaries"], ["Split work only when specialization helps", "Define inputs, outputs, and review between agents"]),
+                _concept("Tools", "Tools are callable actions or integrations the agent can invoke during a task, such as reading files, searching the web, running commands, or calling APIs.", "Tool use is how agents move from advice to action. Week 5 already introduced MCP as one standardized way to expose tools, resources, and prompts.", "A study assistant uses tools to open lecture notes, search a folder, and summarize the best matching section.", ["File read tool", "Search tool", "Command runner"], ["Giving tools without permission boundaries", "Confusing tools with rules or hooks"], ["Grant the minimum tool access needed", "Log and review sensitive tool actions"]),
+                _concept("Hooks", "Hooks are event-driven scripts that run at specific lifecycle moments, such as before a tool runs, after a file is saved, or when a session starts.", "Hooks teach students that agent systems also need guardrails and automation around events.", "A project hook runs a formatting check after every code edit and blocks unsafe commands before execution.", ["Pre-tool guardrail", "Post-save formatter", "Session startup check"], ["Using hooks for business logic that belongs in the main app", "Creating hidden automation students do not understand"], ["Keep hooks small and observable", "Document what each hook does and when it fires"])
+            ],
+            "lecture_notes": [
+                {"title": "Week 5 Connection", "fields": {"summary": "Week 5 covered MCP as a protocol for tools, resources, and prompts. Week 6 covers the broader agent layers around that idea: plugins, rules, skills, subagents, general tools, and hooks."}},
+                {"title": "Sorting Prompt", "fields": {"question": "For each scenario, ask: Is this guidance, expertise, action, delegation, packaging, or automation?"}}
+            ],
+            "diagrams": [
+                {"title": "Agent Layers Diagram", "fields": {"summary": "Future visual should show rules and skills guiding the agent, tools acting during work, subagents handling subtasks, plugins extending the environment, and hooks firing on events."}}
+            ],
+            "activities": [
+                {"title": "Agent building blocks comparison lab", "objective": "Use the comparison table in real scenarios.", "instructions": ["Read five short school-assistant scenarios.", "Label each scenario with the best building block.", "Explain one reason using the Key Difference column."], "expected_outcome": "Students can justify which layer fits each scenario.", "estimated_time": "20 minutes"},
+                {"title": "Rules vs skills sorting game", "objective": "Separate always-on guidance from repeatable workflows.", "instructions": ["Sort cards into Rules or Skills.", "Discuss borderline cases as a class.", "Rewrite one weak example to make it clearer."], "expected_outcome": "Students distinguish persistent guidance from procedural expertise.", "estimated_time": "15 minutes"},
+                {"title": "Tool permission boundary design", "objective": "Practice safe tool access.", "instructions": ["Design a school assistant.", "List allowed tools and forbidden tools.", "Add one human review checkpoint."], "expected_outcome": "Students connect tools to safety boundaries.", "estimated_time": "20 minutes"},
+                {"title": "Subagent task split workshop", "objective": "Practice delegation.", "instructions": ["Choose a medium-sized capstone-style task.", "Split it into two or three subagent roles.", "Define handoff outputs between them."], "expected_outcome": "Students can design focused delegated work.", "estimated_time": "20 minutes"},
+                {"title": "Hook lifecycle mapping", "objective": "Understand event-driven automation.", "instructions": ["List three events in an agent workflow.", "Match each event to a useful hook.", "Explain what the hook should block or enforce."], "expected_outcome": "Students understand hooks as reactive guardrails.", "estimated_time": "15 minutes"},
+                {"title": "Plugin capability brainstorm", "objective": "Think about packaged extensions.", "instructions": ["Brainstorm one plugin that would help your class project.", "List what it would add and what permissions it would need.", "Explain why it is better as a plugin than a one-off prompt."], "expected_outcome": "Students understand when packaging capabilities matters.", "estimated_time": "15 minutes"}
+            ],
+            "assignments": [
+                {"title": "Agent setup blueprint", "fields": {
+                    "problem_statement": "Design a school assistant setup using at least four different building blocks from this week.",
+                    "requirements": ["One rule", "One skill", "One tool or tool group", "One hook or subagent", "Short comparison-table justification"],
+                    "submission_expectations": ["Submit as one-page diagram plus short explanation"],
+                    "evaluation_criteria": ["Correct layer choice", "Clear reasoning", "Safety awareness", "Practicality"]
+                }}
+            ],
+            "instructor_notes": [
+                {"title": "Facilitation Notes", "fields": {"notes": [
+                    "Keep MCP in Week 5; reference it only as prior learning about standardized tool access.",
+                    "Use the comparison table repeatedly until students can sort scenarios quickly.",
+                    "Emphasize that rules guide, tools act, hooks react, skills teach workflows, subagents delegate, and plugins package capabilities."
+                ]}}
+            ]
+        },
+        "activity": {
+            "id": "activity-week-06",
+            "week_id": "week-06",
+            "type": "flow-builder",
+            "title": "Agent Building Blocks Mapping Lab",
+            "instructions": "For a school assistant project, place plugins, rules, skills, subagents, tools, and hooks in the correct layer of the workflow.",
+            "items": [{"label": "Rules"}, {"label": "Skills"}, {"label": "Tools"}, {"label": "Subagents"}, {"label": "Plugins"}, {"label": "Hooks"}, {"label": "Human Review"}],
+            "success_criteria": "Students can explain the key difference between each building block using the comparison table."
+        },
+        "quiz": {
+            "id": "quiz-week-06",
+            "week_id": "week-06",
+            "title": "Agent Building Blocks Checkpoint",
+            "passing_score": 70,
+            "questions": [
+                {"id": "w6-q1", "prompt": "Which building block provides always-on guidance rather than executing an action?", "options": ["Hooks", "Rules", "Tools", "Plugins"], "answer_index": 1, "explanation": "Rules shape default behavior and standards without directly running tasks."},
+                {"id": "w6-q2", "prompt": "What is the main job of a skill?", "options": ["Block unsafe commands automatically", "Teach a repeatable workflow or domain procedure", "Install a packaged integration", "Replace the model entirely"], "answer_index": 1, "explanation": "Skills provide specialized know-how the agent can apply when relevant."},
+                {"id": "w6-q3", "prompt": "How are hooks different from tools?", "options": ["Hooks fire on events; tools are invoked during work", "Hooks are only for images", "Tools never access files", "There is no difference"], "answer_index": 0, "explanation": "Hooks are reactive automation around lifecycle events, while tools are active capabilities used during a task."},
+                {"id": "w6-q4", "prompt": "When is a subagent the best choice?", "options": ["When you need a passive style guide", "When a large task should be split into focused delegated work", "When you only want a one-line answer", "When you need to disable all tools"], "answer_index": 1, "explanation": "Subagents help divide complex work across specialized agents."},
+                {"id": "w6-q5", "prompt": "Which statement best describes tools in this week?", "options": ["They are the same thing as rules", "They let the agent take action, and Week 5 MCP showed one standardized way to expose them", "They only work offline", "They replace human review completely"], "answer_index": 1, "explanation": "Tools are active capabilities; MCP from Week 5 is one standardized connector pattern for tools and resources."}
+            ]
+        },
+        "reflection": {
+            "prompt": "Choose one building block from this week and explain a real school project situation where it would help.",
+            "placeholder": "A rule would help our class assistant always cite sources and ask for human review before sharing answers."
+        },
+        "teacher_notes": [
+            "Use the comparison table as the anchor artifact for the whole week.",
+            "Remind students that MCP was already covered in Week 5 and should not be repeated as the main lesson here."
+        ]
+    },
+
+    "week-07": {
+        "overview": {
+            "learning_objectives": [
+                "Combine prompting, data thinking, Python logic, RAG, MCP, and responsible AI into one practical capstone solution.",
+                "Apply Week 6 agent building blocks—plugins, rules, skills, subagents, tools, and hooks—in the capstone design.",
+                "Design and present an AI-enabled project with clear user value, agent-layer choices, and safety thinking.",
+                "Choose models and workflows with awareness of cost, parameters, openness, and tool use."
+            ],
+            "expected_outcomes": [
+                "Students produce a clear capstone workflow or prototype that names each agent layer used.",
+                "Students justify design choices using the Week 6 comparison table and safety considerations.",
+                "Students can explain why one model or architecture choice fits their capstone better than another."
+            ]
+        },
+        "lesson": {
+            "id": "lecture-7",
+            "week_id": "week-07",
+            "title": "Capstone Development and AI Showcase",
+            "estimated_minutes": 160,
+            "blocks": [
+                {"type": "hero", "title": "Lecture Goal", "content": "Students should apply everything they learned—including RAG, MCP, and Week 6 agent building blocks—by designing and presenting an AI-enabled capstone solution."},
                 {"type": "objective-list", "title": "Capstone Requirements", "items": [
                     {"label": "Problem Statement", "description": "Describe the problem and user clearly."},
                     {"label": "AI Workflow", "description": "Show prompts, data, knowledge, tools, and outputs."},
+                    {"label": "Agent Building Blocks", "description": "Name which plugins, rules, skills, subagents, tools, and hooks your capstone uses."},
                     {"label": "Safety", "description": "Include ethics, review, and responsible use."}
+                ]},
+                {"type": "table", "title": "Agent Building Blocks in Your Capstone (from Week 6)", "items": [
+                    {"Building Block": "Plugins", "What It Is": "Installable extension packages for the AI environment", "Primary Job": "Add bundled capabilities such as integrations or packaged features", "Capstone Question": "Does your project need an installable extension pack?", "Key Difference": "Product-level extension bundles, not single prompts"},
+                    {"Building Block": "Rules", "What It Is": "Persistent written instructions for the agent", "Primary Job": "Shape default behavior, standards, and project conventions", "Capstone Question": "What always-on guidance should your assistant follow?", "Key Difference": "Passive guidance that steers behavior; it does not execute actions"},
+                    {"Building Block": "Skills", "What It Is": "Specialized workflow or domain instruction files", "Primary Job": "Teach repeatable procedures the agent can follow", "Capstone Question": "Which repeatable workflow should your agent reuse?", "Key Difference": "On-demand expertise packs, not permanent environment changes"},
+                    {"Building Block": "Subagents", "What It Is": "Separate delegated agents for focused work", "Primary Job": "Handle parallel or specialized subtasks with their own scope", "Capstone Question": "Should any capstone work be split across focused agents?", "Key Difference": "Independent workers with separate context and goals"},
+                    {"Building Block": "Tools", "What It Is": "Callable functions or integrations the model can invoke", "Primary Job": "Let the agent read, write, search, run commands, or call APIs", "Capstone Question": "What actions must your system perform? (Week 5 MCP is one tool protocol.)", "Key Difference": "Active capabilities used during a turn"},
+                    {"Building Block": "Hooks", "What It Is": "Event-triggered scripts around agent lifecycle moments", "Primary Job": "Automate checks or actions before or after events", "Capstone Question": "What guardrails should run automatically on events?", "Key Difference": "Reactive automation tied to events, not conversational reasoning"}
                 ]},
                 {"type": "concept-card-grid", "title": "Capstone Structure", "items": [
                     {"label": "Problem", "description": "What issue does the solution address?"},
                     {"label": "User Persona", "description": "Who benefits from the system?"},
                     {"label": "AI Features", "description": "What AI capabilities are used?"},
-                    {"label": "RAG / MCP Idea", "description": "How does the system use knowledge and tools?"}
+                    {"label": "Agent Layers", "description": "Which plugins, rules, skills, subagents, tools, or hooks are included?"}
                 ]},
-                {"type": "callout", "title": "Tutor Message", "content": "The capstone is about practical AI enablement, not flashy complexity. Clarity and usefulness matter most."}
+                {"type": "callout", "title": "Tutor Message", "content": "Use the Week 6 comparison table to justify every agent layer in your capstone. Practical usefulness and clear safety matter more than flashy complexity."}
             ]
         },
         "curriculum": {
@@ -910,19 +1053,27 @@ WEEK_CONTENT = {
                 "program_title": PROGRAM_TITLE,
                 "learning_objectives": [
                     "Apply everything from AI foundations to workflows and systems design.",
+                    "Integrate Week 6 plugins, rules, skills, subagents, tools, and hooks into the capstone plan.",
                     "Build and present an AI-enabled solution clearly.",
                     "Reflect on future improvements and responsible deployment.",
                     "Explain model-choice and deployment tradeoffs in plain language."
                 ],
                 "expected_outcomes": [
                     "Students can present a practical AI-enabled project.",
-                    "Students can justify prompts, data, tools, safety rules, and model choice."
+                    "Students can justify prompts, data, RAG, MCP, agent layers, safety rules, and model choice."
                 ]
             },
             "concepts": [
                 _concept("Problem Statement and User Persona", "A problem statement explains the issue being solved. A user persona describes who the system is for.", "Without a clear user problem, the project becomes a tool demo rather than a solution.", "An AI study assistant is designed specifically for students who need revision support from lecture notes.", ["Study assistant", "FAQ bot", "Career guide"], ["Describing a tool instead of a problem", "Ignoring the target user"], ["Start with need before technology", "Keep the user visible in every design choice"]),
                 _concept("AI Workflow", "An AI workflow is the sequence of prompts, data, tools, outputs, and review steps that make the solution useful.", "This helps students think beyond single prompts and toward system behavior.", "A research helper gathers notes, summarizes them, asks questions, and checks claims before sharing results.", ["Prompt chain", "Task flow", "Review loop"], ["Skipping review steps", "Leaving outputs vague"], ["Show inputs and outputs clearly", "Mark human review points"]),
-                _concept("RAG and MCP in a Capstone", "RAG connects the system with trusted knowledge. MCP connects the system with structured tools, prompts, and resources.", "These ideas help students move from AI use to AI-enabled system design.", "A school FAQ bot uses a document set for answers and tools for schedules or announcements.", ["Knowledge base", "Prompt templates", "Tool access"], ["Adding RAG or MCP as buzzwords only", "Not explaining why they help"], ["Use them only where they genuinely improve the design", "Keep the explanation practical"]),
+                _concept("Plugins in a Capstone", "Plugins are installable extension packages that add bundled capabilities to an AI coding environment. In a capstone, a plugin is justified only when the project needs packaged integrations rather than a one-off prompt.", "Capstone teams should explain why a capability is packaged as a plugin instead of scattered across prompts.", "A capstone study app installs a documentation plugin so the agent can browse API references while building the UI.", ["Integration packs", "Packaged feature bundles", "Shared team extensions"], ["Installing plugins without a clear capstone need", "Using a plugin to skip safety review"], ["Name the plugin and its permission needs", "Explain what breaks if the plugin is removed"]),
+                _concept("Rules in a Capstone", "Rules are persistent instructions that guide how an agent should behave across a project. In a capstone, rules turn team standards and safety expectations into always-on guidance.", "Strong capstones include rules for citation, tone, privacy, and human review—not only prompts.", "A capstone repository includes rules that require simple-language explanations, source citation, and teacher approval before sharing outputs.", ["Project standards", "Safety boundaries", "Style conventions"], ["Vague rules that never change behavior", "Treating rules as a substitute for testing"], ["List each rule and what behavior it changes", "Review rules when the capstone scope changes"]),
+                _concept("Skills in a Capstone", "Skills are specialized instruction files that teach repeatable workflows. In a capstone, skills capture procedures the team will run more than once.", "Skills keep capstone workflows consistent across demos, testing, and presentation prep.", "A capstone team creates a demo-rehearsal skill that lists the exact steps for explaining prompts, tools, and safety in under two minutes.", ["Code review workflow", "Testing checklist skill", "Demo rehearsal skill"], ["Skills that are too broad to be useful", "Duplicating the same content in rules and skills"], ["Use skills for repeatable capstone procedures", "Keep each skill focused on one job"]),
+                _concept("Subagents in a Capstone", "Subagents are separate delegated agents that handle focused or parallel parts of a larger task. Capstone teams can split research, drafting, testing, and presentation work across subagents with clear handoffs.", "Delegation helps larger capstones stay organized without one overloaded chat thread.", "One subagent gathers trusted sources, another drafts student-facing text, and the lead agent combines results for the final demo.", ["Research subagent", "Test-runner subagent", "Presentation subagent"], ["Too many subagents for a small project", "Unclear handoff boundaries between agents"], ["Split work only when specialization helps", "Define inputs, outputs, and review between agents"]),
+                _concept("Tools and MCP in a Capstone", "Tools are callable actions the agent can invoke during a task. MCP, from Week 5, is one standardized way to expose tools, resources, and prompts. Capstone designs should list which tools are allowed and why.", "Tool choice is where capstone systems move from advice to action—and where safety boundaries matter most.", "A school FAQ capstone uses file-read and search tools plus an MCP connection to schedules and announcements.", ["File read tool", "Search tool", "MCP tool/resource access"], ["Giving tools without permission boundaries", "Listing tools without explaining capstone value"], ["Grant minimum tool access needed", "Connect MCP only where structured access helps"]),
+                _concept("Hooks in a Capstone", "Hooks are event-driven scripts that run at lifecycle moments such as before a tool runs or after a file is saved. In a capstone, hooks provide automatic guardrails around risky actions.", "Hooks show that responsible capstone design includes automation around events, not only chat instructions.", "A capstone project uses a pre-tool hook to block unsafe commands and a post-save hook to run formatting checks before demo.", ["Pre-tool guardrail", "Post-save formatter", "Session startup check"], ["Hidden hooks students cannot explain", "Using hooks for core business logic that belongs in the app"], ["Document what each hook does and when it fires", "Keep hooks small and observable"]),
+                _concept("RAG in a Capstone", "RAG connects the system with trusted knowledge at answer time by retrieving relevant material before generation.", "Capstone assistants that answer from class notes, policies, or research corpora should explain their knowledge source and retrieval flow.", "A school FAQ capstone retrieves policy sections before answering and cites the source in the output.", ["Knowledge base", "Document retrieval", "Citations"], ["Adding RAG as a buzzword without a real source", "Ignoring source freshness or quality"], ["Name the knowledge source", "Explain chunking, retrieval, and review if used"]),
+                _concept("MCP in a Capstone", "MCP is the protocol learned in Week 5 for connecting AI clients to tools, resources, and prompts in a structured way.", "When a capstone needs standardized external access, MCP should be explained as a design choice—not assumed.", "A capstone assistant uses MCP to read class files, call a schedule tool, and reuse approved prompt templates.", ["Tools", "Resources", "Prompt templates"], ["Confusing MCP with every tool", "Exposing sensitive resources without review"], ["Use MCP when structured connectivity helps", "List which tools and resources the capstone exposes"]),
                 _concept("Model Choice, Frontier vs Open-Source, and Parameters", "Model choice means deciding which model best fits the task. Frontier models often offer higher capability through hosted services, while open-source models may offer more control or local use. Parameters are the learned weights inside the model and are one indicator of scale, but not the only indicator of usefulness.", "Students should justify why their capstone uses one model type or another.", "A research helper uses a hosted frontier model for stronger reasoning, while a private note summarizer uses a smaller local open-source model.", ["Hosted premium model", "Local private model", "Capability vs control tradeoff"], ["Treating parameter count as the only decision factor", "Ignoring privacy, latency, or cost"], ["Choose models by task, cost, privacy, and quality", "Explain the tradeoff in plain language"]),
                 _concept("Cost, Inference, and Deployment Tradeoffs", "Inference is the act of running the model to generate output. Every inference call can have cost, speed, and hardware implications. Deployment tradeoffs include cloud versus local execution, large versus small models, and whether retrieval or tools are needed.", "Capstone teams should learn to design solutions that are realistic to run.", "A class project chooses a smaller model plus RAG because it is cheaper than using a large frontier model for every question.", ["Token usage", "Cloud cost", "Local hardware tradeoff"], ["Designing only for ideal quality", "Ignoring usage cost over time"], ["Estimate likely usage early", "Use the lightest model that still meets the need"]),
                 _concept("Agents, MoE, and System Scale", "An AI agent can pursue a goal with tools and memory. Mixture of Experts, or MoE, is a model design where only some expert parts of the model are activated for each task, helping large systems scale more efficiently.", "Students do not need deep math here, but they should recognize that modern AI systems combine architecture choices with workflow design.", "A project may use a multi-step agent workflow on top of a model that is itself optimized through expert routing.", ["Tool-using agent", "Expert routing", "Scalable model design"], ["Thinking MoE is the same as having multiple chatbots", "Using agent language without defining goals and tool boundaries"], ["Teach MoE as selective expert activation", "Keep agent design grounded in task flow"]),
@@ -946,16 +1097,23 @@ WEEK_CONTENT = {
                     "Data or knowledge source",
                     "RAG idea",
                     "MCP/tool idea",
+                    "Plugins, rules, skills, subagents, tools, and hooks used",
+                    "Agent building blocks comparison justification",
                     "Safety and ethics considerations",
                     "Demo or prototype",
                     "Final presentation"
-                ]}}
+                ]}},
+                {"title": "Week 6 Building Blocks Reminder", "fields": {"summary": "Use the comparison table to justify each agent layer: rules guide, skills teach workflows, tools act, subagents delegate, plugins package capabilities, hooks react on events."}}
             ],
             "diagrams": [
-                {"title": "Capstone Workflow Canvas", "fields": {"summary": "Future visual should show problem -> user -> input -> AI step -> knowledge/tool support -> review -> output."}}
+                {"title": "Capstone Workflow Canvas", "fields": {"summary": "Future visual should show problem -> user -> input -> rules/skills -> AI step -> RAG/MCP/tools -> hooks -> review -> output."}},
+                {"title": "Agent Layers in Capstone", "fields": {"summary": "Future visual should map plugins, rules, skills, subagents, tools, and hooks onto one capstone diagram."}}
             ],
             "activities": [
-                {"title": "Capstone planning workshop", "objective": "Turn project ideas into structured plans.", "instructions": ["Choose a capstone option.", "Define the user and problem.", "Map prompts, knowledge, tools, and outputs."], "expected_outcome": "Students produce a clear capstone plan.", "estimated_time": "25 minutes"},
+                {"title": "Capstone agent building blocks mapping", "objective": "Apply Week 6 layers to the final project.", "instructions": ["Choose a capstone option.", "Fill the comparison table for your project.", "List at least one rule, skill, tool, and either a hook, subagent, or plugin."], "expected_outcome": "Students justify each agent layer in capstone terms.", "estimated_time": "20 minutes"},
+                {"title": "Capstone planning workshop", "objective": "Turn project ideas into structured plans.", "instructions": ["Choose a capstone option.", "Define the user and problem.", "Map prompts, knowledge, RAG, MCP, agent layers, and outputs."], "expected_outcome": "Students produce a clear capstone plan.", "estimated_time": "25 minutes"},
+                {"title": "Subagent task split for capstone teams", "objective": "Practice delegation in the final project.", "instructions": ["Split capstone work into two or three subagent roles.", "Define handoff outputs.", "Mark where the lead agent reviews results."], "expected_outcome": "Teams have a practical delegation plan.", "estimated_time": "15 minutes"},
+                {"title": "Tool permission and hook guardrail design", "objective": "Connect Week 6 safety ideas to the capstone.", "instructions": ["List allowed and forbidden tools.", "Add one hook or review checkpoint.", "Explain what unsafe action it prevents."], "expected_outcome": "Students link tools and hooks to capstone safety.", "estimated_time": "15 minutes"},
                 {"title": "Peer review", "objective": "Improve projects through feedback.", "instructions": ["Pairs review each other's idea.", "Check clarity, usefulness, and safety.", "Suggest one improvement."], "expected_outcome": "Students refine their design before presentation.", "estimated_time": "20 minutes"},
                 {"title": "Demo practice", "objective": "Prepare for final presentation.", "instructions": ["Students rehearse their explanation.", "Receive feedback on clarity and timing.", "Refine the presentation flow."], "expected_outcome": "Students present more clearly and confidently.", "estimated_time": "20 minutes"},
                 {"title": "Final showcase", "objective": "Present the AI-enabled solution.", "instructions": ["Present the project.", "Explain prompts, AI features, and safety rules.", "Answer audience questions."], "expected_outcome": "Students demonstrate integrated AI understanding.", "estimated_time": "30 minutes"},
@@ -972,50 +1130,57 @@ WEEK_CONTENT = {
                         "Data or knowledge source",
                         "RAG idea",
                         "MCP/tool idea",
+                        "At least one plugin, rule, skill, subagent, tool, or hook with justification",
+                        "Agent building blocks comparison note",
                         "Safety and ethics considerations",
                         "Demo or prototype",
                     "Presentation",
                     "Model choice and cost note"
                 ],
                     "submission_expectations": ["Submit final project pack and presentation"],
-                    "evaluation_criteria": ["Clarity", "Usefulness", "Correct AI concepts", "Safety thinking", "Presentation quality", "Model-choice reasoning"]
+                    "evaluation_criteria": ["Clarity", "Usefulness", "Correct AI concepts", "Agent-layer reasoning", "Safety thinking", "Presentation quality", "Model-choice reasoning"]
                 }}
             ],
             "instructor_notes": [
                 {"title": "Facilitation Notes", "fields": {"notes": [
                     "Push students toward practical usefulness rather than unnecessary complexity.",
-                    "Review whether they can justify prompts, knowledge, tools, and safety decisions clearly."
+                    "Use the Week 6 comparison table during capstone reviews.",
+                    "Review whether they can justify prompts, RAG, MCP, agent layers, and safety decisions clearly."
                 ]}}
             ]
         },
         "activity": {
-            "id": "activity-week-06",
-            "week_id": "week-06",
+            "id": "activity-week-07",
+            "week_id": "week-07",
             "type": "submission-board",
             "title": "Capstone Design Canvas",
-            "instructions": "Map the problem, users, prompts, knowledge, tools, safety rules, and presentation story for the final project.",
-            "items": [{"label": "Problem Statement"}, {"label": "Target Users"}, {"label": "AI Features"}, {"label": "Prompt Examples"}, {"label": "Knowledge Source"}, {"label": "RAG Idea"}, {"label": "MCP/Tool Idea"}, {"label": "Safety Rules"}],
-            "success_criteria": "Students can explain how the full solution works and why it is safe and useful."
+            "instructions": "Map the problem, users, prompts, knowledge, RAG, MCP, Week 6 agent building blocks, safety rules, and presentation story for the final project.",
+            "items": [{"label": "Problem Statement"}, {"label": "Target Users"}, {"label": "AI Features"}, {"label": "Prompt Examples"}, {"label": "Knowledge Source"}, {"label": "RAG Idea"}, {"label": "MCP/Tool Idea"}, {"label": "Rules"}, {"label": "Skills"}, {"label": "Subagents"}, {"label": "Plugins"}, {"label": "Hooks"}, {"label": "Safety Rules"}],
+            "success_criteria": "Students can explain how the full solution works, which Week 6 building blocks it uses, and why it is safe and useful."
         },
         "quiz": {
-            "id": "quiz-week-06",
-            "week_id": "week-06",
+            "id": "quiz-week-07",
+            "week_id": "week-07",
             "title": "Capstone Readiness Checkpoint",
             "passing_score": 70,
             "questions": [
-                {"id": "w6-q1", "prompt": "What should every capstone include first?", "options": ["A random AI tool", "A clear problem statement and target users", "A long Python program", "A logo"], "answer_index": 1, "explanation": "The project should begin with a clear user problem and purpose."},
-                {"id": "w6-q2", "prompt": "Why include RAG or MCP ideas in a capstone?", "options": ["To sound technical only", "To explain how knowledge grounding or tool access improves the system", "To replace safety thinking", "To avoid prompts"], "answer_index": 1, "explanation": "RAG and MCP should be included when they make the system more useful or grounded."},
-                {"id": "w6-q3", "prompt": "Why are safety and ethics considerations required?", "options": ["Because they make slides look longer", "Because useful AI systems still need privacy, fairness, review, and accountability", "Because AI is always unsafe", "Because projects need no testing"], "answer_index": 1, "explanation": "Responsible AI thinking is part of practical system design."},
-                {"id": "w6-q4", "prompt": "What should guide model choice in a capstone?", "options": ["Only parameter count", "Task fit, cost, privacy, and quality needs", "Random selection", "The brightest logo"], "answer_index": 1, "explanation": "A practical capstone chooses models based on task needs, constraints, and tradeoffs."}
+                {"id": "w7-q1", "prompt": "What should every capstone include first?", "options": ["A random AI tool", "A clear problem statement and target users", "A long Python program", "A logo"], "answer_index": 1, "explanation": "The project should begin with a clear user problem and purpose."},
+                {"id": "w7-q2", "prompt": "Why include RAG or MCP ideas in a capstone?", "options": ["To sound technical only", "To explain how knowledge grounding or tool access improves the system", "To replace safety thinking", "To avoid prompts"], "answer_index": 1, "explanation": "RAG and MCP should be included when they make the system more useful or grounded."},
+                {"id": "w7-q3", "prompt": "Which Week 6 building block provides always-on guidance in a capstone?", "options": ["Hooks", "Rules", "Plugins", "Subagents"], "answer_index": 1, "explanation": "Rules shape default capstone behavior and standards without executing actions directly."},
+                {"id": "w7-q4", "prompt": "When should a capstone team use subagents?", "options": ["For every one-line task", "When focused or parallel work should be split with clear handoffs", "Instead of any human review", "Only to replace RAG"], "answer_index": 1, "explanation": "Subagents help divide larger capstone work across specialized agents."},
+                {"id": "w7-q5", "prompt": "How are hooks useful in a capstone?", "options": ["They replace the need for a problem statement", "They automate guardrails around events such as tool use or file save", "They are the same as skills", "They only install plugins"], "answer_index": 1, "explanation": "Hooks provide reactive automation and guardrails at lifecycle moments."},
+                {"id": "w7-q6", "prompt": "What should guide model choice in a capstone?", "options": ["Only parameter count", "Task fit, cost, privacy, and quality needs", "Random selection", "The brightest logo"], "answer_index": 1, "explanation": "A practical capstone chooses models based on task needs, constraints, and tradeoffs."},
+                {"id": "w7-q7", "prompt": "Why are safety and ethics considerations required?", "options": ["Because they make slides look longer", "Because useful AI systems still need privacy, fairness, review, and accountability", "Because AI is always unsafe", "Because projects need no testing"], "answer_index": 1, "explanation": "Responsible AI thinking is part of practical system design."}
             ]
         },
         "reflection": {
-            "prompt": "What is the strongest part of your capstone idea, and what is one improvement you would make next?",
-            "placeholder": "The strongest part of my capstone is that it solves a real student problem. The next improvement would be adding a better knowledge source and clearer safety rules."
+            "prompt": "Which Week 6 building block is most important in your capstone, and what is one improvement you would make next?",
+            "placeholder": "Rules are most important in my capstone because they keep citations and human review consistent. Next I would add a clearer hook before any tool runs on student data."
         },
         "teacher_notes": [
             "Encourage practical AI enablement over ambitious but unclear system ideas.",
-            "Ask students to justify every major design choice in plain language."
+            "Ask students to justify every agent layer using the Week 6 comparison table.",
+            "Confirm they can explain RAG, MCP, and at least three other building blocks in plain language."
         ]
     },
     "teacher-workshop-01": {

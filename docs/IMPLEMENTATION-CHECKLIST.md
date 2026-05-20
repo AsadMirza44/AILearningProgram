@@ -9,7 +9,7 @@
 
 ## Curriculum Refresh Note
 
-- The runtime curriculum now uses the 6-week student program plus the teacher workshop track.
+- The runtime curriculum now uses the 7-week student program plus the teacher workshop track.
 - The UI shell, routing, styling, navigation, and embedded database remain unchanged.
 - The active student sequence is:
   - `week-01`: AI Foundations and AI Literacy
@@ -17,7 +17,8 @@
   - `week-03`: Data Thinking and Machine Learning Basics
   - `week-04`: Python, Automation, and Computational Thinking
   - `week-05`: RAG, MCP, and AI-Powered Systems
-  - `week-06`: Capstone Development and AI Showcase
+  - `week-06`: Plugins, Rules, Skills, Subagents, Tools, and Hooks
+  - `week-07`: Capstone Development and AI Showcase
 - The active teacher track is:
   - `teacher-workshop-01`: AI for Teachers: Practical Classroom Planning Workshop
 
