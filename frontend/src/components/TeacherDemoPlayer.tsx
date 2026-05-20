@@ -24,6 +24,9 @@ type DemoStageGuide = {
   happening: string;
   shown: string;
   next: string;
+  audiencePrompt: string;
+  bestMove: "Keep" | "Improve" | "Reject";
+  rationale: string;
 };
 
 
@@ -179,37 +182,55 @@ function buildStageGuide(config: DemoConfig, stages: string[], subject: string, 
       stage: "Topic and classroom context",
       happening: `We set the teaching situation: ${grade} ${subject}, topic ${topic}, and the classroom need.`,
       shown: "The audience sees the selected subject, grade, topic, and the first prompt context.",
-      next: "Next, the AI will turn that context into a first teaching draft."
+      next: "Next, the AI will turn that context into a first teaching draft.",
+      audiencePrompt: "Ask the audience: what details make this prompt more teacher-useful than just saying 'teach photosynthesis'?",
+      bestMove: "Keep",
+      rationale: "The context is strong enough to generate a useful first draft because it includes subject, level, topic, and task framing."
     },
     "AI first draft": {
       stage: "AI first draft",
       happening: "The AI produces a first-pass workflow draft quickly.",
       shown: "The audience sees the initial lesson structure, activity idea, and assessment direction.",
-      next: "Next, we show why teachers should not stop at the first answer."
+      next: "Next, we show why teachers should not stop at the first answer.",
+      audiencePrompt: "Ask the audience: would you use this first draft as-is, improve it, or reject it?",
+      bestMove: "Improve",
+      rationale: "The first output is useful, but it still needs teacher judgment for pacing, clarity, assessment quality, and class fit."
     },
     "Teacher improvement prompt": {
       stage: "Teacher improvement prompt",
       happening: "We refine the prompt so the output becomes more specific, realistic, and classroom-ready.",
       shown: "The audience sees the improved teacher prompt and why stronger context changes output quality.",
-      next: "Next, the workflow expands into activity and assessment assets."
+      next: "Next, the workflow expands into activity and assessment assets.",
+      audiencePrompt: "Ask the audience: what one improvement request makes the biggest difference here?",
+      bestMove: "Keep",
+      rationale: "This is the key teaching moment: better prompting improves output quality without needing technical complexity."
     },
     "Activity and assessment expansion": {
       stage: "Activity and assessment expansion",
       happening: "The workflow now grows beyond planning into participation and checking understanding.",
       shown: "The audience sees the class activity shape and the assessment layer generated from the same topic.",
-      next: "Next, we add support for students who need a simpler version."
+      next: "Next, we add support for students who need a simpler version.",
+      audiencePrompt: "Ask the audience: does this activity really teach the concept, or is it just engaging on the surface?",
+      bestMove: "Improve",
+      rationale: "Activity and assessment should be checked for alignment to the core objective, not just for energy or variety."
     },
     "Differentiation support version": {
       stage: "Differentiation support version",
       happening: "We create a support version for struggling learners without changing the core concept.",
       shown: "The audience sees how one topic becomes more accessible for students who need another path in.",
-      next: "Next, we finish with teacher review and approval."
+      next: "Next, we finish with teacher review and approval.",
+      audiencePrompt: "Ask the audience: is this version simpler in the right way, or did it remove too much rigor?",
+      bestMove: "Improve",
+      rationale: "Support versions should reduce complexity, not remove the actual learning target."
     },
     "Teacher review and final approval": {
       stage: "Teacher review and final approval",
       happening: "We check accuracy, feasibility, student fit, and safety before using the output.",
       shown: "The audience sees the teacher-approved version and the review checklist that makes it safe to use.",
-      next: "The workflow is complete and reusable for the next topic."
+      next: "The workflow is complete and reusable for the next topic.",
+      audiencePrompt: "Ask the audience: what final check would you personally never skip before using AI output in class?",
+      bestMove: "Keep",
+      rationale: "This is the final professional control point where the teacher turns a useful AI draft into a responsible classroom-ready output."
     }
   };
 
@@ -233,6 +254,7 @@ export default function TeacherDemoPlayer({ activity }: Props) {
   const [topic, setTopic] = useState(topicExamples[0]);
   const [activeStage, setActiveStage] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [audienceChoice, setAudienceChoice] = useState<"Keep" | "Improve" | "Reject" | null>(null);
 
   const stages = normalizeList(activity.live_demo_flow);
   const prompt = useMemo(
@@ -275,10 +297,12 @@ export default function TeacherDemoPlayer({ activity }: Props) {
   const resetDemo = () => {
     setActiveStage(0);
     setPlaying(false);
+    setAudienceChoice(null);
   };
 
   const stepForward = () => {
     setActiveStage((current) => Math.min(current + 1, Math.max(stages.length - 1, 0)));
+    setAudienceChoice(null);
   };
 
   if (!config) {
@@ -362,7 +386,35 @@ export default function TeacherDemoPlayer({ activity }: Props) {
               <strong>What Comes Next</strong>
               <p>{currentGuide?.next}</p>
             </article>
+            <article className="mini-card">
+              <strong>Audience Prompt</strong>
+              <p>{currentGuide?.audiencePrompt}</p>
+            </article>
           </div>
+        </section>
+
+        <section className="live-demo-card live-demo-card-wide">
+          <h4>Audience Interaction</h4>
+          <p className="muted">Use this moment to ask teachers what they would do with the current output before revealing the recommended move.</p>
+          <div className="live-decision-row">
+            {(["Keep", "Improve", "Reject"] as const).map((choice) => (
+              <button
+                className={audienceChoice === choice ? "button-secondary live-decision-selected" : "button-secondary"}
+                key={choice}
+                onClick={() => setAudienceChoice(choice)}
+                type="button"
+              >
+                {choice}
+              </button>
+            ))}
+          </div>
+          {audienceChoice ? (
+            <div className="feedback-box">
+              <strong>Recommended Move: {currentGuide?.bestMove}</strong>
+              <p>{currentGuide?.rationale}</p>
+              <p className="muted">Audience selected: {audienceChoice}</p>
+            </div>
+          ) : null}
         </section>
 
         <section className="live-demo-card live-demo-card-accent">

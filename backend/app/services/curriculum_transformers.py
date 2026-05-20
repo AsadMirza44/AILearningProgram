@@ -1463,7 +1463,7 @@ WEEK_CONTENT = {
                         "Differentiation support version",
                         "Teacher review and final approval"
                     ],
-                    "sample_prompt": "Act as an experienced Grade 7 science teacher. Create a lesson plan on photosynthesis. Include learning objective, starter, explanation, one interactive classroom activity, 4 quick assessment questions, one support version for struggling learners, and a final teacher review checklist.",
+                    "sample_prompt": "Act as an experienced Intermediate science teacher. Create a lesson plan on photosynthesis. Include learning objective, starter, explanation, one interactive classroom activity, 4 quick assessment questions, one support version for struggling learners, and a final teacher review checklist.",
                     "sample_output": [
                         "A first-pass teaching workflow with planning, activity, assessment, and support materials.",
                         "A draft that becomes stronger after teacher review, refinement, and approval."
@@ -1477,7 +1477,7 @@ WEEK_CONTENT = {
                     "demo_config": {
                         "demo_kind": "workflow",
                         "subject_options": ["Science"],
-                        "grade_options": ["Grade 7"],
+                        "grade_options": ["Intermediate"],
                         "topic_examples": ["Photosynthesis"],
                         "teacher_goal": "Show one lively classroom-ready AI workflow from start to finish"
                     }

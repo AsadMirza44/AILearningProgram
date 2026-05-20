@@ -535,6 +535,18 @@ ol {
   gap: 0.85rem;
 }
 
+.live-decision-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.live-decision-selected {
+  border-color: rgba(37, 99, 235, 0.28) !important;
+  background: linear-gradient(135deg, rgba(219, 234, 254, 0.9), rgba(237, 233, 254, 0.86)) !important;
+}
+
 .live-output-card {
   opacity: 0.45;
   transform: translateY(8px);
