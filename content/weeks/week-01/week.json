@@ -87,19 +87,19 @@
     ]
   },
   "activity": {
-    "id": "activity-01-ai-sort",
+    "id": "activity-week-01-ai-or-not-ai",
     "week_id": "week-01",
     "type": "card-sort",
-    "title": "AI or Not AI?",
-    "instructions": "Sort each example into AI or Not AI based on whether it uses learned patterns or human-like decision support.",
+    "title": "AI or Not AI? (Human vs AI Challenge)",
+    "instructions": "Vote on each example and decide whether it is AI-generated or not AI-generated. Discuss the clue before revealing the answer.",
     "items": [
-      { "label": "Calculator App", "category": "not_ai" },
-      { "label": "Netflix Recommendations", "category": "ai" },
-      { "label": "Phone Face Unlock", "category": "ai" },
-      { "label": "Flashlight App", "category": "not_ai" },
-      { "label": "Email Spam Filter", "category": "ai" }
+      { "label": "A chatbot response that summarizes a textbook paragraph", "category": "ai" },
+      { "label": "A hand-drawn classroom poster made by a teacher", "category": "not_ai" },
+      { "label": "A music playlist recommended from listening history", "category": "ai" },
+      { "label": "A calculator adding two numbers", "category": "not_ai" },
+      { "label": "An image generated from a text prompt", "category": "ai" }
     ],
-    "success_criteria": "Correctly classify at least 4 of 5 examples."
+    "success_criteria": "Correctly classify at least 4 of 5 examples and explain one clue that helped your decision."
   },
   "quiz": {
     "id": "quiz-week-01",

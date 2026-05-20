@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import TeacherDemoPlayer from "./TeacherDemoPlayer";
+import { openExampleFolder } from "../services/api";
 import type { WeekDetail } from "../types";
 
 
@@ -39,7 +40,26 @@ function hasValue(value?: string | string[]) {
 
 export default function ActivityStudio({ week }: Props) {
   const [activeLaunchId, setActiveLaunchId] = useState<string | null>(null);
+  const [folderStatus, setFolderStatus] = useState<Record<string, string>>({});
   const isTeacherTrack = week.track === "teacher";
+
+  const handleOpenExampleFolder = async (activityTitle: string, path?: string) => {
+    if (!path) {
+      return;
+    }
+
+    setFolderStatus((current) => ({ ...current, [activityTitle]: "Opening folder..." }));
+
+    try {
+      await openExampleFolder(path);
+      setFolderStatus((current) => ({ ...current, [activityTitle]: "Folder opened." }));
+    } catch (error) {
+      setFolderStatus((current) => ({
+        ...current,
+        [activityTitle]: error instanceof Error ? error.message : "Unable to open folder."
+      }));
+    }
+  };
 
   return (
     <div className="stack">
@@ -55,14 +75,38 @@ export default function ActivityStudio({ week }: Props) {
             <details className={`details-card details-accent-${(index + 2) % 5}`} key={activity.title} open={index === 0}>
               <summary>{activity.title}</summary>
               <div className="details-body">
+                {hasValue(activity.short_description) ? (
+                  <div className="mini-card">
+                    <strong>Short Description</strong>
+                    {renderValue(activity.short_description)}
+                  </div>
+                ) : null}
                 <div className="mini-card">
-                  <strong>Objective</strong>
-                  {renderValue(activity.objective)}
+                  <strong>{hasValue(activity.learning_objective) ? "Learning Objective" : "Objective"}</strong>
+                  {renderValue(activity.learning_objective ?? activity.objective)}
                 </div>
                 {hasValue(activity.instructions) ? (
                   <div className="mini-card">
                     <strong>{isTeacherTrack ? "How We Will Run It" : "Instructions"}</strong>
                     {renderValue(activity.instructions)}
+                  </div>
+                ) : null}
+                {hasValue(activity.participant_interaction) ? (
+                  <div className="mini-card">
+                    <strong>Participant Interaction</strong>
+                    {renderValue(activity.participant_interaction)}
+                  </div>
+                ) : null}
+                {hasValue(activity.main_ai_concept) ? (
+                  <div className="mini-card">
+                    <strong>Main AI Concept</strong>
+                    {renderValue(activity.main_ai_concept)}
+                  </div>
+                ) : null}
+                {hasValue(activity.interaction_type) ? (
+                  <div className="mini-card">
+                    <strong>Interaction Type</strong>
+                    {renderValue(activity.interaction_type)}
                   </div>
                 ) : null}
                 {hasValue(activity.expected_outcome) ? (
@@ -93,6 +137,23 @@ export default function ActivityStudio({ week }: Props) {
                   <div className="mini-card">
                     <strong>What Teachers Can Do</strong>
                     {renderValue(activity.what_teachers_can_do)}
+                  </div>
+                ) : null}
+                {activity.example_folder_path ? (
+                  <div className="mini-card mini-card-media">
+                    <strong>{activity.example_folder_label ?? "Example Folder"}</strong>
+                    <p className="muted">Teacher-ready examples for this activity are stored here:</p>
+                    <code className="resource-path">{activity.example_folder_path}</code>
+                    <button
+                      className="button-secondary resource-button"
+                      onClick={() => void handleOpenExampleFolder(activity.title, activity.example_folder_path)}
+                      type="button"
+                    >
+                      Open Example Folder
+                    </button>
+                    {folderStatus[activity.title] ? (
+                      <p className="resource-status">{folderStatus[activity.title]}</p>
+                    ) : null}
                   </div>
                 ) : null}
                 <div className="mini-card mini-card-media">

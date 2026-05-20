@@ -1,0 +1,8 @@
+Scenario,Decision Options,Key Issues,Facilitator Notes
+"A school wants AI to grade student essays automatically.","Allow / Allow with Safeguards / Do Not Allow","Fairness, feedback quality, accountability","A balanced answer usually requires teacher review, transparent criteria, and an appeal process."
+"A school wants facial recognition cameras at the entrance.","Allow / Allow with Safeguards / Do Not Allow","Privacy, consent, surveillance, data security","Discuss whether the benefit is strong enough to justify sensitive biometric data."
+"Students want to use AI to draft assignments.","Allow / Allow with Safeguards / Do Not Allow","Academic honesty, learning value, transparency","Discuss acceptable support, required citation or disclosure, and tasks where independent work is needed."
+"A teacher wants AI to summarize anonymized class feedback.","Allow / Allow with Safeguards / Do Not Allow","Privacy, anonymization, usefulness","This can be reasonable if student identities and sensitive details are removed."
+"An AI tool recommends which students need extra support.","Allow / Allow with Safeguards / Do Not Allow","Bias, incomplete data, teacher judgment","AI should support attention, not make final decisions without teacher review."
+"A chatbot gives mental health advice to students.","Allow / Allow with Safeguards / Do Not Allow","Safety, expertise, duty of care","This is high risk. Students should be directed to qualified human support."
+

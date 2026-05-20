@@ -47,31 +47,125 @@ Add future visuals for:
 
 ## Class Activities
 
-### Activity 1: AI Around Us Scan
-Students work in pairs to list 12 AI systems they already use in study, communication, search, navigation, entertainment, and productivity. Groups then cluster the list into visible AI and hidden AI.
+### Activity 1: AI or Not AI? (Human vs AI Challenge)
+The trainer displays different examples on the screen, such as images, text, music clips, chatbot responses, and recommendations. Participants guess whether each example was created by humans or AI.
 
-### Activity 2: Human vs AI Reasoning Table
-Show short outputs from a person and an AI system. Students identify what feels strong, what feels weak, and what still needs checking.
+Learning objective:
+- Understand where AI is commonly used.
+- Recognize AI-generated content.
+- Build awareness of AI capabilities and limitations.
 
-### Activity 3: Spot the Hallucination
-Provide an AI-generated answer with one fake fact, one weak claim, and one vague statement. Students highlight each issue and explain how they would verify it.
+Participant interaction:
+- Participants vote by raising hands, using colored cards, or polling.
+- Small groups discuss why they think something is AI-generated.
+- The trainer reveals answers and explains the AI concept behind each example.
 
-### Activity 4: Multimodal AI Walkthrough
-Groups compare a text-only AI task, an image-based interpretation task, and a scanned-document extraction task. They identify what AI can help with and what still needs checking.
+Example folder:
+`content/activity-examples/week-01/01-ai-or-not-ai`
 
-### Activity 5: Ethics Corners
-Place prompts in four corners of the room: privacy, fairness, honesty, and accountability. Students move to a corner, discuss a scenario, and explain the human rule they would apply.
+### Activity 2: Train the AI! (Sorting & Classification Game)
+Participants help train a pretend AI by categorizing items shown on screen, such as emails, images, student comments, and exam answers, into correct groups.
 
-### Activity 6: Neural Network by Analogy
-Small groups create a simple analogy for neural networks, such as layered filters or team-based decision making, and present it in one minute.
+Example categories:
+- Spam / Not Spam
+- Relevant / Irrelevant
+- Positive / Negative feedback
+
+Learning objective:
+- Learn the concept of machine learning and training data.
+- Understand classification and pattern recognition.
+- Discover how AI learns from examples.
+
+Participant interaction:
+- Participants shout answers or vote.
+- Teams debate classifications.
+- The trainer intentionally includes tricky examples to spark discussion.
+
+Example folder:
+`content/activity-examples/week-01/02-train-the-ai`
+
+### Activity 3: AI Myth Busters
+The trainer presents common statements about AI, and participants decide whether they are True, False, or Partly True.
+
+Example statements:
+- AI can think exactly like humans.
+- AI always gives correct answers.
+- AI can be biased.
+
+Learning objective:
+- Improve AI literacy.
+- Remove misconceptions about AI.
+- Encourage critical thinking and ethical awareness.
+
+Participant interaction:
+- Participants move to sides of the room or vote verbally.
+- Teams justify their answers.
+- The trainer facilitates short discussions after each myth.
+
+Example folder:
+`content/activity-examples/week-01/03-ai-myth-busters`
+
+### Activity 4: Prompt Battle (Talk to the AI)
+Participants compete to create the best prompt for an AI tool. The trainer gives a task, teams suggest prompts, and the trainer shows AI-generated outputs live.
+
+Example tasks:
+- Generate a lesson plan.
+- Write quiz questions.
+- Explain photosynthesis to children.
+
+Learning objective:
+- Understand prompt engineering basics.
+- Learn how instructions affect AI output.
+- Develop practical classroom AI usage skills.
+
+Participant interaction:
+- Teams collaboratively write prompts.
+- Participants compare outputs.
+- The class discusses which prompt worked best and why.
+
+Example folder:
+`content/activity-examples/week-01/04-prompt-battle`
+
+### Activity 5: AI Ethics Decision Game
+Participants are shown real-life AI scenarios and must decide what should happen.
+
+Example scenarios:
+- Should AI grade student essays?
+- Should facial recognition be used in schools?
+- Should students use AI for assignments?
+
+Learning objective:
+- Explore ethical and responsible AI use.
+- Encourage balanced thinking about AI in education.
+- Understand fairness, privacy, and bias.
+
+Participant interaction:
+- Group discussion and debate.
+- Voting on decisions.
+- Participants explain reasoning behind choices.
+
+Example folder:
+`content/activity-examples/week-01/05-ai-ethics-decision-game`
+
+### Summary Table
+
+| Game | Main AI Concept | Interaction Type |
+| --- | --- | --- |
+| AI or Not AI? | AI applications and recognition | Voting and discussion |
+| Train the AI! | Machine learning basics | Categorization and teamwork |
+| AI Myth Busters | AI literacy and misconceptions | Debate and voting |
+| Prompt Battle | Prompt engineering | Team competition |
+| AI Ethics Decision Game | Responsible AI | Discussion and decision-making |
 
 ## Launch Activity Hook
 
 Future in-app launch modules for this week:
 
-- AI or Not AI sorting board
-- hallucination investigation mini lab
-- responsible AI scenario cards
+- AI or Not AI voting board
+- Train the AI sorting board
+- AI Myth Busters voting prompts
+- Prompt Battle live prompt comparison
+- AI Ethics Decision Game scenario cards
 
 ## Checkpoint Quiz Focus
 
