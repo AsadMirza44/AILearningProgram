@@ -1,0 +1,14 @@
+Category Set,Item,Correct Category,Why It Fits,Tricky Note
+"Spam / Not Spam","Congratulations! Click this link to claim your free phone.","Spam","It uses a prize claim and suspicious link.","Easy example"
+"Spam / Not Spam","Dear class, tomorrow's science quiz starts at 9:00 AM.","Not Spam","It is a normal classroom message with useful details.","Easy example"
+"Spam / Not Spam","Your password expires today. Confirm it here now.","Spam","It creates urgency and asks for a sensitive action.","Tricky because it sounds official"
+"Relevant / Irrelevant","Comment: The lesson objective was clear and the activity helped me practice.","Relevant","It gives feedback about the lesson.","Easy example"
+"Relevant / Irrelevant","Comment: I like pizza after school.","Irrelevant","It does not help evaluate the lesson.","Easy example"
+"Relevant / Irrelevant","Comment: The video was too fast, but the worksheet helped.","Relevant","It includes specific learning feedback.","Mixed sentiment"
+"Positive / Negative Feedback","The explanation was simple and I understood the topic.","Positive","The student reports understanding.","Easy example"
+"Positive / Negative Feedback","I was confused because the examples moved too quickly.","Negative","The student reports confusion and pace problems.","Useful negative feedback"
+"Positive / Negative Feedback","The class was challenging, but the group work helped me improve.","Positive","The overall message says the activity helped learning.","Tricky because it includes a challenge"
+"Exam Answer Quality","Answer includes the key term, correct example, and complete reasoning.","Strong","It meets the expected answer criteria.","Easy example"
+"Exam Answer Quality","Answer gives the correct keyword but no explanation.","Needs Review","It may be partly correct but incomplete.","Tricky partial answer"
+"Exam Answer Quality","Answer is unrelated to the question.","Weak","It does not answer the task.","Easy example"
+

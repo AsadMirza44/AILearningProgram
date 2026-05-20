@@ -91,10 +91,17 @@ class MediaSlot(BaseModel):
 
 class ActivityPlan(BaseModel):
     title: str
+    short_description: str | list[str] | None = None
     objective: str | list[str] | None = None
+    learning_objective: str | list[str] | None = None
     instructions: list[str] | str | None = None
+    participant_interaction: str | list[str] | None = None
+    main_ai_concept: str | list[str] | None = None
+    interaction_type: str | list[str] | None = None
     expected_outcome: str | list[str] | None = None
     estimated_time: str | list[str] | None = None
+    example_folder_path: str | None = None
+    example_folder_label: str | None = None
     what_we_will_do: str | list[str] | None = None
     what_you_will_see: str | list[str] | None = None
     what_teachers_can_do: str | list[str] | None = None

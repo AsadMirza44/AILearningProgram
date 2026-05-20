@@ -22,6 +22,24 @@ export async function fetchWeek(weekId: string): Promise<WeekDetail> {
 }
 
 
+export async function openExampleFolder(path: string): Promise<{ opened: boolean; path: string }> {
+  const response = await fetch(`${API_BASE}/course/open-example-folder`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ path })
+  });
+
+  if (!response.ok) {
+    const payload = await response.json().catch(() => null);
+    throw new Error(payload?.detail ?? "Failed to open example folder");
+  }
+
+  return response.json();
+}
+
+
 export async function fetchProgress(learnerId: string): Promise<ProgressRecord[]> {
   const response = await fetch(`${API_BASE}/progress/${learnerId}`);
   if (!response.ok) {

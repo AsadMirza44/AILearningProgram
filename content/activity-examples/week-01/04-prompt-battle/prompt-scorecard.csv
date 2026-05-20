@@ -1,0 +1,7 @@
+Criterion,Score Range,What To Look For
+"Clear task","0-2","Does the prompt clearly say what the AI should create?"
+"Audience or grade level","0-2","Does the prompt tell the AI who the output is for?"
+"Useful constraints","0-2","Does the prompt include time, length, difficulty, or format limits?"
+"Output format","0-2","Does the prompt specify sections, bullets, table, quiz format, or checklist?"
+"Review requirement","0-2","Does the prompt ask for answer keys, checks, or teacher review points?"
+

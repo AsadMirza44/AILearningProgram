@@ -91,10 +91,17 @@ export type MediaSlot = {
 
 export type CurriculumActivity = {
   title: string;
+  short_description?: string | string[];
   objective?: string | string[];
+  learning_objective?: string | string[];
   instructions?: string | string[];
+  participant_interaction?: string | string[];
+  main_ai_concept?: string | string[];
+  interaction_type?: string | string[];
   expected_outcome?: string | string[];
   estimated_time?: string | string[];
+  example_folder_path?: string;
+  example_folder_label?: string;
   what_we_will_do?: string | string[];
   what_you_will_see?: string | string[];
   what_teachers_can_do?: string | string[];

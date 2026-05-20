@@ -1,8 +1,14 @@
 from copy import deepcopy
 
+from app.core.config import PROJECT_ROOT
+
 
 PROGRAM_TITLE = "AI-Enabled Student Program"
 PROGRAM_SUBTITLE = "A 7-week practical program to help students understand, use, evaluate, and build with AI."
+
+
+def _program_path(*parts):
+    return str(PROJECT_ROOT.joinpath(*parts))
 
 
 CURRICULUM_MAP = {
@@ -14,7 +20,7 @@ CURRICULUM_MAP = {
         "theme_color": "sky",
         "estimated_minutes": 120,
         "focus": "Understand what AI is, where it is used, what it can and cannot do, and how to think critically about AI output.",
-        "signature_activity": "Spot the hallucination studio",
+        "signature_activity": "Five-game AI literacy rotation",
         "status": "available",
     },
     "week-02": {
@@ -319,12 +325,126 @@ WEEK_CONTENT = {
                 {"title": "Human Judgment Loop", "fields": {"summary": "Future visual should show AI output followed by verification, editing, and responsible use."}}
             ],
             "activities": [
-                {"title": "AI around us scavenger hunt", "objective": "Recognize AI in daily life.", "instructions": ["Students list AI tools and systems they already use.", "Group results into study, communication, media, and productivity.", "Discuss where AI is visible and invisible."], "expected_outcome": "Students realize AI is already part of their routines.", "estimated_time": "15 minutes"},
-                {"title": "Human vs AI guessing game", "objective": "Compare human and AI-created output.", "instructions": ["Present mixed examples of human-written and AI-written content.", "Students guess which is which.", "Discuss clues and weaknesses."], "expected_outcome": "Students learn that polished text is not automatically trustworthy.", "estimated_time": "15 minutes"},
-                {"title": "AI myths vs reality discussion", "objective": "Challenge exaggerated assumptions about AI.", "instructions": ["Present common myths such as AI knows everything.", "Students debate whether each statement is true, false, or partly true.", "Connect back to limitations."], "expected_outcome": "Students gain a more balanced mental model.", "estimated_time": "15 minutes"},
-                {"title": "Multimodal AI walkthrough", "objective": "Show that AI can work with text, images, and documents.", "instructions": ["Compare a text-only task, an image interpretation task, and a document extraction task.", "Ask students what changed in the input and what review is still needed.", "Discuss OCR and document AI limits."], "expected_outcome": "Students understand that AI systems increasingly work across multiple data types.", "estimated_time": "15 minutes"},
-                {"title": "Spot the hallucination activity", "objective": "Identify weak or false AI output.", "instructions": ["Show an AI answer with one or more hidden factual problems.", "Students highlight what feels wrong.", "Verify with trusted sources."], "expected_outcome": "Students practice verification habits.", "estimated_time": "20 minutes"},
-                {"title": "AI ethics debate", "objective": "Discuss responsible AI use.", "instructions": ["Use prompts about privacy, bias, and academic honesty.", "Students argue for safeguards and responsible boundaries.", "Summarize with practical rules."], "expected_outcome": "Students connect AI use with ethics and responsibility.", "estimated_time": "20 minutes"}
+                {
+                    "title": "AI or Not AI? (Human vs AI Challenge)",
+                    "short_description": "The trainer displays different examples on the screen, such as images, text, music clips, chatbot responses, and recommendations. Participants guess whether each example was created by humans or AI.",
+                    "learning_objective": [
+                        "Understand where AI is commonly used.",
+                        "Recognize AI-generated content.",
+                        "Build awareness of AI capabilities and limitations."
+                    ],
+                    "instructions": [
+                        "Show one example at a time from the prepared folder.",
+                        "Ask participants to vote before the answer is revealed.",
+                        "Reveal the answer and explain the AI concept behind the example."
+                    ],
+                    "participant_interaction": [
+                        "Participants vote by raising hands, using colored cards, or polling.",
+                        "Small groups discuss why they think something is AI-generated.",
+                        "The trainer reveals answers and explains the related AI concept."
+                    ],
+                    "main_ai_concept": "AI applications and recognition",
+                    "interaction_type": "Voting and discussion",
+                    "expected_outcome": "Participants can identify common AI and non-AI examples with clearer reasoning.",
+                    "estimated_time": "15 minutes",
+                    "example_folder_path": _program_path("content", "activity-examples", "week-01", "01-ai-or-not-ai")
+                },
+                {
+                    "title": "Train the AI! (Sorting & Classification Game)",
+                    "short_description": "Participants help train a pretend AI by categorizing items shown on screen, such as emails, images, student comments, and exam answers, into correct groups.",
+                    "learning_objective": [
+                        "Learn the concept of machine learning and training data.",
+                        "Understand classification and pattern recognition.",
+                        "Discover how AI learns from examples."
+                    ],
+                    "instructions": [
+                        "Show labeled examples first so participants understand the categories.",
+                        "Ask teams to classify new examples into groups such as Spam / Not Spam, Relevant / Irrelevant, or Positive / Negative feedback.",
+                        "Include a few tricky examples to show why classification is not always obvious."
+                    ],
+                    "participant_interaction": [
+                        "Participants shout answers or vote.",
+                        "Teams debate classifications.",
+                        "The trainer uses tricky examples to spark discussion."
+                    ],
+                    "main_ai_concept": "Machine learning basics",
+                    "interaction_type": "Categorization and teamwork",
+                    "expected_outcome": "Participants understand that AI classification depends on examples, labels, and patterns.",
+                    "estimated_time": "15 minutes",
+                    "example_folder_path": _program_path("content", "activity-examples", "week-01", "02-train-the-ai")
+                },
+                {
+                    "title": "AI Myth Busters",
+                    "short_description": "The trainer presents common statements about AI, and participants decide whether each one is true, false, or partly true.",
+                    "learning_objective": [
+                        "Improve AI literacy.",
+                        "Remove misconceptions about AI.",
+                        "Encourage critical thinking and ethical awareness."
+                    ],
+                    "instructions": [
+                        "Read or display one myth at a time.",
+                        "Ask participants to choose True, False, or Partly True.",
+                        "Discuss the reasoning and connect the answer to practical AI use."
+                    ],
+                    "participant_interaction": [
+                        "Participants move to sides of the room or vote verbally.",
+                        "Teams justify their answers.",
+                        "The trainer facilitates short discussions after each myth."
+                    ],
+                    "main_ai_concept": "AI literacy and misconceptions",
+                    "interaction_type": "Debate and voting",
+                    "expected_outcome": "Participants replace exaggerated AI beliefs with a balanced understanding.",
+                    "estimated_time": "15 minutes",
+                    "example_folder_path": _program_path("content", "activity-examples", "week-01", "03-ai-myth-busters")
+                },
+                {
+                    "title": "Prompt Battle (Talk to the AI)",
+                    "short_description": "Participants compete to create the best prompt for an AI tool. The trainer gives a task, teams suggest prompts, and the trainer shows AI-generated outputs live.",
+                    "learning_objective": [
+                        "Understand prompt engineering basics.",
+                        "Learn how instructions affect AI output.",
+                        "Develop practical classroom AI usage skills."
+                    ],
+                    "instructions": [
+                        "Give teams a task such as generating a lesson plan, writing quiz questions, or explaining photosynthesis to children.",
+                        "Let teams write or speak their best prompt.",
+                        "Run selected prompts live and compare the outputs."
+                    ],
+                    "participant_interaction": [
+                        "Teams collaboratively write prompts.",
+                        "Participants compare AI outputs.",
+                        "The class discusses which prompt worked best and why."
+                    ],
+                    "main_ai_concept": "Prompt engineering",
+                    "interaction_type": "Team competition",
+                    "expected_outcome": "Participants see how clearer instructions produce more useful AI output.",
+                    "estimated_time": "20 minutes",
+                    "example_folder_path": _program_path("content", "activity-examples", "week-01", "04-prompt-battle")
+                },
+                {
+                    "title": "AI Ethics Decision Game",
+                    "short_description": "Participants review real-life AI scenarios and decide what should happen, such as whether AI should grade student essays, facial recognition should be used in schools, or students should use AI for assignments.",
+                    "learning_objective": [
+                        "Explore ethical and responsible AI use.",
+                        "Encourage balanced thinking about AI in education.",
+                        "Understand fairness, privacy, and bias."
+                    ],
+                    "instructions": [
+                        "Show one scenario at a time.",
+                        "Ask groups to choose a decision and explain the safeguards they would require.",
+                        "Compare decisions and summarize the responsible AI principle behind each scenario."
+                    ],
+                    "participant_interaction": [
+                        "Groups discuss and debate each scenario.",
+                        "Participants vote on decisions.",
+                        "Participants explain the reasoning behind their choices."
+                    ],
+                    "main_ai_concept": "Responsible AI",
+                    "interaction_type": "Discussion and decision-making",
+                    "expected_outcome": "Participants can discuss AI choices using fairness, privacy, bias, and accountability.",
+                    "estimated_time": "20 minutes",
+                    "example_folder_path": _program_path("content", "activity-examples", "week-01", "05-ai-ethics-decision-game")
+                }
             ],
             "assignments": [
                 {"title": "AI in My Life report", "fields": {
@@ -343,13 +463,19 @@ WEEK_CONTENT = {
             ]
         },
         "activity": {
-            "id": "activity-week-01",
+            "id": "activity-week-01-ai-or-not-ai",
             "week_id": "week-01",
-            "type": "scenario-choice",
-            "title": "Spot the Hallucination Studio",
-            "instructions": "Review AI-generated claims and note which parts need verification or human judgment.",
-            "items": [{"label": "Claim 1"}, {"label": "Claim 2"}, {"label": "Claim 3"}],
-            "success_criteria": "Students can explain why a response may sound strong while still being weak or false."
+            "type": "card-sort",
+            "title": "AI or Not AI? (Human vs AI Challenge)",
+            "instructions": "Vote on each example and decide whether it is AI-generated or not AI-generated. Discuss the clue before revealing the answer.",
+            "items": [
+                {"label": "A chatbot response that summarizes a textbook paragraph", "category": "ai"},
+                {"label": "A hand-drawn classroom poster made by a teacher", "category": "not_ai"},
+                {"label": "A music playlist recommended from listening history", "category": "ai"},
+                {"label": "A calculator adding two numbers", "category": "not_ai"},
+                {"label": "An image generated from a text prompt", "category": "ai"}
+            ],
+            "success_criteria": "Correctly classify at least 4 of 5 examples and explain one clue that helped your decision."
         },
         "quiz": {
             "id": "quiz-week-01",
