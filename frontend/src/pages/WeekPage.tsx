@@ -126,12 +126,14 @@ export default function WeekPage({
           <h1>{week.title}</h1>
           <p>{week.overview.learning_objectives[0]}</p>
         </div>
-        <div className="week-hero-meta">
-          {week.audience ? <span className="pill">{week.audience}</span> : null}
-          <span className="pill">Concept-wise</span>
-          <span className="pill">Activity-led</span>
-          <span className="pill">AI-focused</span>
-        </div>
+        {!isTeacherTrack ? (
+          <div className="week-hero-meta">
+            {week.audience ? <span className="pill">{week.audience}</span> : null}
+            <span className="pill">Concept-wise</span>
+            <span className="pill">Activity-led</span>
+            <span className="pill">AI-focused</span>
+          </div>
+        ) : null}
       </section>
 
       <div className="content-layout">

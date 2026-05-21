@@ -75,15 +75,6 @@ export async function fetchSubmissions(learnerId: string): Promise<SubmissionRec
 }
 
 
-export async function fetchReviewQueue(): Promise<SubmissionRecord[]> {
-  const response = await fetch(`${API_BASE}/submissions/review/queue`);
-  if (!response.ok) {
-    throw new Error("Failed to load review queue");
-  }
-  return response.json();
-}
-
-
 export async function saveSubmission(payload: Omit<SubmissionRecord, "id">): Promise<SubmissionRecord> {
   const response = await fetch(`${API_BASE}/submissions`, {
     method: "POST",
@@ -95,26 +86,6 @@ export async function saveSubmission(payload: Omit<SubmissionRecord, "id">): Pro
 
   if (!response.ok) {
     throw new Error("Failed to save submission");
-  }
-
-  return response.json();
-}
-
-
-export async function updateSubmissionReview(
-  submissionId: number,
-  payload: { status: string; teacher_feedback: string | null }
-): Promise<SubmissionRecord> {
-  const response = await fetch(`${API_BASE}/submissions/${submissionId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to update submission review");
   }
 
   return response.json();

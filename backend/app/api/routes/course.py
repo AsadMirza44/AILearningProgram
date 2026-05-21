@@ -7,7 +7,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 from app.core.config import IS_VERCEL, PROJECT_ROOT
-from app.schemas.course import ActivityDetail, LessonDetail, QuizDetail, ReflectionDetail, WeekSummary
+from app.schemas.course import WeekSummary
 from app.services.content_loader import load_course_manifest, load_week_detail
 
 
@@ -59,27 +59,3 @@ def get_week(week_id: str):
         return load_week_detail(week_id)
     except FileNotFoundError as exc:
         raise HTTPException(status_code=404, detail="Week not found") from exc
-
-
-@router.get("/weeks/{week_id}/lesson", response_model=LessonDetail)
-def get_week_lesson(week_id: str):
-    week = get_week(week_id)
-    return week["lesson"]
-
-
-@router.get("/weeks/{week_id}/activity", response_model=ActivityDetail)
-def get_week_activity(week_id: str):
-    week = get_week(week_id)
-    return week["activity"]
-
-
-@router.get("/weeks/{week_id}/quiz", response_model=QuizDetail)
-def get_week_quiz(week_id: str):
-    week = get_week(week_id)
-    return week["quiz"]
-
-
-@router.get("/weeks/{week_id}/reflection", response_model=ReflectionDetail)
-def get_week_reflection(week_id: str):
-    week = get_week(week_id)
-    return week["reflection"]

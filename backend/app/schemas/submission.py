@@ -18,8 +18,3 @@ class SubmissionResponse(BaseModel):
     content: str
     status: str
     teacher_feedback: str | None = None
-
-
-class SubmissionReviewUpdate(BaseModel):
-    status: str
-    teacher_feedback: str | None = None
