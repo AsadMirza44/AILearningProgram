@@ -5,7 +5,7 @@
 **Project:** Interactive AI Training Studio  
 **Architecture Source:** `docs/AI-Training-Interactive-App-Architecture.md`  
 **Database Policy:** Embedded `SQLite` only, stored inside project at `backend/data/app.db`  
-**Implementation Mode:** Core implementation complete, student + teacher content refinement active
+**Implementation Mode:** Core implementation complete, role-based tutor/student delivery active, content refinement active
 
 ## Curriculum Refresh Note
 
@@ -25,11 +25,11 @@
 ## Locked Decisions
 
 - [x] Single application for student and teacher tracks
-- [x] Tutor-centric interface
+- [x] Single codebase for tutor and student workspaces
 - [x] Embedded database only
 - [x] Frontend stack: React + TypeScript + Vite
 - [x] Backend stack: FastAPI + SQLAlchemy + Alembic
-- [x] Content-driven structure using Markdown and JSON/YAML-ready schema
+- [x] Content-driven runtime structure from backend curriculum services
 - [x] MVP database path: `backend/data/app.db`
 
 ## Progress Tracker
@@ -44,19 +44,21 @@
 | DB models and config | Done | SQLite path fixed at `backend/data/app.db` |
 | Content transformation | Done | Active lectures now have structured lesson blocks, reflection prompts, quizzes, and runtime-aligned visual content |
 | Learner experience | Done | Dashboard, week view, lesson, activity, quiz, reflection, and progress center built |
-| Teacher mode | Replaced | Separate student/teacher modes removed in favor of one tutor-centric interface |
-| Activity engine | Done | Card sort, ordering, prompt, flow, scenario, submission, and note-based interactions added |
-| Progress tracking | Done | API + SQLite persistence wired for weekly progress and submissions |
-| Capstone module | Done | Week 6 structured content, checkpoint, reflection, and submission support added |
+| Tutor workspace | Done | Tutor-facing dashboard, week flow, and teacher workshop delivery active |
+| Student workspace | Done | Separate student dashboard and week flow added for follow-along classroom participation |
+| Activity engine | Done | Card sort, ordering, prompt, flow, scenario, capstone planning, and note-based interactions added |
+| Progress tracking | Done | API + SQLite persistence wired for weekly progress and reflections |
+| Capstone module | Done | Week 6 structured content, checkpoint, reflection, and capstone support added |
 | Unified app launch | Done | FastAPI serves the built frontend at `/` and `backend/main.py` launches the interactive app |
 | Curriculum refresh | Done | Runtime content now serves the student program plus the teacher workshop with concept-wise detail |
-| Advanced concept expansion | Done | Added neural networks, regression, context windows, next-token generation, RAG vs fine-tuning, agents vs chatbots, Ollama, frontier/open-source model tradeoffs, MoE, parameters, and AI cost across the active 6-week plan |
+| Advanced concept expansion | Done | Added neural networks, regression, memory/context management, evaluation/testing, guardrails/permissions, next-token generation, RAG vs fine-tuning, agents vs chatbots, Ollama, frontier/open-source model tradeoffs, MoE, parameters, and AI cost across the active plan |
 | Practical systems expansion | Done | Added chunking, reranking, citations, knowledge freshness, multimodal AI, OCR/document AI, and clearer week-level visual gallery support |
 | UI cleanup and image placeholders | Done | Removed review hub and note-heavy panels from the live UI, added image/GIF placeholder sections, launch-activity hooks, and click-to-reveal quiz answers |
 | Premium UI direction | Done | Sidebar, dashboard, week hero, concept accordions, and class activity studio redesigned with modern product styling |
 | Teacher workshop integration | Done | Added teacher workshop track, teacher-specific concept explorer, prompt library, practical guidance, and track-aware navigation |
 | Teacher live demo studio | Done | Replaced multiple teacher demos with one prefilled live `Photosynthesis` workflow plus presenter guide |
 | Teacher quiz removal | Done | Teacher track now skips the quiz panel in the live page flow |
+| Stale runtime cleanup | Done | Removed unused JSON runtime content, markdown parser service, split content endpoints, and review-queue API paths |
 | Automated test suite | Removed | Test files, test-only scripts, and test dependencies were removed from the repo by request |
 
 ## Implementation Phases
@@ -87,7 +89,7 @@
 ### Phase 4: Learning Interactions
 - [x] Add activity components
 - [x] Add quiz engine
-- [x] Add reflection submission
+- [x] Add reflection save flow
 - [x] Add progress center
 - [x] Add launch-activity placeholder pattern
 - [x] Add click-to-reveal quiz answer behavior
@@ -101,8 +103,9 @@
 ### Phase 6: Content Rollout
 - [x] Add normalized content manifest for all 6 lectures
 - [x] Add detailed lecture, activity, quiz, reflection, and assignment content for Weeks 1 to 6
-- [x] Add advanced AI systems concepts across the 6-week curriculum without changing the UI structure
-- [x] Add practical RAG and multimodal AI concepts in the active 6-week curriculum
+- [x] Add advanced AI systems concepts across the active curriculum without changing the UI structure
+- [x] Add practical RAG and multimodal AI concepts in the active curriculum
+- [x] Add memory/context management, AI evaluation/testing, and AI guardrails/permissions in the appropriate student and teacher sections
 - [x] Hide legacy Weeks 7 to 10 from the active manifest
 - [x] Add Week 6 capstone hub baseline
 - [x] Add teacher workshop runtime content
@@ -126,17 +129,18 @@
 - Frontend production build passes
 - SQLite database file exists at `backend/data/app.db`
 - `progress_records` table is created automatically
-- `submissions` table is created automatically
+- `submissions` table is created automatically for reflection storage
 - Embedded SQLite DB is stamped to Alembic revision `0001_initial_schema`
-- Course manifest returns 6 active student weeks plus 1 teacher workshop
-- Course manifest now returns 7 active tracks/items: 6 student weeks and 1 teacher workshop
+- Course manifest returns 7 active student weeks plus 1 teacher workshop
+- Course manifest now returns 8 active tracks/items: 7 student weeks and 1 teacher workshop
 - Runtime course manifest now follows the AI Training Studio sequence
-- All 6 active student weeks include structured lesson blocks, quiz content, reflection prompts, assignments, and concept-level media placeholders
-- The teacher workshop includes an expanded concept explorer, teacher prompt library, practical guidance, and one live demo workflow
-- Advanced week content now includes neural networks, regression, token behavior, inference controls, local-model concepts, filesystem RAG design, chunking/reranking/citations, multimodal AI, and model-cost tradeoffs
+- All 7 active student weeks now include structured lesson blocks, quiz content, reflection prompts, assignments, and concept-level media placeholders
+- The teacher workshop includes an expanded concept explorer, teacher prompt library, practical guidance, one live demo workflow, and the new workflow-oriented concepts
+- Advanced week content now includes neural networks, regression, memory/context management, evaluation/testing, token behavior, inference controls, local-model concepts, filesystem RAG design, chunking/reranking/citations, multimodal AI, and model-cost tradeoffs
 - Tutor interface shows concept explorer, core ideas, images, class activities, assignments, and reflections
+- Student interface now shows a dedicated student dashboard, live class activity flow, hands-on workspace, quiz, and reflection without a separate activity-submission workflow
 - Teacher interface now shows the live presenter demo instead of a checkpoint quiz
-- Unified app route `/` serves the interactive frontend
+- Unified app route `/` redirects to `/tutor` and also exposes `/student`
 
 ## Remaining Work
 
@@ -176,6 +180,7 @@ If a new Codex session starts, tell it to:
 - Week 1 should remain the first complete vertical slice.
 - Do not reintroduce Weeks 7 to 10 into the active manifest unless the curriculum changes again.
 - Keep the teacher workshop practical and demo-first rather than schedule-heavy.
+- Keep tutor and student experiences in the same repo unless deployment needs diverge later.
 ## Deployment Notes
 
 - Vercel deployment prep is complete.

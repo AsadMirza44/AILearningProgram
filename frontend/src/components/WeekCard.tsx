@@ -6,15 +6,17 @@ import type { ProgressRecord, WeekSummary } from "../types";
 type Props = {
   week: WeekSummary;
   progress?: ProgressRecord;
+  routePrefix: string;
+  ctaLabel: string;
 };
 
 
-export default function WeekCard({ week, progress }: Props) {
+export default function WeekCard({ week, progress, routePrefix, ctaLabel }: Props) {
   const status = progress?.status ?? "not_started";
   const sequenceLabel = week.sequence_label ?? `${week.delivery_label ?? "Week"} ${week.sequence}`;
 
   return (
-    <Link className={`week-card week-${week.theme_color}`} to={`/weeks/${week.id}`}>
+    <Link className={`week-card week-${week.theme_color}`} to={`${routePrefix}/weeks/${week.id}`}>
       <div className="week-card__header">
         <span className="week-card__number">{sequenceLabel}</span>
         <span className={`pill pill-${status}`}>{status.replace("_", " ")}</span>
@@ -27,7 +29,7 @@ export default function WeekCard({ week, progress }: Props) {
       </div>
       {week.audience ? <p className="muted">{week.audience}</p> : null}
       <div className="week-card__footer">
-        <span className="week-card__cta">Open Tutor Workspace</span>
+        <span className="week-card__cta">{ctaLabel}</span>
       </div>
     </Link>
   );

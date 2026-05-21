@@ -5,10 +5,16 @@ import type { ActivityDetail } from "../types";
 
 type Props = {
   activity: ActivityDetail;
+  description?: string;
+  heading?: string;
 };
 
 
-export default function ActivityPanel({ activity }: Props) {
+export default function ActivityPanel({
+  activity,
+  description,
+  heading = "Interactive Practice"
+}: Props) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [sequence, setSequence] = useState<Record<string, string>>({});
@@ -86,8 +92,9 @@ export default function ActivityPanel({ activity }: Props) {
 
   return (
     <section className="panel panel-lux">
-      <h3>Interactive Practice</h3>
+      <h3>{heading}</h3>
       <p className="muted">{activity.title}</p>
+      {description ? <p className="muted">{description}</p> : null}
       <p>{activity.instructions}</p>
 
       {activity.type === "card-sort" ? (

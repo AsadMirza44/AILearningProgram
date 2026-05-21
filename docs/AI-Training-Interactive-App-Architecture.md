@@ -5,7 +5,7 @@
 ### Purpose
 Build and run a single interactive application that serves both:
 
-- a 6-week student AI enablement program
+- a 7-week student AI enablement program
 - a practical teacher workshop focused on classroom use of AI
 
 ### Active Runtime Curriculum
@@ -15,12 +15,15 @@ Build and run a single interactive application that serves both:
 - Week 3: Data Thinking and Machine Learning Basics
 - Week 4: Python, Automation, and Computational Thinking
 - Week 5: RAG, MCP, and AI-Powered Systems
-- Week 6: Capstone Development and AI Showcase
+- Week 6: Plugins, Rules, Skills, Subagents, Tools, and Hooks
+- Week 7: Capstone Development and AI Showcase
 - Teacher Workshop: AI for Teachers: Practical Classroom Planning Workshop
 
 ### Product Positioning
 
-- one tutor-centric interactive workspace
+- one shared application with two role-based workspaces
+- tutor workspace for facilitation and workshop delivery
+- student workspace for follow-along classroom participation
 - concept-wise learning structure
 - visible class activities, reflections, assignments, image placeholders, and teacher demo walkthroughs
 - future-ready placeholders for diagrams, images, GIFs, and simulations
@@ -51,10 +54,11 @@ Build and run a single interactive application that serves both:
 
 ```mermaid
 flowchart TD
-    A[React Frontend] --> B[FastAPI API]
+    A[React Frontend: Tutor Workspace] --> B[FastAPI API]
+    A2[React Frontend: Student Workspace] --> B
     B --> C[Curriculum Content Service]
     B --> D[Progress Service]
-    B --> E[Submission Review Service]
+    B --> E[Submission Service]
     D --> F[(SQLite: backend/data/app.db)]
     E --> F
 ```
@@ -63,8 +67,9 @@ flowchart TD
 
 - FastAPI serves the built frontend at `/`
 - API endpoints stay under `/api/...`
-- the curriculum is delivered as 6 active student weeks plus 1 teacher workshop entry
-- UI layout, routing, styling, and navigation are shared across the student and teacher tracks
+- the curriculum is delivered as 7 active student weeks plus 1 teacher workshop entry
+- tutor and student routes share the same backend content source and persistence layer
+- UI layout, routing, styling, and navigation are shared where possible across tutor, student, and teacher flows
 
 ---
 
@@ -82,6 +87,11 @@ Each active runtime item uses the same base structure:
 Teacher track note:
 
 - the teacher workshop still carries a quiz object in content for compatibility, but the live page flow intentionally skips rendering the quiz panel
+
+Student track note:
+
+- the student workspace uses the same week payload, but renders a student-specific flow with classroom guidance, hands-on activity work, quiz, and reflection
+- the current student flow does not add a separate activity-submission system; it is designed for live follow-along participation during class
 
 ### `curriculum` Shape
 
@@ -109,7 +119,7 @@ Each concept is organized concept-wise for future visuals:
 
 ---
 
-## 5. Active 6-Week Curriculum Breakdown
+## 5. Active Runtime Curriculum Breakdown
 
 ## Teacher Workshop Track
 
@@ -121,6 +131,7 @@ Help non-technical teachers use AI practically for lesson planning, assessment, 
 - one live prefilled teaching demo based on `Photosynthesis`
 - presenter guide for what is happening, what is shown, and what comes next
 - prompt library and practical guidance panels
+- teacher-side concepts for memory/context management, AI evaluation/testing, and AI guardrails/permissions
 - no teacher quiz panel in the live UI
 
 ## Week 1: AI Foundations and AI Literacy
@@ -156,6 +167,7 @@ Use prompts, structure, examples, constraints, and verification to make AI more 
 - examples
 - iteration
 - verification
+- memory and context management
 - tokens
 - context windows
 - inference
@@ -179,6 +191,7 @@ Understand how AI systems depend on data, how simple prediction works, and why w
 - labels
 - training data
 - testing data
+- AI evaluation and testing
 - classification
 - prediction
 - regression
@@ -226,6 +239,7 @@ Understand how modern AI systems use retrieval, tools, resources, prompts, APIs,
 - knowledge bases
 - MCP
 - tools
+- AI guardrails and permissions
 - resources
 - prompts
 - APIs
@@ -264,19 +278,31 @@ Apply the full program in an AI-enabled capstone project with prompts, workflows
 
 ### Current Navigation
 
-- dashboard
-- week pages
+- tutor dashboard
+- tutor week pages
 - teacher workshop page
+- student dashboard
+- student week pages
 
 ### Week Page Sections
 
-- overview
-- concepts
-- images
-- class activities
-- assignments
-- checkpoint quiz
-- reflection
+- Tutor student-week page sections:
+  - overview
+  - concepts
+  - images
+  - class activities
+  - assignments
+  - checkpoint quiz
+  - reflection
+- Student week page sections:
+  - class guidance
+  - goals
+  - key concepts to notice
+  - lesson blocks
+  - live class activity flow
+  - hands-on activity workspace
+  - checkpoint quiz
+  - reflection
 
 Teacher page behavior:
 
@@ -287,15 +313,17 @@ Teacher page behavior:
 
 ### UX Direction Already Implemented
 
-- tutor-centric workspace
+- role-based tutor and student workspaces
 - premium visual styling
 - concept accordions
 - concept-level image and GIF placeholders
 - separate week-level visual gallery in the sidebar
 - visible activity studio
+- student follow-along activity workspace
 - launch-activity placeholder pattern
 - quiz completion validation, retry flow, and click-to-reveal quiz answers
 - unified app launch
+- tutor/student role switch in the top bar
 - teacher sidebar and dashboard grouping
 - single live teacher demo player with presenter guide
 
@@ -314,10 +342,11 @@ docs/
 
 - `backend/main.py`: unified launcher
 - `backend/app/services/content_loader.py`: content loading
-- `backend/app/services/curriculum_transformers.py`: active 6-week curriculum source
+- `backend/app/services/curriculum_transformers.py`: active 7-week student curriculum + teacher workshop source
+- `frontend/src/pages/StudentWeekPage.tsx`: student week route
+- `frontend/src/components/StudentActivityWorkspace.tsx`: student follow-along activity UI
 - `frontend/src/components/TeacherDemoPlayer.tsx`: teacher live demo presenter module
 - `backend/data/app.db`: embedded SQLite database
-- `content/course-manifest.json`: active week manifest
 - `docs/IMPLEMENTATION-CHECKLIST.md`: handoff status
 
 ---
@@ -327,7 +356,7 @@ docs/
 ### Verified
 
 - frontend build passes
-- active manifest returns 6 student weeks plus 1 teacher workshop
+- active manifest returns 7 student weeks plus 1 teacher workshop
 - unified launch serves the frontend from FastAPI
 
 ### Handoff Rule
@@ -351,10 +380,13 @@ For the next session:
 
 ## 10. Current Content Expansion Notes
 
-The active 6-week runtime curriculum now explicitly includes:
+The active runtime curriculum now explicitly includes:
 
 - neural networks
 - regression in machine learning
+- memory and context management
+- AI evaluation and testing
+- AI guardrails and permissions
 - tokens and context windows
 - inference and next-token generation
 - attention-related sampling controls: `temperature`, `top-p`, and `top-k`

@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-import ActivityPanel from "../components/ActivityPanel";
-import ActivityStudio from "../components/ActivityStudio";
-import CurriculumExplorer from "../components/CurriculumExplorer";
-import ImagesPanel from "../components/ImagesPanel";
 import LessonRenderer from "../components/LessonRenderer";
 import QuizPanel from "../components/QuizPanel";
 import ReflectionPanel from "../components/ReflectionPanel";
+import StudentActivityWorkspace from "../components/StudentActivityWorkspace";
 import { fetchWeek, saveProgress, saveSubmission } from "../services/api";
 import type { ProgressRecord, SubmissionRecord, WeekDetail } from "../types";
 
@@ -21,7 +18,12 @@ type Props = {
 };
 
 
-export default function WeekPage({
+function buildConceptSnapshot(week: WeekDetail) {
+  return week.curriculum.concepts.slice(0, 6);
+}
+
+
+export default function StudentWeekPage({
   learnerId,
   onProgressSaved,
   onSubmissionSaved,
@@ -29,6 +31,7 @@ export default function WeekPage({
   submissions
 }: Props) {
   const { weekId = "" } = useParams();
+  const navigate = useNavigate();
   const [week, setWeek] = useState<WeekDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -37,20 +40,21 @@ export default function WeekPage({
     setLoading(true);
     fetchWeek(weekId)
       .then((data) => {
+        if (data.track === "teacher") {
+          navigate("/student", { replace: true });
+          return;
+        }
         setWeek(data);
         setError(null);
       })
       .catch((fetchError: Error) => setError(fetchError.message))
       .finally(() => setLoading(false));
-  }, [weekId]);
+  }, [navigate, weekId]);
 
   const savedReflection = submissions.find(
     (item) => item.week_id === weekId && item.submission_type === "reflection"
   );
   const progressRecord = progressRecords.find((item) => item.week_id === weekId);
-  const deliveryLabel = week?.delivery_label ?? "Week";
-  const sequenceLabel = week?.sequence_label ?? (week?.sequence ? `${deliveryLabel} ${week.sequence}` : deliveryLabel);
-  const isTeacherTrack = week?.track === "teacher";
 
   const markLessonComplete = async (quizScore?: number) => {
     if (!week) {
@@ -103,7 +107,7 @@ export default function WeekPage({
   };
 
   if (loading) {
-    return <div className="page"><p>Loading week...</p></div>;
+    return <div className="page"><p>Loading student week...</p></div>;
   }
 
   if (error || !week) {
@@ -114,32 +118,50 @@ export default function WeekPage({
     );
   }
 
+  const sequenceLabel = week.sequence_label ?? `Week ${week.sequence}`;
+  const conceptSnapshot = buildConceptSnapshot(week);
+
   return (
     <div className="page">
       <div className="back-row">
-        <Link to="/tutor">← Back to tutor dashboard</Link>
+        <Link to="/student">← Back to student dashboard</Link>
       </div>
 
       <section className={`week-banner week-banner-${week.id}`}>
         <div>
-          <span className="eyebrow">{sequenceLabel} Tutor Delivery</span>
+          <span className="eyebrow">{sequenceLabel} Student Workspace</span>
           <h1>{week.title}</h1>
-          <p>{week.overview.learning_objectives[0]}</p>
+          <p>{week.focus ?? week.overview.learning_objectives[0]}</p>
         </div>
-        {!isTeacherTrack ? (
-          <div className="week-hero-meta">
-            {week.audience ? <span className="pill">{week.audience}</span> : null}
-            <span className="pill">Concept-wise</span>
-            <span className="pill">Activity-led</span>
-            <span className="pill">AI-focused</span>
-          </div>
-        ) : null}
+        <div className="week-hero-meta">
+          <span className="pill">Follow Along</span>
+          <span className="pill">Hands-On</span>
+          <span className="pill">Checkpoint Quiz</span>
+        </div>
       </section>
 
       <div className="content-layout">
         <main className="stack">
           <section className="panel panel-lux">
-            <h3>{deliveryLabel} Objectives</h3>
+            <h3>How To Work During Class</h3>
+            <div className="grid-cards">
+              <article className="mini-card">
+                <strong>1. Watch the Tutor</strong>
+                <p>Keep the projector open as the main walkthrough so you know what part of the activity the class is on.</p>
+              </article>
+              <article className="mini-card">
+                <strong>2. Complete the Same Steps</strong>
+                <p>Use your own machine to write answers, sort ideas, and test the task instead of only watching passively.</p>
+              </article>
+              <article className="mini-card">
+                <strong>3. Save Your Thinking</strong>
+                <p>Finish the week with the quiz and reflection so your work stays visible for review and progress tracking.</p>
+              </article>
+            </div>
+          </section>
+
+          <section className="panel panel-lux">
+            <h3>Today&apos;s Learning Goals</h3>
             <ul>
               {week.overview.learning_objectives.map((objective) => (
                 <li key={objective}>{objective}</li>
@@ -147,30 +169,35 @@ export default function WeekPage({
             </ul>
           </section>
 
-          <CurriculumExplorer week={week} />
+          <section className="panel panel-lux">
+            <h3>Key Concepts To Notice</h3>
+            <div className="grid-cards">
+              {conceptSnapshot.map((concept) => (
+                <article className="mini-card" key={concept.title}>
+                  <strong>{concept.title}</strong>
+                  <p>{Array.isArray(concept.definition) ? concept.definition[0] : concept.definition}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <LessonRenderer blocks={week.lesson.blocks} />
-          <ActivityStudio week={week} />
-          {!isTeacherTrack ? <ActivityPanel activity={week.activity} /> : null}
-          {!isTeacherTrack ? (
-            <QuizPanel onComplete={(score) => void markLessonComplete(score)} quiz={week.quiz} />
-          ) : null}
+          <StudentActivityWorkspace week={week} />
+          <QuizPanel onComplete={(score) => void markLessonComplete(score)} quiz={week.quiz} />
           <ReflectionPanel
             learnerId={learnerId}
             onSubmit={saveReflection}
             reflection={week.reflection}
             savedSubmission={savedReflection}
-            submitLabel={isTeacherTrack ? "Save Workshop Note" : "Save Reflection"}
-            successLabel={isTeacherTrack ? "Workshop note saved." : undefined}
-            title={isTeacherTrack ? "Workshop Reflection and Next-Step Note" : "Reflection"}
+            submitLabel="Save Student Reflection"
+            title="Your End-of-Class Reflection"
           />
         </main>
 
         <aside className="side-panel">
-          <ImagesPanel week={week} />
-
           {week.overview.expected_outcomes ? (
-            <section className="panel">
-              <h3>{isTeacherTrack ? "Workshop Outcomes" : "Expected Outcomes"}</h3>
+            <section className="panel panel-lux">
+              <h3>By The End Of Class</h3>
               <ul>
                 {week.overview.expected_outcomes.map((item) => (
                   <li key={item}>{item}</li>
@@ -179,19 +206,27 @@ export default function WeekPage({
             </section>
           ) : null}
 
-          {isTeacherTrack ? (
-            <section className="panel panel-lux">
-              <h3>Workshop Focus</h3>
-              <p className="muted">
-                Keep the session practical: show one workflow, model review checkpoints, and leave teachers with reusable prompts instead of abstract theory.
-              </p>
-              <ul>
-                <li>Demonstrate the first draft, then show where teacher judgment improves it.</li>
-                <li>Use the toolkit section as take-away material after the live walkthrough.</li>
-                <li>End with one concrete classroom task each teacher will try next.</li>
-              </ul>
-            </section>
-          ) : null}
+          <section className="panel">
+            <h3>Student Checklist</h3>
+            <ul>
+              <li>Open the live class activity and finish each step on your own machine.</li>
+              <li>Use the quiz to check whether you understood the main idea, not just copied the steps.</li>
+              <li>Write one reflection note about what worked, what was confusing, or what you would improve.</li>
+            </ul>
+          </section>
+
+          <section className="panel">
+            <h3>Progress Snapshot</h3>
+            <p className="muted">
+              Status: <strong>{(progressRecord?.status ?? "not_started").replace("_", " ")}</strong>
+            </p>
+            <p className="muted">
+              Reflection: <strong>{progressRecord?.reflection_submitted ? "saved" : "not saved yet"}</strong>
+            </p>
+            <p className="muted">
+              Quiz score: <strong>{progressRecord?.quiz_score ?? "not submitted yet"}</strong>
+            </p>
+          </section>
         </aside>
       </div>
     </div>

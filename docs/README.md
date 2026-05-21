@@ -5,11 +5,16 @@ This repository contains the implementation for an interactive AI enablement app
 - a 7-week student program focused on helping students understand, use, evaluate, and build with AI
 - a 1-day teacher workshop focused on practical classroom use, responsible AI habits, and AI-assisted teaching workflows
 
+The live app now supports two role-based frontends inside the same codebase:
+
+- `Tutor Workspace`: facilitator-facing delivery flow for the student program plus the teacher workshop
+- `Student Workspace`: follow-along classroom view where students complete weekly activities on their own machines during the live session
+
 ## Project Structure
 
 - `frontend/`: React + TypeScript application
 - `backend/`: FastAPI application with embedded SQLite
-- `content/`: course manifest plus mirrored structured content for student weeks and the teacher workshop
+- `content/`: activity example assets opened from the app during live delivery
 - `docs/IMPLEMENTATION-CHECKLIST.md`: persistent handoff and progress tracker
 - `docs/AI-Training-Interactive-App-Architecture.md`: architecture reference
 
@@ -26,7 +31,7 @@ The application uses an embedded SQLite database only.
 - Frontend: React + TypeScript + Vite
 - Backend: FastAPI
 - Database: embedded SQLite
-- Content source: `content/`
+- Runtime content source: `backend/app/services/curriculum_transformers.py`
 - Unified local launch: `backend/main.py`
 
 ## First Run
@@ -47,7 +52,7 @@ What this does:
 - keeps API routes under `/api/...`
 - uses the embedded SQLite DB at `backend/data/app.db`
 - opens the app at `http://127.0.0.1:8000/`
-- opens a tutor-centric interface with concept-wise curriculum sections, image placeholders, and visible class activities
+- opens the role-based app with tutor and student workspace routes
 - uses the student AI program plus a dedicated teacher workshop section in the same app
 
 Primary app URL:
@@ -97,6 +102,8 @@ In the browser:
 
 - open `http://127.0.0.1:8000/` for the unified app
 - or open `http://127.0.0.1:5173` if you are running the Vite dev server separately
+- use `/tutor` for the tutor-facing workspace
+- use `/student` for the student-facing workspace
 - use the sidebar to open any student week or the teacher workshop
 
 ## Current Experience
@@ -104,11 +111,14 @@ In the browser:
 - The current app uses a demo learner ID: `student-demo`
 - Progress is saved into SQLite for that learner
 - Reflections are saved into SQLite
-- There is no separate student mode toggle now
+- There is no separate student activity submission workflow at this stage
+- The app now has separate tutor and student routes instead of a single tutor-only interface
 - Each active learning track exposes concept-wise content, aligned core ideas, image/GIF placeholders, class activities, assignments, quizzes, and reflections
+- Student week pages now include a dedicated student activity workspace for follow-along class participation
 - Student tracks still include quizzes and reflections
 - The teacher track intentionally skips the quiz panel and focuses on concept exploration, practical guidance, prompts, and a single live demo experience
 - The curriculum now also covers advanced practical topics such as neural networks, regression, tokens, context windows, inference, next-token generation, multimodal AI, OCR and document AI, embeddings, vector databases, chunking, reranking, citations, RAG vs fine-tuning, agents vs chatbots, open-source models, Ollama, frontier models, MoE, LLM parameters, and AI cost
+- The curriculum now also includes conceptual coverage of memory/context management, AI evaluation/testing, and AI guardrails/permissions in the relevant student and teacher sections
 - The student sequence is:
   - `week-01`: AI Foundations and AI Literacy
   - `week-02`: Prompt Engineering and AI for Learning
@@ -124,19 +134,20 @@ In the browser:
   - practical teacher topics such as lesson planning, assessment, differentiation, student support, classroom activity design, productivity, privacy, and responsible AI
   - one prefilled live demo scenario: `Photosynthesis`
   - a presenter-oriented walkthrough with stage-by-stage narration for what is happening, what is shown, and what comes next
+  - teacher-facing concepts for memory/context management, AI evaluation/testing, and AI guardrails/permissions
 - Legacy Weeks 7 to 10 are not part of the active manifest
 - New class activities include designing a RAG for the class file system and discussing how to run open-source models locally with Ollama
 - Quiz answers and explanations are hidden by default and revealed on demand
-- Quiz submission now expects all questions to be answered before grading, and users can retry after submission
+- Quiz completion now expects all questions to be answered before grading, and users can retry after submission
 - Student activity cards still include the future `Launch Activity` hook pattern
 - The teacher activity studio now uses a single live in-app demo instead of multiple static demos
 - Concept Explorer image slots are concept-specific, while the week sidebar now acts as a separate week-level visual gallery
-- The dashboard and sidebar now separate the student program from the teacher workshop for easier navigation
+- The dashboard and sidebar now separate the tutor and student workspaces, and the tutor sidebar separately groups the teacher workshop
 
 ## Teacher Workshop Notes
 
 - The teacher section is practical rather than lecture-heavy
-- The current live demo is prefilled for `Science`, `Grade 7`, and `Photosynthesis`
+- The current live demo is prefilled for `Science`, `Intermediate`, and `Photosynthesis`
 - The live demo includes:
   - a prompt stage
   - a first AI draft
@@ -150,6 +161,19 @@ In the browser:
   - what comes next
 - Teacher concepts are delivered in a workshop sequence from AI basics through prompting, classroom use, safeguards, and human review
 
+## Student Workspace Notes
+
+- The student workspace is designed for projector-led classroom delivery
+- Students open the same week on their own machines and complete the activity while the tutor leads the session
+- Each student week includes:
+  - week guidance
+  - key concepts to notice
+  - a live class activity flow
+  - a hands-on activity workspace
+  - quiz and reflection
+- Student activity work is intended for live classroom participation rather than a separate submission queue
+- The student workspace intentionally hides teacher presenter tooling and teacher workshop content
+
 ## Launch Order
 
 Always use this order locally:
@@ -161,6 +185,8 @@ Always use this order locally:
 ## Unified Routing
 
 - Interactive UI: `http://127.0.0.1:8000/`
+- Tutor dashboard: `http://127.0.0.1:8000/tutor`
+- Student dashboard: `http://127.0.0.1:8000/student`
 - Health check: `http://127.0.0.1:8000/health`
 - Course API: `http://127.0.0.1:8000/api/course/weeks`
 

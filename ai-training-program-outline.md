@@ -5,7 +5,7 @@
 **Format:** 7-week interactive AI enablement program  
 **Audience:** students and beginner AI learners  
 **Delivery Style:** concept-first, activity-led, beginner-friendly, tutor-guided  
-**Current App Structure:** dashboard, week pages, concept explorer, class activity studio, image placeholders, checkpoint quiz, reflection
+**Current App Structure:** tutor dashboard, student dashboard, tutor week pages, student week pages, concept explorer, class activity studio, student activity workspace, checkpoint quiz, reflection
 
 This project now delivers a focused 7-week AI learning journey inside one interactive application. The experience is built around expandable concepts, collaborative class activities, image/GIF placeholders for future media, reusable quiz interactions, and activity launch hooks for future in-app simulations.
 
@@ -24,18 +24,24 @@ By the end of the program, learners should be able to:
 
 ## App Delivery Model
 
-Each active week in the app uses the same learning workflow:
+The app now uses two role-based experiences:
+
+- `Tutor Workspace`: lesson delivery, concept explorer, activity studio, teacher workshop tools
+- `Student Workspace`: follow-along activity flow, hands-on practice, quiz, and reflection
+
+Each active student week in the app uses the same learning workflow:
 
 1. Week hero and objectives
-2. Concepts Explorer
-3. Core Ideas
-4. Images
-5. Class Activity Studio
-6. Launch Activity placeholder
-7. Checkpoint quiz with click-to-reveal answers
-8. Reflection
+2. Concepts Explorer or concept snapshot
+3. Lesson blocks
+4. Activity flow
+5. Hands-on practice
+6. Checkpoint quiz with click-to-reveal answers
+7. Reflection
 
-## Current 6-Week Structure
+Tutor pages still include week-level visuals, assignments, and the teacher workshop route.
+
+## Current 7-Week Structure
 
 ## Week 1: AI Foundations and AI Literacy
 
@@ -58,6 +64,7 @@ Focus:
 - prompt structure
 - role, task, context, constraints, and output format
 - iteration and verification
+- memory and context management
 - tokens, context windows, inference
 - next-token generation
 - attention-related generation settings such as temperature, top-p, and top-k
@@ -72,6 +79,7 @@ Interactive direction:
 Focus:
 - datasets, features, labels
 - training and testing data
+- AI evaluation and testing
 - classification and recommendation
 - regression
 - bias and overfitting
@@ -126,6 +134,7 @@ Focus:
 - skills
 - subagents
 - tools (general agent tools; MCP covered in Week 5)
+- AI guardrails and permissions
 - hooks
 - comparison table of key differences
 
@@ -158,11 +167,11 @@ Interactive direction:
 - separate concept-level media from week-level visual galleries
 - connect every class activity directly to the concept explorer
 - keep launch hooks ready for future interactive modules
-- require quiz completion before submission, then reveal answers only when requested
+- require quiz completion before grading, then reveal answers only when requested
 
 ## Current Repository Content Rule
 
-Active weekly curriculum files:
+Reference weekly markdown files kept in the repository:
 
 - `week-01.md`
 - `week-02.md`
@@ -172,10 +181,11 @@ Active weekly curriculum files:
 - `week-06.md`
 - `week-07.md`
 
-Removed legacy weekly files:
-- `week-08.md`
-- `week-09.md`
-- `week-10.md`
+Runtime app content is served from:
+
+- `backend/app/services/curriculum_transformers.py`
+
+The `content/` folder is now used mainly for activity example assets rather than runtime week manifests.
 
 ## Future Content Expansion
 

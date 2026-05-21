@@ -148,6 +148,13 @@ ol {
   background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.12));
 }
 
+.topbar-note.active {
+  color: var(--primary);
+  border-color: rgba(37, 99, 235, 0.24);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(124, 58, 237, 0.16));
+  font-weight: 700;
+}
+
 .pill-completed {
   color: var(--success);
 }
