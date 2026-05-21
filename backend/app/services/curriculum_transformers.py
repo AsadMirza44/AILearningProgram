@@ -218,15 +218,18 @@ def _reorder_teacher_concepts(content):
         "LLM",
         "Machine Learning",
         "Prompt and Prompt Template",
+        "Memory and Context Management",
         "Tokens, Context Window, and Inference",
         "Lesson Planning with AI",
         "Assessment, Feedback, and Rubrics",
+        "AI Evaluation and Testing",
         "Differentiation",
         "Student Support and Re-Explanation",
         "Teacher Productivity and Communication",
         "Multimodal AI and Document AI",
         "RAG and Knowledge Grounding",
         "Agents, Tools, and Workflows",
+        "AI Guardrails and Permissions",
         "Model Choice, Privacy, and Cost",
         "Hallucination",
         "Human-in-the-Loop and Workflow",
@@ -542,12 +545,13 @@ WEEK_CONTENT = {
                     "Use AI more effectively for study and writing.",
                     "Improve prompts with structure and iteration.",
                     "Compare weak and strong AI responses critically.",
-                    "Understand how token limits and sampling settings shape outputs."
+                    "Understand how context limits, memory handling, and sampling settings shape outputs."
                 ],
                 "expected_outcomes": [
                     "Students can submit useful study prompts.",
                     "Students understand that verification remains necessary.",
-                    "Students can explain why the same prompt may yield different outputs."
+                    "Students can explain why the same prompt may yield different outputs.",
+                    "Students can explain why long chat history and crowded prompts reduce output quality."
                 ]
             },
             "concepts": [
@@ -556,6 +560,7 @@ WEEK_CONTENT = {
                 _concept("Iteration", "Iteration means improving the prompt step by step.", "The first result is often a draft, not the final answer.", "A weak explanation becomes better after adding context and a required format.", ["Rewrite and retry", "Prompt chaining", "Refinement loops"], ["Expecting perfection on the first try", "Changing everything at once"], ["Improve one weakness at a time", "Compare versions"]),
                 _concept("AI as a Learning Partner", "AI can act as a tutor, planner, explainer, quiz maker, and writing assistant when guided well.", "Students should use AI actively, not passively.", "A student turns notes into flashcards and quiz questions.", ["Flashcards", "Study plans", "Practice questions"], ["Copying output without understanding", "Using AI instead of thinking"], ["Use AI to support learning, not replace it", "Review and edit outputs"]),
                 _concept("Verification", "Verification means checking AI output using trusted sources, logic, or human review.", "Good prompting still does not remove the need for fact-checking.", "A student checks an AI summary against lecture slides or a textbook.", ["Cross-checking facts", "Comparing with source notes", "Peer review"], ["Trusting polished text automatically", "Ignoring missing details"], ["Verify important claims", "Use trusted references"]),
+                _concept("Memory and Context Management", "Memory and context management means deciding what information the AI should keep in view, what should be summarized, and what can be left out so the workflow stays focused.", "Beginners often think more pasted text always helps, but strong workflows manage context deliberately instead of crowding the model.", "A student summarizes earlier research notes into five bullet points before asking the AI to draft a study guide, instead of pasting a whole long chat history.", ["Summarize before continuing", "Carry forward only key facts", "Reset when the task changes"], ["Pasting everything into one giant prompt", "Assuming the model remembers old details perfectly"], ["Keep only the context needed for the next step", "Use short summaries when a workflow becomes long"]),
                 _concept("Tokens, Context Windows, and Inference", "A token is a small unit of text the model reads or generates. The context window is the amount of information the model can consider at one time. Inference is the process of generating an answer after the model receives a prompt.", "Students use AI better when they know the model has memory and output limits.", "A long research prompt may lose earlier details if it exceeds the context window.", ["Long chat history", "Prompt trimming", "Short answer vs long answer"], ["Thinking the model remembers everything forever", "Ignoring token cost and limits"], ["Keep prompts focused", "Summarize long context before continuing"]),
                 _concept("Attention, Temperature, Top-p, and Top-k", "Attention is how the model weighs different parts of the input while generating an answer. Temperature controls how predictable or creative the output is. Top-p and top-k are sampling methods that limit which next-token choices the model can select from.", "These ideas explain why identical prompts can still produce more stable or more varied outputs.", "A factual study guide uses lower temperature, while a brainstorming prompt can tolerate more variation.", ["Stable summaries", "Creative writing", "Controlled generation"], ["Using high creativity settings for factual tasks", "Thinking randomness equals intelligence"], ["Use lower creativity for accuracy-focused tasks", "Teach settings through examples instead of math"]),
                 _concept("AI Next-Token Generation", "Large language models generate one token at a time by predicting the most likely next token based on the prompt and prior tokens.", "This gives students a realistic mental model of how text generation works.", "When AI writes an explanation, it is repeatedly selecting the next likely piece of text rather than planning like a human.", ["Autocomplete at scale", "Sentence continuation", "Step-by-step generation"], ["Confusing fluent text with deep understanding", "Thinking the model reasons exactly like a person"], ["Teach generation as prediction plus context", "Link this idea back to verification"])
@@ -664,18 +669,21 @@ WEEK_CONTENT = {
                     "Understand basic machine learning language.",
                     "Use data thinking to explain prediction systems.",
                     "Discuss how bias and poor-quality data affect AI.",
-                    "Recognize when ML systems use regression or neural-network style learning."
+                    "Recognize when ML systems use regression or neural-network style learning.",
+                    "Explain evaluation and testing as part of checking whether an AI system is actually useful."
                 ],
                 "expected_outcomes": [
                     "Students can interpret a simple dataset.",
                     "Students can connect data quality to AI quality.",
-                    "Students can describe simple numeric prediction and layered pattern-learning ideas."
+                    "Students can describe simple numeric prediction and layered pattern-learning ideas.",
+                    "Students can explain why testing should include unseen examples and practical checks."
                 ]
             },
             "concepts": [
                 _concept("Data and Dataset", "Data is information collected about something. A dataset is an organized collection of data.", "AI systems depend on data as raw material.", "A student survey becomes a dataset for analysis or prediction.", ["Survey rows", "Ratings", "Reviews"], ["Thinking data means only numbers", "Ignoring structure and quality"], ["Show concrete datasets", "Discuss what each row and column means"]),
                 _concept("Features and Labels", "A feature is an input used by the model. A label is the answer the model is trying to predict.", "These are the most important beginner terms for understanding ML prediction.", "A recommendation model may use previous choices as features to predict the next likely choice.", ["Email words", "Attendance rate", "Purchase history"], ["Confusing inputs with outputs", "Using unreliable labels"], ["Name features clearly", "Check whether labels are trustworthy"]),
                 _concept("Training Data and Testing Data", "Training data teaches the model. Testing data checks if the model learned well.", "Students need to know that learning and checking are not the same step.", "A model is trained on past examples and then tested on unseen examples.", ["Train split", "Test split", "Validation habit"], ["Testing on the same data used for training", "Assuming memorization means understanding"], ["Separate teaching from evaluation", "Explain unseen examples"]),
+                _concept("AI Evaluation and Testing", "AI evaluation and testing means checking whether a system works well enough for its purpose by using unseen examples, edge cases, and clear criteria such as correctness, fairness, and usefulness.", "Students should learn that a model or workflow is not good just because it produces impressive-looking output once.", "A class compares how an AI system handles normal examples, unusual examples, and tricky edge cases before deciding whether it is reliable enough to use.", ["Test with new examples", "Check weak cases", "Use clear scoring criteria"], ["Judging the system from one lucky demo", "Testing only the easiest examples"], ["Test normal and edge cases", "Decide in advance what counts as success"]),
                 _concept("Classification, Prediction, and Recommendation", "Classification sorts items into categories. Prediction estimates an outcome. Recommendation suggests likely useful items.", "These are common ML patterns students already encounter online.", "A movie app recommends films, a spam filter classifies messages, and a system predicts exam risk.", ["Spam vs not spam", "Pass/fail risk", "Suggested videos"], ["Thinking all AI tasks are the same", "Ignoring confidence and uncertainty"], ["Compare the three task types explicitly", "Use familiar applications"]),
                 _concept("Accuracy, Bias, and Overfitting", "Accuracy means how often the model is right. Bias happens when data is unfair or one-sided. Overfitting happens when the model learns the training examples too narrowly.", "Students should know that performance and fairness both matter.", "A model trained on incomplete examples works poorly for underrepresented cases.", ["Unbalanced data", "Misleadingly high training performance", "Unfair recommendations"], ["Thinking high accuracy solves everything", "Ignoring fairness"], ["Discuss performance and fairness together", "Use simple examples of one-sided data"]),
                 _concept("Regression in Machine Learning", "Regression is a machine learning task that predicts a number rather than a category.", "Students often hear prediction and assume everything is classification. Regression clarifies that some models estimate values like price, score, or time.", "A model predicts exam score, delivery time, or house rent from input features.", ["Price prediction", "Score prediction", "Demand forecasting"], ["Thinking regression means repeating backwards", "Treating every ML task as pass/fail"], ["Compare numeric prediction with category prediction", "Use familiar examples like marks or cost"]),
@@ -1052,11 +1060,13 @@ WEEK_CONTENT = {
                 "learning_objectives": [
                     "Explain plugins, rules, skills, subagents, tools, and hooks clearly.",
                     "Use the comparison table to justify which building block fits a scenario.",
-                    "Design a simple agent setup for a school assistant without confusing the layers."
+                    "Design a simple agent setup for a school assistant without confusing the layers.",
+                    "Explain how guardrails and permissions keep agent workflows safe and controlled."
                 ],
                 "expected_outcomes": [
                     "Students can distinguish guidance, action, delegation, packaging, and automation.",
-                    "Students can explain why MCP is related to tools but not the same topic as rules or hooks."
+                    "Students can explain why MCP is related to tools but not the same topic as rules or hooks.",
+                    "Students can explain why tool access should be limited by permissions and review."
                 ]
             },
             "concepts": [
@@ -1065,6 +1075,7 @@ WEEK_CONTENT = {
                 _concept("Skills", "Skills are specialized instruction files that teach an agent how to perform a repeatable workflow or apply domain know-how when relevant.", "Skills make complex procedures reusable without rewriting the same prompt every time.", "A deployment skill tells the agent the exact review and release steps for a class web app.", ["Code review workflow", "Testing checklist skill", "Lesson-plan formatting skill"], ["Creating skills that are too broad to be useful", "Duplicating the same content in rules and skills"], ["Use skills for repeatable procedures", "Keep each skill focused on one job"]),
                 _concept("Subagents", "Subagents are separate delegated agents that handle focused or parallel parts of a larger task with their own context and goal.", "Subagents help students understand delegation without pretending one chat must do everything.", "A capstone team sends one subagent to research sources, another to draft UI text, and a lead agent to combine the results.", ["Research subagent", "Test-runner subagent", "Documentation subagent"], ["Creating too many subagents for a tiny task", "Giving subagents unclear handoff boundaries"], ["Split work only when specialization helps", "Define inputs, outputs, and review between agents"]),
                 _concept("Tools", "Tools are callable actions or integrations the agent can invoke during a task, such as reading files, searching the web, running commands, or calling APIs.", "Tool use is how agents move from advice to action. Week 5 already introduced MCP as one standardized way to expose tools, resources, and prompts.", "A study assistant uses tools to open lecture notes, search a folder, and summarize the best matching section.", ["File read tool", "Search tool", "Command runner"], ["Giving tools without permission boundaries", "Confusing tools with rules or hooks"], ["Grant the minimum tool access needed", "Log and review sensitive tool actions"]),
+                _concept("AI Guardrails and Permissions", "AI guardrails and permissions are the limits and checks that control what an AI system is allowed to do, what tools or data it can access, and when a human should approve the next step.", "Once an agent can act on files, systems, or messages, safety depends on controlled access rather than trust alone.", "A school assistant is allowed to read class notes and draft announcements, but it is not allowed to send messages or change files without approval.", ["Allowed vs blocked tools", "Read-only vs write access", "Human approval checkpoints"], ["Giving every tool full access by default", "Hiding permissions so users do not know what the agent can do"], ["Grant the least access needed", "Put approval gates before high-impact actions"]),
                 _concept("Hooks", "Hooks are event-driven scripts that run at specific lifecycle moments, such as before a tool runs, after a file is saved, or when a session starts.", "Hooks teach students that agent systems also need guardrails and automation around events.", "A project hook runs a formatting check after every code edit and blocks unsafe commands before execution.", ["Pre-tool guardrail", "Post-save formatter", "Session startup check"], ["Using hooks for business logic that belongs in the main app", "Creating hidden automation students do not understand"], ["Keep hooks small and observable", "Document what each hook does and when it fires"])
             ],
             "lecture_notes": [
@@ -1388,12 +1399,13 @@ WEEK_CONTENT = {
                     "Demystify common AI terms in plain language.",
                     "Show classroom use cases that save time without lowering teaching quality.",
                     "Give teachers reusable prompts and visible demo flows for real tasks.",
-                    "Build strong habits around privacy, verification, bias checks, and human review."
+                    "Build strong habits around privacy, verification, bias checks, human review, and safe workflow design."
                 ],
                 "expected_outcomes": [
                     "Teachers can use AI to draft and adapt classroom materials faster.",
                     "Teachers can identify risks and know where review is required.",
-                    "Teachers can reuse the demo patterns inside their own teaching routine."
+                    "Teachers can reuse the demo patterns inside their own teaching routine.",
+                    "Teachers can explain context limits, evaluation habits, and permission boundaries in simple classroom language."
                 ]
             },
             "concepts": [
@@ -1452,6 +1464,15 @@ WEEK_CONTENT = {
                     ["Use templates for repeat tasks", "Ask for bullets, tables, levels, or checklists when needed"]
                 ),
                 _concept(
+                    "Memory and Context Management",
+                    "Memory and context management means deciding what information the AI should keep in view, what should be summarized, and what should be left out so the workflow stays clear and useful.",
+                    "Teachers often work across long lesson notes, rubrics, examples, and chat threads, so better results come from managing context rather than pasting everything at once.",
+                    "A teacher summarizes last week’s lesson, current objective, and class constraints in a short note before asking AI to draft the next lesson step.",
+                    ["Short context summaries", "Carry forward only key class details", "Reset when the task changes"],
+                    ["Pasting every note into one prompt", "Assuming the chat remembers all earlier context correctly"],
+                    ["Keep only the details needed for the next teaching step", "Summarize before continuing a long workflow"]
+                ),
+                _concept(
                     "Assessment, Feedback, and Rubrics",
                     "AI can generate quiz questions, short answers, answer keys, rubric drafts, and first-pass feedback comments.",
                     "Assessment work is highly practical for teachers, but it also has to be reviewed carefully because mistakes here directly affect learning and fairness.",
@@ -1459,6 +1480,15 @@ WEEK_CONTENT = {
                     ["MCQs", "Short questions", "Rubrics", "Feedback comment banks"],
                     ["Trusting auto-generated answer keys", "Using generic feedback that does not match student evidence"],
                     ["Verify every key", "Use AI to draft feedback, then personalize it with real evidence"]
+                ),
+                _concept(
+                    "AI Evaluation and Testing",
+                    "AI evaluation and testing means checking whether an AI draft or workflow is accurate, appropriate, fair, and actually useful before relying on it in real teaching.",
+                    "Teachers need a practical review habit because polished output can still be wrong, vague, biased, or mismatched to the class.",
+                    "A teacher checks a generated quiz with a few strong students, reviews edge cases, and compares the answer key against the learning objective before using it with the full class.",
+                    ["Accuracy checks", "Objective alignment", "Try one sample before full use"],
+                    ["Judging the output from one quick glance", "Testing only the easiest classroom case"],
+                    ["Review normal and tricky cases", "Decide what quality checks matter before classroom use"]
                 ),
                 _concept(
                     "Tokens, Context Window, and Inference",
@@ -1531,6 +1561,15 @@ WEEK_CONTENT = {
                     ["Planning chains", "Teacher workflows", "Multi-step classroom preparation"],
                     ["Calling every chatbot an agent", "Skipping review just because the workflow feels automated"],
                     ["Use workflows for repeat tasks", "Keep human approval at the end of every important chain"]
+                ),
+                _concept(
+                    "AI Guardrails and Permissions",
+                    "AI guardrails and permissions are the limits that control what an AI tool is allowed to access, what it can generate automatically, and when a teacher must approve the next step.",
+                    "This matters because classroom workflows often involve sensitive information, outward-facing communication, and decisions that should stay under teacher control.",
+                    "A teacher allows AI to draft a parent message from anonymized notes but does not allow the system to send the message or access student records directly.",
+                    ["Read-only access", "Approval before sending", "Privacy-first workflow design"],
+                    ["Giving tools access to sensitive information by default", "Letting AI act publicly without teacher approval"],
+                    ["Allow only the access needed for the task", "Keep approval checkpoints before any sensitive or high-impact action"]
                 ),
                 _concept(
                     "Model Choice, Privacy, and Cost",

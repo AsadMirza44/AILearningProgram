@@ -8,10 +8,21 @@ type Props = {
   reflection: ReflectionDetail;
   savedSubmission?: SubmissionRecord;
   onSubmit: (content: string) => Promise<void>;
+  title?: string;
+  submitLabel?: string;
+  successLabel?: string;
 };
 
 
-export default function ReflectionPanel({ learnerId, reflection, savedSubmission, onSubmit }: Props) {
+export default function ReflectionPanel({
+  learnerId,
+  reflection,
+  savedSubmission,
+  onSubmit,
+  title = "Reflection",
+  submitLabel = "Save Reflection",
+  successLabel
+}: Props) {
   const [text, setText] = useState(savedSubmission?.content ?? "");
   const [status, setStatus] = useState<string>("");
 
@@ -21,12 +32,12 @@ export default function ReflectionPanel({ learnerId, reflection, savedSubmission
 
   const submit = async () => {
     await onSubmit(text);
-    setStatus(`Reflection saved for ${learnerId}.`);
+    setStatus(successLabel ?? `Reflection saved for ${learnerId}.`);
   };
 
   return (
     <section className="panel">
-      <h3>Reflection</h3>
+      <h3>{title}</h3>
       <p>{reflection.prompt}</p>
       <textarea
         onChange={(event) => setText(event.target.value)}
@@ -36,7 +47,7 @@ export default function ReflectionPanel({ learnerId, reflection, savedSubmission
       />
       <div className="quiz-footer">
         <button onClick={() => void submit()} type="button">
-          Save Reflection
+          {submitLabel}
         </button>
         {savedSubmission?.teacher_feedback ? (
           <span className="muted">Teacher feedback available</span>

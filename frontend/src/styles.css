@@ -448,6 +448,36 @@ ol {
   margin-top: 1rem;
 }
 
+.teacher-mode-toggle,
+.teacher-resource-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.teacher-mode-toggle {
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+}
+
+.teacher-resource-card {
+  padding: 1.1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.76));
+  box-shadow: var(--shadow-soft);
+}
+
+.teacher-resource-card h4 {
+  margin: 0.25rem 0 0;
+}
+
+.teacher-resource-card__header p {
+  max-width: 420px;
+  margin: 0;
+}
+
 .live-demo-box {
   grid-column: 1 / -1;
 }
@@ -693,7 +723,8 @@ td {
 
   .hero,
   .week-banner,
-  .topbar {
+  .topbar,
+  .teacher-resource-card__header {
     flex-direction: column;
     align-items: flex-start;
   }

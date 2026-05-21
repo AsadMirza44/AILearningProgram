@@ -9,6 +9,30 @@ type Props = {
   week: WeekDetail;
 };
 
+type TeacherResourceMeta = {
+  heading: string;
+  description: string;
+};
+
+const TEACHER_RESOURCE_META: Record<string, TeacherResourceMeta> = {
+  "Prompt Templates for Teachers": {
+    heading: "Prompt Library",
+    description: "Reusable prompt patterns for lesson planning, assessment, differentiation, and communication."
+  },
+  "Responsible AI Guidance": {
+    heading: "Responsible Use Rules",
+    description: "Practical guardrails for privacy, academic integrity, and professional judgment."
+  },
+  "Risks and Limitations": {
+    heading: "Known Risks",
+    description: "What can go wrong when AI output sounds polished but still needs educational review."
+  },
+  "Human Review Checkpoints": {
+    heading: "Approval Checklist",
+    description: "Final checks before any AI-assisted material reaches students, families, or staff."
+  }
+};
+
 
 function renderValue(value?: string | string[]) {
   if (!value) {
@@ -30,7 +54,10 @@ function renderValue(value?: string | string[]) {
 
 
 function labelize(key: string) {
-  return key.split("_").join(" ");
+  return key
+    .split("_")
+    .join(" ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function hasValue(value?: string | string[]) {
@@ -41,6 +68,7 @@ function hasValue(value?: string | string[]) {
 export default function ActivityStudio({ week }: Props) {
   const [activeLaunchId, setActiveLaunchId] = useState<string | null>(null);
   const [folderStatus, setFolderStatus] = useState<Record<string, string>>({});
+  const [teacherViewMode, setTeacherViewMode] = useState<Record<string, "presenter" | "resources">>({});
   const isTeacherTrack = week.track === "teacher";
 
   const handleOpenExampleFolder = async (activityTitle: string, path?: string) => {
@@ -60,6 +88,8 @@ export default function ActivityStudio({ week }: Props) {
       }));
     }
   };
+
+  const getTeacherViewMode = (activityTitle: string) => teacherViewMode[activityTitle] ?? "presenter";
 
   return (
     <div className="stack">
@@ -160,7 +190,7 @@ export default function ActivityStudio({ week }: Props) {
                   <strong>{isTeacherTrack ? "Open Demo Walkthrough" : "Activity Module"}</strong>
                   <p className="muted">
                     {isTeacherTrack
-                      ? "Use this live in class or in the workshop to show the demo flow, sample prompt shape, likely output, and the review points teachers should keep."
+                      ? "Use presenter view while running the workshop, then switch to resource view for the reusable prompt and review materials."
                       : "This hook reserves the same placement for a future in-app activity module."}
                   </p>
                   <button
@@ -175,38 +205,68 @@ export default function ActivityStudio({ week }: Props) {
                   </button>
                   {activeLaunchId === activity.title ? (
                     <div className="demo-walkthrough-grid">
-                      {hasValue(activity.live_demo_flow) ? (
-                        <div className="future-media-box">
-                          <strong>Live Demo Flow</strong>
-                          {renderValue(activity.live_demo_flow)}
-                        </div>
-                      ) : null}
-                      {hasValue(activity.sample_prompt) ? (
-                        <div className="future-media-box">
-                          <strong>Sample Prompt</strong>
-                          {renderValue(activity.sample_prompt)}
-                        </div>
-                      ) : null}
-                      {hasValue(activity.sample_output) ? (
-                        <div className="future-media-box">
-                          <strong>Sample Output</strong>
-                          {renderValue(activity.sample_output)}
-                        </div>
-                      ) : null}
-                      {hasValue(activity.review_points) ? (
-                        <div className="future-media-box">
-                          <strong>Review Points</strong>
-                          {renderValue(activity.review_points)}
-                        </div>
-                      ) : null}
-                      {isTeacherTrack && activity.demo_config ? (
-                        <div className="future-media-box live-demo-box">
-                          <strong>Live Demo Workspace</strong>
-                          <p className="muted">
-                            Adjust the topic, subject, and grade live while presenting. The output updates in-app so the demo feels active rather than static.
-                          </p>
-                          <TeacherDemoPlayer activity={activity} />
-                        </div>
+                      {isTeacherTrack ? (
+                        <>
+                          <div className="teacher-mode-toggle">
+                            <button
+                              className={getTeacherViewMode(activity.title) === "presenter" ? undefined : "button-secondary"}
+                              onClick={() =>
+                                setTeacherViewMode((current) => ({ ...current, [activity.title]: "presenter" }))
+                              }
+                              type="button"
+                            >
+                              Presenter View
+                            </button>
+                            <button
+                              className={getTeacherViewMode(activity.title) === "resources" ? undefined : "button-secondary"}
+                              onClick={() =>
+                                setTeacherViewMode((current) => ({ ...current, [activity.title]: "resources" }))
+                              }
+                              type="button"
+                            >
+                              Resource View
+                            </button>
+                          </div>
+
+                          {getTeacherViewMode(activity.title) === "presenter" && activity.demo_config ? (
+                            <div className="future-media-box live-demo-box">
+                              <strong>Live Demo Workspace</strong>
+                              <p className="muted">
+                                Adjust the topic, subject, and grade live while presenting. The output updates in-app so the demo stays active without duplicating the supporting materials.
+                              </p>
+                              <TeacherDemoPlayer activity={activity} />
+                            </div>
+                          ) : null}
+
+                          {getTeacherViewMode(activity.title) === "resources" ? (
+                            <>
+                              {hasValue(activity.live_demo_flow) ? (
+                                <div className="future-media-box">
+                                  <strong>Live Demo Flow</strong>
+                                  {renderValue(activity.live_demo_flow)}
+                                </div>
+                              ) : null}
+                              {hasValue(activity.sample_prompt) ? (
+                                <div className="future-media-box">
+                                  <strong>Reusable Prompt</strong>
+                                  {renderValue(activity.sample_prompt)}
+                                </div>
+                              ) : null}
+                              {hasValue(activity.sample_output) ? (
+                                <div className="future-media-box">
+                                  <strong>Expected Draft Shape</strong>
+                                  {renderValue(activity.sample_output)}
+                                </div>
+                              ) : null}
+                              {hasValue(activity.review_points) ? (
+                                <div className="future-media-box">
+                                  <strong>Review Checklist</strong>
+                                  {renderValue(activity.review_points)}
+                                </div>
+                              ) : null}
+                            </>
+                          ) : null}
+                        </>
                       ) : null}
                       {!isTeacherTrack ? (
                         <div className="future-media-box">
@@ -224,20 +284,44 @@ export default function ActivityStudio({ week }: Props) {
       </section>
 
       <section className="panel panel-lux">
-        <h3>{isTeacherTrack ? "Teacher Prompt Library and Practical Guidance" : "Assignments and Follow-Up"}</h3>
+        <h3>{isTeacherTrack ? "Teacher Workshop Toolkit" : "Assignments and Follow-Up"}</h3>
         <div className="stack">
           {week.curriculum.assignments.map((assignment) => (
-            <details className="details-card" key={assignment.title}>
-              <summary>{assignment.title}</summary>
-              <div className="details-body">
-                {Object.entries(assignment.fields).map(([key, value]) => (
-                  <div className="mini-card" key={key}>
-                    <strong>{labelize(key)}</strong>
-                    {renderValue(value)}
+            isTeacherTrack ? (
+              <section className="teacher-resource-card" key={assignment.title}>
+                <div className="teacher-resource-card__header">
+                  <div>
+                    <span className="eyebrow">
+                      {TEACHER_RESOURCE_META[assignment.title]?.heading ?? "Workshop Resource"}
+                    </span>
+                    <h4>{assignment.title}</h4>
                   </div>
-                ))}
-              </div>
-            </details>
+                  <p className="muted">
+                    {TEACHER_RESOURCE_META[assignment.title]?.description ?? "Reusable teacher-facing workshop material."}
+                  </p>
+                </div>
+                <div className="details-body">
+                  {Object.entries(assignment.fields).map(([key, value]) => (
+                    <div className="mini-card" key={key}>
+                      <strong>{labelize(key)}</strong>
+                      {renderValue(value)}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ) : (
+              <details className="details-card" key={assignment.title}>
+                <summary>{assignment.title}</summary>
+                <div className="details-body">
+                  {Object.entries(assignment.fields).map(([key, value]) => (
+                    <div className="mini-card" key={key}>
+                      <strong>{labelize(key)}</strong>
+                      {renderValue(value)}
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )
           ))}
         </div>
       </section>

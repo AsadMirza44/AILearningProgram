@@ -148,7 +148,7 @@ export default function WeekPage({
           <CurriculumExplorer week={week} />
           <LessonRenderer blocks={week.lesson.blocks} />
           <ActivityStudio week={week} />
-          <ActivityPanel activity={week.activity} />
+          {!isTeacherTrack ? <ActivityPanel activity={week.activity} /> : null}
           {!isTeacherTrack ? (
             <QuizPanel onComplete={(score) => void markLessonComplete(score)} quiz={week.quiz} />
           ) : null}
@@ -157,6 +157,9 @@ export default function WeekPage({
             onSubmit={saveReflection}
             reflection={week.reflection}
             savedSubmission={savedReflection}
+            submitLabel={isTeacherTrack ? "Save Workshop Note" : "Save Reflection"}
+            successLabel={isTeacherTrack ? "Workshop note saved." : undefined}
+            title={isTeacherTrack ? "Workshop Reflection and Next-Step Note" : "Reflection"}
           />
         </main>
 
@@ -165,11 +168,25 @@ export default function WeekPage({
 
           {week.overview.expected_outcomes ? (
             <section className="panel">
-              <h3>Expected Outcomes</h3>
+              <h3>{isTeacherTrack ? "Workshop Outcomes" : "Expected Outcomes"}</h3>
               <ul>
                 {week.overview.expected_outcomes.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
+              </ul>
+            </section>
+          ) : null}
+
+          {isTeacherTrack ? (
+            <section className="panel panel-lux">
+              <h3>Workshop Focus</h3>
+              <p className="muted">
+                Keep the session practical: show one workflow, model review checkpoints, and leave teachers with reusable prompts instead of abstract theory.
+              </p>
+              <ul>
+                <li>Demonstrate the first draft, then show where teacher judgment improves it.</li>
+                <li>Use the toolkit section as take-away material after the live walkthrough.</li>
+                <li>End with one concrete classroom task each teacher will try next.</li>
               </ul>
             </section>
           ) : null}
