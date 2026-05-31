@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import TeacherDemoPlayer from "./TeacherDemoPlayer";
-import { openExampleFolder } from "../services/api";
+import { fetchActivityFolder } from "../services/api";
+import type { ActivityFile } from "../services/api";
 import type { WeekDetail } from "../types";
 
 
@@ -65,29 +66,70 @@ function hasValue(value?: string | string[]) {
 }
 
 
-export default function ActivityStudio({ week }: Props) {
-  const [activeLaunchId, setActiveLaunchId] = useState<string | null>(null);
-  const [folderStatus, setFolderStatus] = useState<Record<string, string>>({});
-  const [teacherViewMode, setTeacherViewMode] = useState<Record<string, "presenter" | "resources">>({});
-  const isTeacherTrack = week.track === "teacher";
+// Per-activity inline file browser
+function ActivityFileBrowser({ path }: { path: string }) {
+  const [files, setFiles] = useState<ActivityFile[] | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
 
-  const handleOpenExampleFolder = async (activityTitle: string, path?: string) => {
-    if (!path) {
-      return;
-    }
-
-    setFolderStatus((current) => ({ ...current, [activityTitle]: "Opening folder..." }));
-
+  const load = async () => {
+    if (files) { setOpen((o) => !o); return; }
+    setLoading(true);
+    setOpen(true);
     try {
-      await openExampleFolder(path);
-      setFolderStatus((current) => ({ ...current, [activityTitle]: "Folder opened." }));
-    } catch (error) {
-      setFolderStatus((current) => ({
-        ...current,
-        [activityTitle]: error instanceof Error ? error.message : "Unable to open folder."
-      }));
+      const data = await fetchActivityFolder(path);
+      setFiles(data.files);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not load files.");
+    } finally {
+      setLoading(false);
     }
   };
+
+  const FILE_ICONS: Record<string, string> = {
+    ".md": "📄", ".csv": "📊", ".py": "🐍", ".sh": "⚙️",
+    ".txt": "📝", ".json": "🗂️",
+  };
+
+  return (
+    <div className="activity-file-browser">
+      <button className="button-secondary" onClick={() => void load()} type="button">
+        {open
+          ? `Hide Files${files ? ` (${files.length})` : ""}`
+          : files
+            ? `View Activity Files (${files.length})`
+            : "View Activity Files"}
+      </button>
+      {open && (
+        <div className="activity-file-list">
+          {loading && <p className="muted">Loading files…</p>}
+          {error && <p className="muted">{error}</p>}
+          {files && files.length === 0 && <p className="muted">No files found.</p>}
+          {files && files.map((f) => (
+            <a
+              className="activity-file-item"
+              href={f.download_url}
+              key={f.name}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span className="activity-file-icon">{FILE_ICONS[f.ext] ?? "📎"}</span>
+              <span className="activity-file-name">{f.name}</span>
+              <span className="activity-file-action">{f.viewable ? "View" : "Download"}</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+export default function ActivityStudio({ week }: Props) {
+  const [activeLaunchId, setActiveLaunchId] = useState<string | null>(null);
+  const [teacherViewMode, setTeacherViewMode] = useState<Record<string, "presenter" | "resources">>({});
+  const isTeacherTrack = week.track === "teacher";
 
   const getTeacherViewMode = (activityTitle: string) => teacherViewMode[activityTitle] ?? "presenter";
 
@@ -171,19 +213,9 @@ export default function ActivityStudio({ week }: Props) {
                 ) : null}
                 {activity.example_folder_path ? (
                   <div className="mini-card mini-card-media">
-                    <strong>{activity.example_folder_label ?? "Example Folder"}</strong>
-                    <p className="muted">Teacher-ready examples for this activity are stored here:</p>
-                    <code className="resource-path">{activity.example_folder_path}</code>
-                    <button
-                      className="button-secondary resource-button"
-                      onClick={() => void handleOpenExampleFolder(activity.title, activity.example_folder_path)}
-                      type="button"
-                    >
-                      Open Example Folder
-                    </button>
-                    {folderStatus[activity.title] ? (
-                      <p className="resource-status">{folderStatus[activity.title]}</p>
-                    ) : null}
+                    <strong>{activity.example_folder_label ?? "Activity Files"}</strong>
+                    <p className="muted">Click to browse and open the example files for this activity.</p>
+                    <ActivityFileBrowser path={activity.example_folder_path} />
                   </div>
                 ) : null}
                 <div className="mini-card mini-card-media">

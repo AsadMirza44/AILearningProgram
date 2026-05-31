@@ -31,6 +31,7 @@ export default function WeekPage({
   const [week, setWeek] = useState<WeekDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState("concepts");
 
   useEffect(() => {
     setLoading(true);
@@ -50,6 +51,14 @@ export default function WeekPage({
   const deliveryLabel = week?.delivery_label ?? "Week";
   const sequenceLabel = week?.sequence_label ?? (week?.sequence ? `${deliveryLabel} ${week.sequence}` : deliveryLabel);
   const isTeacherTrack = week?.track === "teacher";
+
+  const tabs = [
+    { id: "concepts", label: "Concepts" },
+    { id: "lesson",   label: "Lesson" },
+    { id: "activities", label: isTeacherTrack ? "Demos" : "Activities" },
+    ...(isTeacherTrack ? [] : [{ id: "quiz", label: "Quiz" }]),
+    { id: "reflection", label: isTeacherTrack ? "Notes" : "Reflection" },
+  ];
 
   const markLessonComplete = async (quizScore?: number) => {
     if (!week) {
@@ -146,21 +155,36 @@ export default function WeekPage({
             </ul>
           </section>
 
-          <CurriculumExplorer week={week} />
-          <LessonRenderer blocks={week.lesson.blocks} />
-          <ActivityStudio week={week} />
-          {!isTeacherTrack ? (
+          <nav className="week-tabs" aria-label="Week sections">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                className={`week-tab-btn${activeTab === tab.id ? " week-tab-btn-active" : ""}`}
+                onClick={() => setActiveTab(tab.id)}
+                type="button"
+              >
+                {tab.label}
+              </button>
+            ))}
+          </nav>
+
+          {activeTab === "concepts" && <CurriculumExplorer week={week} />}
+          {activeTab === "lesson" && <LessonRenderer blocks={week.lesson.blocks} />}
+          {activeTab === "activities" && <ActivityStudio week={week} />}
+          {activeTab === "quiz" && !isTeacherTrack && (
             <QuizPanel onComplete={(score) => void markLessonComplete(score)} quiz={week.quiz} />
-          ) : null}
-          <ReflectionPanel
-            learnerId={learnerId}
-            onSubmit={saveReflection}
-            reflection={week.reflection}
-            savedSubmission={savedReflection}
-            submitLabel={isTeacherTrack ? "Save Workshop Note" : "Save Reflection"}
-            successLabel={isTeacherTrack ? "Workshop note saved." : undefined}
-            title={isTeacherTrack ? "Workshop Reflection and Next-Step Note" : "Reflection"}
-          />
+          )}
+          {activeTab === "reflection" && (
+            <ReflectionPanel
+              learnerId={learnerId}
+              onSubmit={saveReflection}
+              reflection={week.reflection}
+              savedSubmission={savedReflection}
+              submitLabel={isTeacherTrack ? "Save Workshop Note" : "Save Reflection"}
+              successLabel={isTeacherTrack ? "Workshop note saved." : undefined}
+              title={isTeacherTrack ? "Workshop Reflection and Next-Step Note" : "Reflection"}
+            />
+          )}
         </main>
 
         <aside className="side-panel">

@@ -1,4 +1,7 @@
+import type { ComponentType } from "react";
+
 import MediaPlaceholderGrid from "./MediaPlaceholderGrid";
+import { getDiagram } from "./diagrams";
 import type { WeekDetail } from "../types";
 
 
@@ -62,28 +65,33 @@ export default function CurriculumExplorer({ week }: Props) {
                   <strong>Best Practices</strong>
                   {renderFieldValue(concept.best_practices)}
                 </div>
-                <div className="mini-card mini-card-media">
-                  <strong>Images</strong>
-                  <p className="muted">Add dedicated images or GIFs for this concept here later.</p>
-                  <MediaPlaceholderGrid
-                    slots={
-                      concept.media_slots ?? [
-                        {
-                          id: `${concept.title}-image`,
-                          title: `${concept.title} Image`,
-                          kind: "image",
-                          prompt: `Placeholder for a static explanatory image about ${concept.title}.`
-                        },
-                        {
-                          id: `${concept.title}-gif`,
-                          title: `${concept.title} GIF`,
-                          kind: "gif",
-                          prompt: `Placeholder for an animated concept demo about ${concept.title}.`
-                        }
-                      ]
+                {(() => {
+                  // Build slot list, then drop any slot whose diagram was already shown by
+                  // a previous slot (prevents the same SVG appearing as both -image and -gif).
+                  const rawSlots = concept.media_slots ?? [
+                    {
+                      id: `${concept.title}-image`,
+                      title: `${concept.title} Visual`,
+                      kind: "image" as const,
+                      prompt: `Placeholder for a static explanatory image about ${concept.title}.`
                     }
-                  />
-                </div>
+                  ];
+                  const seen = new Set<ComponentType>();
+                  const uniqueSlots = rawSlots.filter((s) => {
+                    const Comp = getDiagram(s.id);
+                    if (!Comp) return false; // hide empty placeholders in concept cards
+                    if (seen.has(Comp)) return false;
+                    seen.add(Comp);
+                    return true;
+                  });
+                  if (uniqueSlots.length === 0) return null;
+                  return (
+                    <div className="mini-card mini-card-media">
+                      <strong>Concept Visual</strong>
+                      <MediaPlaceholderGrid slots={uniqueSlots} />
+                    </div>
+                  );
+                })()}
               </div>
             </details>
           ))}

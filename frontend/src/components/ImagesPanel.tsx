@@ -1,4 +1,5 @@
 import MediaPlaceholderGrid from "./MediaPlaceholderGrid";
+import { getDiagram } from "./diagrams";
 import type { WeekDetail } from "../types";
 
 
@@ -9,6 +10,7 @@ type Props = {
 
 export default function ImagesPanel({ week }: Props) {
   const isTeacherTrack = week.track === "teacher";
+  const hasVisuals = (week.curriculum.visual_gallery ?? []).some((s) => !!getDiagram(s.id));
 
   return (
     <section className="panel panel-lux">
@@ -18,7 +20,10 @@ export default function ImagesPanel({ week }: Props) {
           ? "Optional workshop visuals for the live demo, review loop, and teacher-facing concept explanations."
           : "Week-level visuals for diagrams, activity scenes, and hero media. Use the concept cards for concept-specific images."}
       </p>
-      <MediaPlaceholderGrid slots={week.curriculum.visual_gallery} />
+      {hasVisuals
+        ? <MediaPlaceholderGrid slots={week.curriculum.visual_gallery} />
+        : <p className="muted images-panel-empty">Visuals for this week are being prepared.</p>
+      }
     </section>
   );
 }

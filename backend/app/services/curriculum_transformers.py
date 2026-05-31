@@ -8,7 +8,10 @@ PROGRAM_SUBTITLE = "A 7-week practical program to help students understand, use,
 
 
 def _program_path(*parts):
-    return str(PROJECT_ROOT.joinpath(*parts))
+    # Returns a forward-slash content-relative path (e.g. "content/activity-examples/week-01/01-ai-or-not-ai").
+    # Using relative paths means the value is correct on any machine and on Vercel — the
+    # /api/course/activity-folder and /api/course/activity-file endpoints resolve it at request time.
+    return "/".join(parts)
 
 
 CURRICULUM_MAP = {

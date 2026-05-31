@@ -22,20 +22,18 @@ export async function fetchWeek(weekId: string): Promise<WeekDetail> {
 }
 
 
-export async function openExampleFolder(path: string): Promise<{ opened: boolean; path: string }> {
-  const response = await fetch(`${API_BASE}/course/open-example-folder`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ path })
-  });
+export type ActivityFile = {
+  name: string;
+  ext: string;
+  viewable: boolean;
+  download_url: string;
+};
 
+export async function fetchActivityFolder(path: string): Promise<{ path: string; files: ActivityFile[] }> {
+  const response = await fetch(`${API_BASE}/course/activity-folder?path=${encodeURIComponent(path)}`);
   if (!response.ok) {
-    const payload = await response.json().catch(() => null);
-    throw new Error(payload?.detail ?? "Failed to open example folder");
+    throw new Error("Failed to load activity files");
   }
-
   return response.json();
 }
 
