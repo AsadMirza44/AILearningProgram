@@ -715,6 +715,403 @@ td {
   margin-bottom: 1rem;
 }
 
+/* ── Hallucination Spotter ─────────────────────────────────────────────── */
+
+.hallucination-card {
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.hallucination-number {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.hallucination-text {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.hallucination-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.hallucination-reveal {
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.hallucination-reveal.reveal-wrong {
+  background: rgba(220, 38, 38, 0.07);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.hallucination-reveal.reveal-correct {
+  background: rgba(22, 163, 74, 0.07);
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.reveal-verdict {
+  font-size: 0.95rem;
+}
+
+.hallucination-note {
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+.reveal-miss {
+  margin: 0;
+  color: var(--warning);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+/* ── Prompt Comparison Lab ─────────────────────────────────────────────── */
+
+.tab-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.comparison-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comparison-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.comparison-label-weak { color: var(--danger); }
+.comparison-label-strong { color: var(--success); }
+
+.prompt-box {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  border: 1px solid var(--border);
+  white-space: pre-wrap;
+}
+
+.prompt-box-weak  { border-left: 3px solid var(--danger); }
+.prompt-box-strong { border-left: 3px solid var(--success); }
+
+.output-box {
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+  white-space: pre-wrap;
+  flex: 1;
+}
+
+.output-weak  { border-left: 3px solid rgba(220, 38, 38, 0.25); }
+.output-strong { border-left: 3px solid rgba(22, 163, 74, 0.35); }
+
+.improvement-section {
+  margin-top: 0.25rem;
+}
+
+.improvement-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  background: rgba(37, 99, 235, 0.09);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ── Code Starter Lab ──────────────────────────────────────────────────── */
+
+.code-starter-label {
+  font-weight: 700;
+}
+
+.code-starter-activity {
+  font-size: 0.88rem;
+}
+
+.code-block-wrapper {
+  background: #0f172a;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.code-language-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.code-copy-btn {
+  font-size: 0.82rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.code-block {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-family: "Fira Code", "Consolas", "Courier New", monospace;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #e2e8f0;
+}
+
+.code-block code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+}
+
+/* ── Prompt Builder ────────────────────────────────────────────────────── */
+
+.prompt-builder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.prompt-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.prompt-field-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.prompt-field-input {
+  font-size: 0.88rem;
+}
+
+.prompt-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.prompt-preview {
+  margin: 0;
+  line-height: 1.7;
+  font-size: 0.92rem;
+  min-height: 3rem;
+}
+
+/* ── Match Pairs ───────────────────────────────────────────────────────── */
+
+.match-pairs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.match-pair-card {
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.match-term {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.match-hint {
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+/* ── Flow Builder ──────────────────────────────────────────────────────── */
+
+.flow-step {
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.85rem;
+}
+
+.flow-step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.flow-step-number {
+  width: 1.8rem;
+  height: 1.8rem;
+  background: linear-gradient(135deg, var(--primary), var(--indigo));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.flow-step-label {
+  font-weight: 700;
+}
+
+.flow-preview {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ── Capstone Canvas (submission-board) ────────────────────────────────── */
+
+.capstone-canvas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.canvas-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.canvas-field-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.canvas-progress {
+  background: rgba(148, 163, 184, 0.15);
+  border-radius: 8px;
+  height: 8px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.canvas-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--indigo));
+  border-radius: 8px;
+  transition: width 0.3s ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.canvas-progress span {
+  position: relative;
+  font-size: 0.82rem;
+  margin-left: 0.75rem;
+  z-index: 1;
+  color: var(--muted);
+  padding-top: 1.1rem;
+}
+
+/* ── Diagrams ──────────────────────────────────────────────────────────── */
+
+.diagram-wrapper {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: transparent;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+}
+
+.diagram-wrapper svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.media-slot-card {
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.media-slot-card strong {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+
 @media (max-width: 960px) {
   .shell-body,
   .content-layout {
@@ -734,5 +1131,14 @@ td {
   .teacher-resource-card__header {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 700px) {
+  .comparison-grid,
+  .prompt-builder-grid,
+  .match-pairs-grid,
+  .capstone-canvas {
+    grid-template-columns: 1fr;
   }
 }

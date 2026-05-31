@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import ActivityPanel from "../components/ActivityPanel";
 import ActivityStudio from "../components/ActivityStudio";
 import CurriculumExplorer from "../components/CurriculumExplorer";
 import ImagesPanel from "../components/ImagesPanel";
@@ -150,7 +149,6 @@ export default function WeekPage({
           <CurriculumExplorer week={week} />
           <LessonRenderer blocks={week.lesson.blocks} />
           <ActivityStudio week={week} />
-          {!isTeacherTrack ? <ActivityPanel activity={week.activity} /> : null}
           {!isTeacherTrack ? (
             <QuizPanel onComplete={(score) => void markLessonComplete(score)} quiz={week.quiz} />
           ) : null}

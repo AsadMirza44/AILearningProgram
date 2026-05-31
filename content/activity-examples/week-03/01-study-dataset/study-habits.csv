@@ -1,0 +1,16 @@
+student_id,grade_level,weekly_study_hours,assignment_completion_rate,class_attendance_rate,uses_revision_notes,asks_questions_in_class,revision_days_before_exam,exam_score,passed
+S001,10,12,0.95,0.90,Yes,Yes,5,82,Yes
+S002,10,4,0.60,0.70,No,No,1,41,No
+S003,10,8,0.80,0.85,Yes,No,3,68,Yes
+S004,10,2,0.40,0.55,No,No,0,28,No
+S005,10,15,1.00,0.95,Yes,Yes,7,91,Yes
+S006,10,6,0.70,0.75,Yes,No,2,55,Yes
+S007,10,3,0.50,0.60,No,No,1,35,No
+S008,10,10,0.90,0.88,Yes,Yes,4,77,Yes
+S009,10,7,0.75,0.80,No,Yes,3,62,Yes
+S010,10,1,0.30,0.45,No,No,0,22,No
+S011,10,9,0.85,0.92,Yes,Yes,4,74,Yes
+S012,10,5,0.65,0.72,No,No,2,48,No
+S013,10,14,0.98,0.96,Yes,Yes,6,89,Yes
+S014,10,3,0.55,0.65,No,No,1,33,No
+S015,10,11,0.88,0.87,Yes,No,5,79,Yes

@@ -1,0 +1,13 @@
+id,statement,correct_type,explanation
+1,"Always cite the source document at the end of every answer.",Rules,"Persistent standard applied to all outputs by default = Rule."
+2,"When a student requests exam practice, follow these 4 steps: pick questions → set timer → mark answers → suggest weak areas.",Skills,"A repeatable on-demand workflow for a specific task = Skill."
+3,"Never share student grades with other students.",Rules,"A permanent safety boundary applied to all interactions = Rule."
+4,"When reviewing a Python file, check for syntax errors then logic errors then missing comments in that order.",Skills,"An on-demand step-by-step procedure for code review = Skill."
+5,"Always use plain English and avoid technical jargon.",Rules,"A default communication standard applied to every reply = Rule."
+6,"To generate a lesson plan: get the topic, grade, duration, and objective — then produce starter, explanation, activity, and exit ticket.",Skills,"A structured workflow invoked for lesson planning = Skill."
+7,"Do not send any message outside the classroom system without human approval.",Rules,"A safety rule that applies at all times without needing to be triggered = Rule."
+8,"When summarising lecture notes, extract key definitions, list the 3 main ideas, and add 2 practice questions.",Skills,"A named reusable procedure for note summarisation = Skill."
+9,"Treat all student data as private and do not store personal information.",Rules,"A persistent data privacy rule across all sessions = Rule."
+10,"For capstone peer review, check: problem clarity → AI feature justification → safety rules → model choice rationale.",Skills,"A step-by-step quality-check workflow run on demand = Skill."
+11,"Always end responses with a one-line summary if the answer is longer than 200 words.",Rules,"An always-on formatting standard = Rule."
+12,"When the student asks for a study plan, ask for their available hours, subjects, and exam dates before creating it.",Skills,"A specific on-demand information-gathering and planning workflow = Skill."

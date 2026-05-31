@@ -1,0 +1,9 @@
+id,task,weak_prompt,why_weak
+1,Study help,Help me study,No subject, no level, no format — AI has no context to be useful
+2,Content creation,Write something about climate change,No audience, no format, no length, no angle
+3,Quiz generation,Make quiz questions,No subject, no level, no number, no format
+4,Explanation,Explain photosynthesis,No audience, no depth, no output format specified
+5,Lesson plan,Create a lesson plan for maths,No topic, no grade, no duration, no structure required
+6,Essay feedback,Give me feedback,No essay provided, no criteria, no focus area
+7,Revision plan,Help me revise,No subject, no exam date, no time available, no preferred format
+8,Summary,Summarise this,No text provided, no target length, no audience

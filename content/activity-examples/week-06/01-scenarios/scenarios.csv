@@ -1,0 +1,13 @@
+id,scenario,best_building_block,explanation
+1,"The school assistant should always respond in simple English and never use jargon — this standard applies to every reply it ever gives.",Rules,"Always-on guidance across all interactions = Rule. It is passive direction, not an action."
+2,"When a student asks for help writing an essay, the assistant follows a specific 5-step workflow: brainstorm → outline → draft → peer-review checklist → final polish.",Skills,"A repeatable multi-step procedure for a specific task = Skill. It is on-demand expertise."
+3,"The assistant can search lecture notes, retrieve past exam questions, and send a calendar invite.",Tools,"Callable actions on files and systems during a task = Tools. MCP from Week 5 is one way to standardise tool access."
+4,"Before the assistant saves any file, a script runs automatically to check the format and block files over 10MB.",Hooks,"Event-triggered automation at a lifecycle moment (before save) = Hook. Reactive, not conversational."
+5,"The class project installs a documentation browser so the agent can look up API references while helping students code.",Plugins,"An installable packaged capability added to the environment = Plugin."
+6,"For a large research assignment, one agent finds sources, another drafts the bibliography, and the lead agent combines both outputs.",Subagents,"Focused parallel workers with separate context and clear handoffs = Subagents."
+7,"The assistant must always cite the document it pulled information from — no citation means no answer.",Rules,"Persistent standard applied to every answer = Rule."
+8,"When the assistant finishes a tutoring session, a script logs how long the session lasted and saves the summary to the student's profile.",Hooks,"Post-event automated action at a lifecycle moment = Hook."
+9,"A team shares a ready-made integration that adds calendar scheduling and email drafting to any school AI assistant.",Plugins,"A shareable packaged capability bundle = Plugin."
+10,"Each time a student asks for exam practice, the assistant follows a set procedure: pick past questions → time the student → mark answers → suggest weak areas.",Skills,"A repeatable domain procedure triggered on demand = Skill."
+11,"For a website project, one subagent writes the HTML, another writes the CSS, and a third writes the JavaScript. The lead agent reviews and combines.",Subagents,"Work split across specialised parallel agents with clear handoffs = Subagents."
+12,"The assistant can read class schedules, update a shared to-do list, and send notifications to the teacher.",Tools,"Callable actions on data and systems = Tools."

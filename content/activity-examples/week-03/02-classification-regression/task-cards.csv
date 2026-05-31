@@ -1,0 +1,15 @@
+id,task_description,correct_type,explanation
+1,Predict whether a student will pass or fail their exam,Classification,"Output is a category (pass/fail), not a number"
+2,Predict a student's exam score out of 100,Regression,"Output is a number (0–100), not a category"
+3,Recommend the next YouTube video to watch,Recommendation,System suggests relevant items based on preferences
+4,Detect whether an email is spam or not spam,Classification,"Output is one of two categories (spam/not spam)"
+5,Predict tomorrow's temperature in degrees,Regression,Output is a continuous number value
+6,Identify which product a customer is likely to buy next,Recommendation,Suggests the most likely item based on past behaviour
+7,Classify a skin lesion image as benign or malignant,Classification,Output is a medical category requiring yes/no judgment
+8,Estimate the rental price of a flat based on location and size,Regression,Output is a monetary value (number)
+9,Suggest which study topic a student should revise next,Recommendation,Personalised suggestion based on performance history
+10,Predict whether a loan application will be approved or rejected,Classification,"Output is a decision category (approved/rejected)"
+11,Predict how many days until a machine part needs replacing,Regression,Output is a time value (number of days)
+12,Recommend a playlist based on a user's listening history,Recommendation,Personalised content suggestion
+13,Decide if a transaction is fraudulent or legitimate,Classification,"Binary category output (fraud/not fraud)"
+14,Forecast sales revenue for next quarter,Regression,Output is a financial number
