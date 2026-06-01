@@ -111,13 +111,25 @@ export default function WeekPage({
   };
 
   if (loading) {
-    return <div className="page"><p>Loading week...</p></div>;
+    return (
+      <div className="page">
+        <div className="skeleton skeleton-banner" />
+        <div className="skeleton skeleton-tabs" />
+        <div className="skeleton skeleton-panel" />
+      </div>
+    );
   }
 
   if (error || !week) {
     return (
       <div className="page">
-        <p>{error ?? "Unable to load week."}</p>
+        <div className="error-card">
+          <span className="error-card-icon">⚠</span>
+          <div className="error-card-body">
+            <span className="error-card-title">Unable to load week</span>
+            <p>{error ?? "The requested week could not be found."}</p>
+          </div>
+        </div>
       </div>
     );
   }
@@ -125,7 +137,10 @@ export default function WeekPage({
   return (
     <div className="page">
       <div className="back-row">
-        <Link to="/tutor">← Back to tutor dashboard</Link>
+        <Link to="/tutor">
+          <span className="back-arrow">←</span>
+          Back to tutor dashboard
+        </Link>
       </div>
 
       <section className={`week-banner week-banner-${week.id}`}>
@@ -148,7 +163,7 @@ export default function WeekPage({
         <main className="stack">
           <section className="panel panel-lux">
             <h3>{deliveryLabel} Objectives</h3>
-            <ul>
+            <ul className="objectives-list">
               {week.overview.learning_objectives.map((objective) => (
                 <li key={objective}>{objective}</li>
               ))}
@@ -168,23 +183,26 @@ export default function WeekPage({
             ))}
           </nav>
 
-          {activeTab === "concepts" && <CurriculumExplorer week={week} />}
-          {activeTab === "lesson" && <LessonRenderer blocks={week.lesson.blocks} />}
-          {activeTab === "activities" && <ActivityStudio week={week} />}
-          {activeTab === "quiz" && !isTeacherTrack && (
-            <QuizPanel onComplete={(score) => void markLessonComplete(score)} quiz={week.quiz} />
-          )}
-          {activeTab === "reflection" && (
-            <ReflectionPanel
-              learnerId={learnerId}
-              onSubmit={saveReflection}
-              reflection={week.reflection}
-              savedSubmission={savedReflection}
-              submitLabel={isTeacherTrack ? "Save Workshop Note" : "Save Reflection"}
-              successLabel={isTeacherTrack ? "Workshop note saved." : undefined}
-              title={isTeacherTrack ? "Workshop Reflection and Next-Step Note" : "Reflection"}
-            />
-          )}
+          {/* key forces remount on tab switch → triggers .tab-panel fade-in animation */}
+          <div className="tab-panel" key={activeTab}>
+            {activeTab === "concepts" && <CurriculumExplorer week={week} />}
+            {activeTab === "lesson" && <LessonRenderer blocks={week.lesson.blocks} />}
+            {activeTab === "activities" && <ActivityStudio week={week} />}
+            {activeTab === "quiz" && !isTeacherTrack && (
+              <QuizPanel onComplete={(score) => void markLessonComplete(score)} quiz={week.quiz} />
+            )}
+            {activeTab === "reflection" && (
+              <ReflectionPanel
+                learnerId={learnerId}
+                onSubmit={saveReflection}
+                reflection={week.reflection}
+                savedSubmission={savedReflection}
+                submitLabel={isTeacherTrack ? "Save Workshop Note" : "Save Reflection"}
+                successLabel={isTeacherTrack ? "Workshop note saved." : undefined}
+                title={isTeacherTrack ? "Workshop Reflection and Next-Step Note" : "Reflection"}
+              />
+            )}
+          </div>
         </main>
 
         <aside className="side-panel">

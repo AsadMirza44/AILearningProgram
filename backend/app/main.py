@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
+from app.api.routes.ai import router as ai_router
 from app.api.routes.course import router as course_router
 from app.api.routes.health import router as health_router
 from app.api.routes.progress import router as progress_router
@@ -32,6 +33,7 @@ app.include_router(health_router)
 app.include_router(course_router, prefix="/api")
 app.include_router(progress_router, prefix="/api")
 app.include_router(submissions_router, prefix="/api")
+app.include_router(ai_router, prefix="/api")
 
 assets_dir = FRONTEND_DIST_DIR / "assets"
 index_file = FRONTEND_DIST_DIR / "index.html"

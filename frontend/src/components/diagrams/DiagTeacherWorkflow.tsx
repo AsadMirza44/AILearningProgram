@@ -1,6 +1,6 @@
 export default function DiagTeacherWorkflow() {
   return (
-    <svg viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+    <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
       <style>{`
         @keyframes tw{0%,100%{opacity:.35}20%{opacity:1}}
         .tw1{animation:tw 3.5s ease-in-out infinite 0s}

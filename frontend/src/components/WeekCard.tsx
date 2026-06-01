@@ -19,7 +19,10 @@ export default function WeekCard({ week, progress, routePrefix, ctaLabel }: Prop
     <Link className={`week-card week-${week.theme_color}`} to={`${routePrefix}/weeks/${week.id}`}>
       <div className="week-card__header">
         <span className="week-card__number">{sequenceLabel}</span>
-        <span className={`pill pill-${status}`}>{status.replace("_", " ")}</span>
+        <span className={`pill pill-${status}`}>
+          <span className="pill-dot" />
+          {status.replace("_", " ")}
+        </span>
       </div>
       <h3>{week.short_title}</h3>
       <p>{week.focus}</p>

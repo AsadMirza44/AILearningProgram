@@ -88,3 +88,52 @@ export async function saveSubmission(payload: Omit<SubmissionRecord, "id">): Pro
 
   return response.json();
 }
+
+
+// ── AI features (gracefully degrade when ANTHROPIC_API_KEY is not set) ────
+
+export type EvaluatePromptResult =
+  | { available: false }
+  | { available: true; score: number; verdict: string; suggestions: string[] };
+
+export async function evaluatePrompt(payload: {
+  task: string;
+  originalPrompt: string;
+  improvedPrompt: string;
+}): Promise<EvaluatePromptResult> {
+  try {
+    const response = await fetch(`${API_BASE}/ai/evaluate-prompt`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        task: payload.task,
+        original_prompt: payload.originalPrompt,
+        improved_prompt: payload.improvedPrompt,
+      }),
+    });
+    if (response.status === 503) return { available: false };
+    if (!response.ok) throw new Error();
+    const data = await response.json() as { score: number; verdict: string; suggestions: string[] };
+    return { available: true, ...data };
+  } catch {
+    return { available: false };
+  }
+}
+
+export type ChatResult = { available: false } | { available: true; response: string };
+
+export async function chatWithAI(prompt: string): Promise<ChatResult> {
+  try {
+    const response = await fetch(`${API_BASE}/ai/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt }),
+    });
+    if (response.status === 503) return { available: false };
+    if (!response.ok) throw new Error();
+    const data = await response.json() as { response: string };
+    return { available: true, response: data.response };
+  } catch {
+    return { available: false };
+  }
+}

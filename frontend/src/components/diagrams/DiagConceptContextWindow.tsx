@@ -43,9 +43,9 @@ export default function DiagConceptContextWindow() {
 
       {overflow.map((t, i) => (
         <g key={i}>
-          <rect x={328 + (i % 2) * 62} y={90 + Math.floor(i / 2) * 36} width={t.length * 6 + 12} height="22" rx="5"
+          <rect x={328 + (i % 2) * 74} y={90 + Math.floor(i / 2) * 36} width={t.length * 6 + 12} height="22" rx="5"
             fill="#fecaca" stroke="#fca5a5" strokeWidth="1" opacity=".6" />
-          <text x={328 + (i % 2) * 62 + (t.length * 6 + 12) / 2} y={90 + Math.floor(i / 2) * 36 + 15}
+          <text x={328 + (i % 2) * 74 + (t.length * 6 + 12) / 2} y={90 + Math.floor(i / 2) * 36 + 15}
             textAnchor="middle" fill="#7f1d1d" fontSize="9">{t}</text>
         </g>
       ))}

@@ -18,45 +18,45 @@ export default function DiagTeacherReviewLoop() {
 
       {/* top-left: AI Generates */}
       <g className="rl1">
-        <rect x="60" y="65" width="130" height="54" rx="10" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
+        <rect x="60" y="65" width="130" height="62" rx="10" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" />
         <text x="125" y="87" textAnchor="middle" fill="#1e40af" fontSize="11" fontWeight="700">AI Generates</text>
         <text x="125" y="103" textAnchor="middle" fill="#1e40af" fontSize="9">first draft output</text>
       </g>
 
       {/* arrow right */}
-      <line x1="190" y1="92" x2="248" y2="92" stroke="#92400e" strokeWidth="2" markerEnd="url(#rlArr)" />
+      <line x1="190" y1="96" x2="248" y2="96" stroke="#92400e" strokeWidth="2" markerEnd="url(#rlArr)" />
 
       {/* top-right: Teacher Checks */}
       <g className="rl2">
-        <rect x="290" y="65" width="130" height="54" rx="10" fill="#fef9c3" stroke="#ca8a04" strokeWidth="2" />
+        <rect x="290" y="65" width="130" height="62" rx="10" fill="#fef9c3" stroke="#ca8a04" strokeWidth="2" />
         <text x="355" y="85" textAnchor="middle" fill="#854d0e" fontSize="11" fontWeight="700">Teacher Checks</text>
         <text x="355" y="99" textAnchor="middle" fill="#854d0e" fontSize="9">accuracy · tone · fairness</text>
-        <text x="355" y="111" textAnchor="middle" fill="#854d0e" fontSize="9">privacy · curriculum fit</text>
+        <text x="355" y="113" textAnchor="middle" fill="#854d0e" fontSize="9">privacy · curriculum fit</text>
       </g>
 
       {/* arrow down */}
-      <line x1="355" y1="119" x2="355" y2="175" stroke="#92400e" strokeWidth="2" markerEnd="url(#rlArr)" />
+      <line x1="355" y1="127" x2="355" y2="175" stroke="#92400e" strokeWidth="2" markerEnd="url(#rlArr)" />
 
       {/* bottom-right: Adapt & Approve */}
       <g className="rl3">
-        <rect x="290" y="175" width="130" height="54" rx="10" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" />
+        <rect x="290" y="175" width="130" height="62" rx="10" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" />
         <text x="355" y="196" textAnchor="middle" fill="#166534" fontSize="11" fontWeight="700">Adapt &amp; Approve</text>
         <text x="355" y="212" textAnchor="middle" fill="#166534" fontSize="9">edit · personalise · sign off</text>
       </g>
 
       {/* arrow left */}
-      <line x1="290" y1="202" x2="248" y2="202" stroke="#92400e" strokeWidth="2" markerEnd="url(#rlArr)" />
+      <line x1="290" y1="206" x2="248" y2="206" stroke="#92400e" strokeWidth="2" markerEnd="url(#rlArr)" />
 
       {/* bottom-left: Classroom Use */}
       <g className="rl4">
-        <rect x="60" y="175" width="130" height="54" rx="10" fill="#f0fdf4" stroke="#16a34a" strokeWidth="2" />
+        <rect x="60" y="175" width="130" height="62" rx="10" fill="#f0fdf4" stroke="#16a34a" strokeWidth="2" />
         <text x="125" y="196" textAnchor="middle" fill="#166534" fontSize="11" fontWeight="700">Classroom Use</text>
-        <text x="125" y="212" textAnchor="middle" fill="#166534" fontSize="9">students receive approved</text>
-        <text x="125" y="222" textAnchor="middle" fill="#166534" fontSize="9">material</text>
+        <text x="125" y="212" textAnchor="middle" fill="#166534" fontSize="9">students receive</text>
+        <text x="125" y="225" textAnchor="middle" fill="#166534" fontSize="9">approved material</text>
       </g>
 
       {/* arrow up (loop back) */}
-      <line x1="125" y1="175" x2="125" y2="119" stroke="#92400e" strokeWidth="2" markerEnd="url(#rlArr)" />
+      <line x1="125" y1="175" x2="125" y2="127" stroke="#92400e" strokeWidth="2" markerEnd="url(#rlArr)" />
 
       {/* center label */}
       <text x="240" y="140" textAnchor="middle" fill="#92400e" fontSize="10" fontWeight="700">Human-in-</text>

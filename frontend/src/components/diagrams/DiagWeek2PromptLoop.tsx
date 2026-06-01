@@ -48,14 +48,13 @@ export default function DiagWeek2PromptLoop() {
       <g className="w2s4">
         <rect x="20" y="230" width="200" height="36" rx="9" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" />
         <text x="120" y="248" textAnchor="middle" fill="#166534" fontSize="10" fontWeight="700">Strong Prompt</text>
-        <text x="120" y="260" textAnchor="middle" fill="#166534" fontSize="9">(role · task · context · constraints · format)</text>
+        <text x="120" y="260" textAnchor="middle" fill="#166534" fontSize="9">role · task · context · format</text>
       </g>
       <line x1="220" y1="248" x2="264" y2="248" stroke="#64748b" strokeWidth="2" markerEnd="url(#pw2)" />
       <rect x="264" y="230" width="196" height="36" rx="9" fill="#f0fdf4" stroke="#16a34a" strokeWidth="2" />
       <text x="362" y="248" textAnchor="middle" fill="#166534" fontSize="10" fontWeight="700">Better Output</text>
       <text x="362" y="260" textAnchor="middle" fill="#166534" fontSize="9">specific · structured · verifiable</text>
 
-      <text x="240" y="22" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#0f172a">Prompt Improvement Loop</text>
     </svg>
   );
 }

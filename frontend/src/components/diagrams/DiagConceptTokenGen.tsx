@@ -1,6 +1,6 @@
 export default function DiagConceptTokenGen() {
   const prompt = ["You", "are", "a", "tutor", "."];
-  const generated = ["Machine", "learning", "is", "pattern", "recognition", "."];
+  const generated = ["Machine", "learning", "is", "pattern", "matching", "."];
 
   return (
     <svg viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>

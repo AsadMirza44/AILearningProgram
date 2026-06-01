@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import TeacherDemoPlayer from "./TeacherDemoPlayer";
+import PlaygroundDispatcher from "./playground/PlaygroundDispatcher";
 import { fetchActivityFolder } from "../services/api";
 import type { ActivityFile } from "../services/api";
 import type { WeekDetail } from "../types";
@@ -301,10 +302,7 @@ export default function ActivityStudio({ week }: Props) {
                         </>
                       ) : null}
                       {!isTeacherTrack ? (
-                        <div className="future-media-box">
-                          Interactive activity placeholder for <strong>{activity.title}</strong>. Future drag/drop,
-                          simulation, or collaborative classroom modules can connect here.
-                        </div>
+                        <PlaygroundDispatcher activityTitle={activity.title} />
                       ) : null}
                     </div>
                   ) : null}
